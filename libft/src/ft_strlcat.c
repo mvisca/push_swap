@@ -6,11 +6,11 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:42:07 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/06/20 20:47:31 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/06/30 18:21:06 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/libft.h"
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {

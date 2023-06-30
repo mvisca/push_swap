@@ -6,11 +6,11 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 10:46:36 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/06/20 20:48:45 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/06/30 18:22:23 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/libft.h"
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {

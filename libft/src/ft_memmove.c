@@ -6,11 +6,11 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:55:11 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/06/20 20:46:38 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/06/30 18:22:44 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/libft.h"
 
 static void	ft_d_minor_s(size_t *i, size_t *e, size_t n, int *d)
 {

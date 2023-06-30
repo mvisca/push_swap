@@ -6,11 +6,11 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:28:45 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/06/20 20:47:44 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/06/30 18:21:23 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

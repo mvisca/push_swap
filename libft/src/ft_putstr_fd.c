@@ -6,11 +6,11 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 18:24:15 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/06/20 20:47:09 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/06/30 18:20:35 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {

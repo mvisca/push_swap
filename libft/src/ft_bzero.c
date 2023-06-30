@@ -6,11 +6,11 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:55:52 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/06/19 18:15:28 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/06/30 18:24:17 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

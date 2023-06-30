@@ -6,11 +6,11 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 19:00:48 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/06/19 18:16:27 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/06/30 18:23:01 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

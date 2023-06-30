@@ -6,11 +6,11 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 11:30:46 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/06/19 16:58:13 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/06/30 18:20:40 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/libft.h"
 
 static void	ft_free_all(char **spliter)
 {
