@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/30 13:33:19 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/06/30 18:38:59 by mvisca-g         ###   ########.fr        #
+#    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
+#    Updated: 2023/06/30 18:49:39 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,14 @@ NAME			:=	push_swap
 #	INGREDIENTS		#
 #-------------------#
 
-LIB				:=	ft
+#LIB				:=	ft
 LIB_TGT			:=	libft/libft.a
-LIB_DIR			:=	$(dir (LIB_TGT))
+LIB_DIR			:=	libft/
 
-SRCS_DIR		:=	src/
+#SRCS_DIR		:=	src/
 SRCS			:=	push_swap.c
 
-DEPS			:=	$(SRCS:.o=.c)
+DEPS			:=	$(SRCS:.c=.d)
 
 #-------------------#
 #	UTILS			#
@@ -35,7 +35,7 @@ DEPS			:=	$(SRCS:.o=.c)
 
 CC				:=	cc
 CFLAGS			:=	-Wall -Wextra -Werror
-CPPFLAGS		:=	-I./libft/include
+CPPFLAGS		:=	-I./$(LIB_DIR)/include
 
 RM				:=	rm -r -f
 
@@ -58,10 +58,10 @@ NC				:= \033[0m
 all: $(NAME) callforlib
 
 $(NAME): $(LIB_TGT)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -L./libft/include -lft $(SRCS) -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) -L./libft -lft $(SRCS) -o $@
 
 $(LIB_TGT):
-	$(MAKE) -C $(@D)
+	$(MAKE) -C $(LIB_DIR)
 -include $(DEPS)
 
 clean:
@@ -76,4 +76,4 @@ callforlib:
 	$(MAKE) -C $(LIB_DIR)
 	$(MAKE) -C . $(NAME)
 
-.PHONY: clean fclean all callforlib
+.PHONY: clean fclean all
