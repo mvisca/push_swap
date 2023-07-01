@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/07/01 17:06:16 by mvisca           ###   ########.fr        #
+#    Updated: 2023/07/01 17:10:59 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ NAME			:=	push_swap
 #	INGREDIENTS		#
 #-------------------#
 LIB_TGT			:=	libft.a
+LIB				:=	ft
 LIB_DIR			:=	libft
 LIB_HEADER		:=	include
 SRCS			:=	push_swap.c
@@ -38,7 +39,8 @@ SRCS			:=	push_swap.c
 #-------------------#
 CC				:=	cc
 CFLAGS			:=	-Wall -Wextra -Werror
-CPPFLAGS		:=	-I. -I./$(LIB_DIR)/$(LIB_HEADER)
+CPPFLAGS		:=	-I. -I./$(LIB_DIR)/$(LIB_HEADER) -L./$(LIB_DIR) -l$(LIB)
+
 RM				:=	rm -r -f
 MAKEFLAGS		+=	--no-print-directory
 
@@ -49,15 +51,15 @@ all: $(NAME)
 
 $(NAME): $(LIB_TGT)
 	@echo "$(YELLOW)Compiling... $(BLUE)$@$(NC)"
-	$(CC) $(CFLAGS) $(SRCS) $(CPPFLAGS) -L./libft -lft -o $@
+	@$(CC) $(CFLAGS) $(SRCS) $(CPPFLAGS) -L./libft -lft -o $@
 
 $(LIB_TGT):
-	@echo "Makeing LIB_DIR make"
+	@echo "Making LIB_DIR make"
 	@$(MAKE) -C $(LIB_DIR)
 # -include $(DEPS)
 
 clean:
-	@echo "Makeing LIB_DIR make clean"
+	@echo "Making LIB_DIR make clean"
 	@$(MAKE) -C $(LIB_DIR) clean
 
 fclean: clean
@@ -68,7 +70,7 @@ fclean: clean
 re: fclean all
 
 callforlib:
-	@echo "Makeing LIB_DIR make"
+	@echo "Making LIB_DIR make"
 	@$(MAKE) -C $(LIB_DIR)
 	@echo "Makeing . make"
 	@$(MAKE) -C . $(NAME)
