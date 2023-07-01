@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/07/01 17:10:59 by mvisca           ###   ########.fr        #
+#    Updated: 2023/07/01 18:03:33 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,9 @@ LIB_TGT			:=	libft.a
 LIB				:=	ft
 LIB_DIR			:=	libft
 LIB_HEADER		:=	include
-SRCS			:=	push_swap.c
-# DEPS			:=	$(SRCS:.c=.d)
+SRCS			:=	push_swap.c			\
+					push_swap_utils.c
+#DEPS			:=	$(SRCS:.c=.d)
 
 #-------------------#
 #	UTILS			#
@@ -49,17 +50,17 @@ MAKEFLAGS		+=	--no-print-directory
 #-------------------#
 all: $(NAME)
 
-$(NAME): $(LIB_TGT)
+$(NAME): $(LIB_TGT) $(SRCS)
 	@echo "$(YELLOW)Compiling... $(BLUE)$@$(NC)"
-	@$(CC) $(CFLAGS) $(SRCS) $(CPPFLAGS) -L./libft -lft -o $@
+	@$(CC) $(CFLAGS) $(SRCS) $(CPPFLAGS) -o $@
 
 $(LIB_TGT):
-	@echo "Making LIB_DIR make"
+	@echo "Calling LIB_DIR make"
 	@$(MAKE) -C $(LIB_DIR)
-# -include $(DEPS)
+#-include $(DEPS)
 
 clean:
-	@echo "Making LIB_DIR make clean"
+	@echo "Cleaning LIB_DIR make clean"
 	@$(MAKE) -C $(LIB_DIR) clean
 
 fclean: clean

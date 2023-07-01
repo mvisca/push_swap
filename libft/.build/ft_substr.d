@@ -1,2 +1,0 @@
-.build/ft_substr.o: src/ft_substr.c src/../include/libft.h
-src/../include/libft.h:
