@@ -3,48 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
+#    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/06/30 18:50:30 by mvisca-g         ###   ########.fr        #
+#    Updated: 2023/07/01 17:06:16 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #-------------------#
-#	TARGET			#
-#-------------------#
-
-NAME			:=	push_swap
-
-#-------------------#
-#	INGREDIENTS		#
-#-------------------#
-
-#LIB				:=	ft
-LIB_TGT			:=	libft/libft.a
-LIB_DIR			:=	libft/
-
-#SRCS_DIR		:=	src/
-SRCS			:=	push_swap.c
-
-DEPS			:=	$(SRCS:.c=.d)
-
-#-------------------#
-#	UTILS			#
-#-------------------#
-
-CC				:=	cc
-CFLAGS			:=	-Wall -Wextra -Werror
-CPPFLAGS		:=	-I./$(LIB_DIR)/include
-
-RM				:=	rm -r -f
-
-MAKEFLAGS		+=	--no-print-directory
-
-#-------------------#
 #	FORMAT			#
 #-------------------#
-
 RED				:= \033[0;31m
 GREEN			:= \033[0;32m
 YELLOW			:= \033[0;33m
@@ -52,28 +20,57 @@ BLUE			:= \033[0;34m
 NC				:= \033[0m
 
 #-------------------#
+#	TARGET			#
+#-------------------#
+NAME			:=	push_swap
+
+#-------------------#
+#	INGREDIENTS		#
+#-------------------#
+LIB_TGT			:=	libft.a
+LIB_DIR			:=	libft
+LIB_HEADER		:=	include
+SRCS			:=	push_swap.c
+# DEPS			:=	$(SRCS:.c=.d)
+
+#-------------------#
+#	UTILS			#
+#-------------------#
+CC				:=	cc
+CFLAGS			:=	-Wall -Wextra -Werror
+CPPFLAGS		:=	-I. -I./$(LIB_DIR)/$(LIB_HEADER)
+RM				:=	rm -r -f
+MAKEFLAGS		+=	--no-print-directory
+
+#-------------------#
 #	RECIPES			#
 #-------------------#
-
-all: $(NAME) callforlib
+all: $(NAME)
 
 $(NAME): $(LIB_TGT)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -L./libft -lft $(SRCS) -o $@
+	@echo "$(YELLOW)Compiling... $(BLUE)$@$(NC)"
+	$(CC) $(CFLAGS) $(SRCS) $(CPPFLAGS) -L./libft -lft -o $@
 
 $(LIB_TGT):
-	$(MAKE) -C $(LIB_DIR)
--include $(DEPS)
+	@echo "Makeing LIB_DIR make"
+	@$(MAKE) -C $(LIB_DIR)
+# -include $(DEPS)
 
 clean:
-	$(MAKE) -C $(LIB_DIR) clean
+	@echo "Makeing LIB_DIR make clean"
+	@$(MAKE) -C $(LIB_DIR) clean
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo "$(RED)Deleting... $(NC)$(NAME) $(RED)>> 🗑️$(NC)"
+	@$(MAKE) -C $(LIB_DIR) fclean
 
 re: fclean all
 
 callforlib:
-	$(MAKE) -C $(LIB_DIR)
-	$(MAKE) -C . $(NAME)
+	@echo "Makeing LIB_DIR make"
+	@$(MAKE) -C $(LIB_DIR)
+	@echo "Makeing . make"
+	@$(MAKE) -C . $(NAME)
 
 .PHONY: clean fclean all
