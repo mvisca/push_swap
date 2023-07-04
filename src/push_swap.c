@@ -9,11 +9,9 @@ int	main(int ac, char **av)
 //	TEST GET ARGS
 //	int i = 0; while (tab[i]) { ft_printf("%s\n", tab[i]); i++; }
 	stack_a = build_stack(tab);
-	ft_printf("\nBack MAIN\n");
 	if (!tab || !stack_a || !*stack_a)
 	{
 		free_null(tab);
-		ft_printf("Something wentwrong.\n");
 		return (1);
 	}	
 //	TEST BUILD STACK

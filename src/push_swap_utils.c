@@ -24,6 +24,6 @@ void    *free_null(char **tab)
 
 void	*say_error_ret_null(void)
 {
-	ft_printf("Error.");
+	ft_printf("Error (from utils)\n");
 	return (NULL);
 }
