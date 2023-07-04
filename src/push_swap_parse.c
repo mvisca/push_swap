@@ -31,7 +31,10 @@ t_list	**build_stack(char **tab)
 	int		i;
 
 	if (!tab || !tab_valid(tab))
+	{
+		ft_printf("No arguments.\n", 0);
 		return (say_error_ret_null());
+	}
 	stack_a = (t_list **) malloc (sizeof(t_list *) * 1);
 	if (!stack_a)
 		return (say_error_ret_null());

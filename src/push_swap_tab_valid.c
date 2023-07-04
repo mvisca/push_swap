@@ -50,7 +50,7 @@ int	tab_valid(char **tab)
 
 	if (!tab)
 	{
-		ft_printf("Error 1.");
+		ft_printf("Error 1. No tab.\n");
 		return (FALSE);
 	}
 	i = 0;
@@ -58,7 +58,7 @@ int	tab_valid(char **tab)
 	{
 		if (!only_digits(tab[i]) || !is_int(tab[i]))
 		{
-			ft_printf("only_digits = %d, is_int = %d, Error 2.", only_digits(tab[i]), is_int(tab[i]));
+			ft_printf("Error 2. only_digits = %d, is_int = %d\n", only_digits(tab[i]), is_int(tab[i]));
 			return (FALSE);
 		}
 		i++;
@@ -66,7 +66,7 @@ int	tab_valid(char **tab)
 //	ft_printf("OK test only && int\n");
 	if (!no_repeat(tab))
 	{
-		ft_printf("no_repeat = %d, Error 3.", no_repeat(tab));
+		ft_printf("Error 3. no_repeat = %d.\n", no_repeat(tab));
 		return (FALSE);
 	}
 //	ft_printf("OK test no repeat\n");
