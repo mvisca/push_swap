@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
+#    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 17:14:27 by mvisca            #+#    #+#              #
-#    Updated: 2023/06/30 17:53:31 by mvisca-g         ###   ########.fr        #
+#    Updated: 2023/07/04 13:34:58 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS		:=			\
 	ft_putchar.c		\
 	ft_putstr.c			\
 	ft_atoi.c			\
+	ft_atol.c			\
 	ft_bzero.c			\
 	ft_calloc.c			\
 	ft_isalnum.c		\

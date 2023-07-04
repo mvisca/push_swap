@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/07/01 18:03:33 by mvisca           ###   ########.fr        #
+#    Updated: 2023/07/04 13:51:37 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,20 +27,25 @@ NAME			:=	push_swap
 #-------------------#
 #	INGREDIENTS		#
 #-------------------#
+INC_DIR			:=	include
+LIB_DIR			:=	libft
 LIB_TGT			:=	libft.a
 LIB				:=	ft
-LIB_DIR			:=	libft
-LIB_HEADER		:=	include
-SRCS			:=	push_swap.c			\
+SRCS_DIR		:=	src
+SRCS			:=	push_swap.c							\
+					push_swap_parse.c					\
+					push_swap_tab_valid.c				\
 					push_swap_utils.c
+SRCS			:=	$(addprefix $(SRCS_DIR)/, $(SRCS))
 #DEPS			:=	$(SRCS:.c=.d)
 
 #-------------------#
 #	UTILS			#
 #-------------------#
-CC				:=	cc
+CC				:=	cc -g
 CFLAGS			:=	-Wall -Wextra -Werror
-CPPFLAGS		:=	-I. -I./$(LIB_DIR)/$(LIB_HEADER) -L./$(LIB_DIR) -l$(LIB)
+CPPFLAGS		:=	-I./$(INC_DIR) -I./$(LIB_DIR)/$(INC_DIR)	\
+					-L./$(LIB_DIR) -l$(LIB)
 
 RM				:=	rm -r -f
 MAKEFLAGS		+=	--no-print-directory
@@ -48,9 +53,10 @@ MAKEFLAGS		+=	--no-print-directory
 #-------------------#
 #	RECIPES			#
 #-------------------#
+
 all: $(NAME)
 
-$(NAME): $(LIB_TGT) $(SRCS)
+$(NAME): $(LIB_TGT)
 	@echo "$(YELLOW)Compiling... $(BLUE)$@$(NC)"
 	@$(CC) $(CFLAGS) $(SRCS) $(CPPFLAGS) -o $@
 
