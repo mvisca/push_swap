@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_moves.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:30 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/04 18:16:20 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/05 12:25:23 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int static	do_push(t_list **src, t_list **dest)
+static int	do_push(t_list **src, t_list **dest)
 {
 	t_list	*aux;
 
 	aux = *src;
-	*src = *(src->next);
+	*src = (*src)->next;
 	ft_lstadd_front(dest, aux);
 	return (1);
 }
 
-int static	do_swap(t_list **lst)
+static int	do_swap(t_list **lst)
 {
 	t_list	*first;
 	t_list	*second;
-	t_lsit	*third;
+	t_list	*third;
 
 	first = *lst;
 	second = first->next;
@@ -37,7 +37,7 @@ int static	do_swap(t_list **lst)
 	return (1);
 }
 
-int static	do_rot(t_list **lst)
+static int	do_rot(t_list **lst)
 {
 	t_list	*new_last;
 	t_list	*last;
@@ -51,18 +51,20 @@ int static	do_rot(t_list **lst)
 	last->next = *lst;
 	*lst = last;
 	new_last->next = NULL;
+	return (1);
 }
 
-int static	do_revrot(t_list **lst)
+static int	do_revrot(t_list **lst)
 {
 	t_list	*first;
 	t_list	*last;
 
 	first = *lst;
 	last = ft_lstlast(*lst);
-	*lst = *lst->next;
+	*lst = (*lst)->next;
 	last->next = first;
 	first->next = NULL;
+	return (1);
 }
 
 void    make_a(enum operand move, t_list **stack_a, t_list **stack_b)

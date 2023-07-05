@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
+#    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/07/04 17:05:13 by mvisca           ###   ########.fr        #
+#    Updated: 2023/07/05 12:24:15 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ LIB				:=	ft
 
 SRCS_DIR		:=	src
 SRCS			:=	push_swap.c							\
-					push_swap_moves.C					\
+					push_swap_moves.c					\
 					push_swap_parse.c					\
 					push_swap_utils.c					\
 					push_swap_validate_args.c
