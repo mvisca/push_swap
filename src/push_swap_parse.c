@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_parse.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/04 17:02:40 by mvisca            #+#    #+#             */
+/*   Updated: 2023/07/04 17:02:43 by mvisca           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
 char	**get_args(int ac, char **av)
@@ -45,12 +57,8 @@ t_list	**build_stack(char **tab)
 			return (NULL);
 		}
 		*int_ptr = (int) ft_atol(tab[i]);
-		ft_printf("int_ptr = %d\n", *int_ptr);
 		new = ft_lstnew(int_ptr);
-//		ft_printf("ft_atol(tab[i]) = %d\n", ft_atol(tab[i]));
 		ft_lstadd_back(stack_a, new);
-// DEBUG
-		ft_printf("NODE %d\nNODE->CONTENT (recover) = %d\n", i, *((int *)new->content));
 		i++;
 	}
 	return (stack_a);
