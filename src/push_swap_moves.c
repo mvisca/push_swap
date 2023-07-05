@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_moves.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:30 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/05 12:25:23 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/06 01:17:31 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,26 +69,26 @@ static int	do_revrot(t_list **lst)
 
 void    make_a(enum operand move, t_list **stack_a, t_list **stack_b)
 {
-	if (move == pa && do_push(stack_a, stack_b))
-		;
-	else if (move == pb && do_push(stack_b, stack_a))
-		;
-	else if (move == sa && do_swap(stack_a))
-		;
-	else if (move == sb && do_swap(stack_b))
-		;
-	else if (move == ss && do_swap(stack_a) && do_swap(stack_b))
-		;
-	else if (move == ra && do_rot(stack_a))
-		;
-	else if (move == rb && do_rot(stack_b))
-		;
-	else if (move == rr && do_rot(stack_a) && do_rot(stack_b))
-		;
-	else if (move == rra && do_revrot(stack_a))
-		;
-	else if (move == rrb && do_revrot(stack_b))
-		;
-	else if (move == rrr && do_revrot(stack_a) && do_revrot(stack_b))
-		;
+	if (move == pa)
+		do_push(stack_a, stack_b);
+	else if (move == pb)
+		do_push(stack_b, stack_a);
+	else if (move == sa)
+		do_swap(stack_a);
+	else if (move == sb)
+		do_swap(stack_b);
+	else if (move == ss && do_swap(stack_a))
+		do_swap(stack_b);
+	else if (move == ra)
+		do_rot(stack_a);
+	else if (move == rb)
+		do_rot(stack_b);
+	else if (move == rr && do_rot(stack_a))
+		do_rot(stack_b);
+	else if (move == rra)
+		do_revrot(stack_a);
+	else if (move == rrb)
+		do_revrot(stack_b);
+	else if (move == rrr && do_revrot(stack_a))
+		do_revrot(stack_b);
 }
