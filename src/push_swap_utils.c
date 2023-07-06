@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:50 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/04 17:02:51 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/06 11:51:54 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,10 @@ void	*say_error_ret_null(void)
 {
 	ft_printf("Error (from utils)\n");
 	return (NULL);
+}
+
+void	*lstclear_null(t_list **lst, void(*del)(void *))
+{
+	ft_lstclear(lst, del);
+	return (NULL);	
 }

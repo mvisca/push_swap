@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/04 17:02:43 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/06 11:41:05 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_list	**build_stack(char **tab)
 {
 	t_list	**stack_a;
 	t_list	*new;
+	t_list	*aux;
 	int		*int_ptr;
 	int		i;
 
@@ -58,9 +59,22 @@ t_list	**build_stack(char **tab)
 		}
 		*int_ptr = (int) ft_atol(tab[i]);
 		new = ft_lstnew(int_ptr);
-		ft_lstadd_back(stack_a, new);
+		if (!new)
+		{
+			ft_lstclear(stack_a, &free_void);
+			return (NULL);
+		}
+		aux = *stack_a;
+		ft_lstadd_back(&aux, new);
 		i++;
 	}
+	ft_printf("stack built\n");
+	i = 0;
+	while (aux)
+	{
+		ft_printf("node %d, content %d", i++, aux->content);
+		aux = aux->next;
+	};
 	return (stack_a);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:00 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/04 17:03:01 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/06 11:18:24 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,12 @@ int	tab_valid(char **tab)
 		}
 		i++;
 	}
-//	ft_printf("OK test only && int\n");
+	ft_printf("OK test only && int\n");
 	if (!no_repeat(tab))
 	{
 		ft_printf("no_repeat = %d (remove this line - validate args\n", no_repeat(tab));
 		return (FALSE);
 	}
-//	ft_printf("OK test no repeat\n");
+	ft_printf("OK test no repeat\n");
 	return (TRUE);
 }

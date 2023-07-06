@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 16:37:36 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/04 13:37:44 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/06 11:32:18 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,29 @@
 # include <unistd.h>
 
 // linked list struct
-
 struct				s_list
 {
-	void			*content;
+	int				content;
 	struct s_list	*next;
 };
 
 typedef struct s_list	t_list;
 
-// printf function
 
+/* Old Linked-list structure
+struct				s_list
+{
+	int				content;
+	struct s_list	*next;
+};
+
+typedef struct s_list	t_list;
+*/
+
+// printf function
 int			ft_printf(const char *format, ...);
 
 // ft_printf aux functions
-
 int			ft_putchar(va_list params, int *i);
 int			ft_putstr(va_list params, int *i);
 int			ft_putint(va_list params, int *i);
@@ -85,6 +93,7 @@ void		ft_putstr_fd(char *s, int fd);
 void		ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 // libft bonus
+int			ft_lstsize(t_list *lst);
 
 t_list		*ft_lstnew(void *content);
 t_list		*ft_lstlast(t_list *lst);
@@ -92,7 +101,6 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 void		ft_lstadd_front(t_list **lst, t_list *new);
-int			ft_lstsize(t_list *lst);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
