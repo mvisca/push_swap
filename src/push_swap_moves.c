@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:30 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/06 14:52:21 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/06 16:18:09 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,16 @@ static int	do_swap(t_list **lst)
 {
 	t_list	*first;
 	t_list	*second;
-	t_list	*third;
 
-	first = NULL;
-	second = NULL;
-	third = NULL;
-	if (lst && *lst)
-		first = *lst;
-	if (first && first->next)
-		second = first->next;
-	if (first && second && second->next)
-		third = second->next;
-	if (!third)
+	if (!lst || !(*lst) || !(*lst)->next)
 		return (1);
-	first->next = third;
-	second->next = first;
+	first = *lst;
+	second = first->next;
+	if (!second->next)
+		first->next = NULL;
+	else
+		first->next = second->next;
+	second->next = first; 	
 	*lst = second;
 	return (1);
 }

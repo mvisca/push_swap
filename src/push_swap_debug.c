@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:01:20 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/06 14:54:41 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/06 15:24:31 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,8 @@ void	test_moves(t_list **stack_a, t_list **stack_b)
 	make_a(pb, stack_a, stack_b);
 	make_a(pb, stack_a, stack_b);
 	make_a(pb, stack_a, stack_b);
+	print_stacks(stack_a, stack_b);
+	make_a(sa, stack_a, stack_b);
+	make_a(sb, stack_a, stack_b);
 	print_stacks(stack_a, stack_b);
 }
