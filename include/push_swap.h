@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/06 12:07:17 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/06 13:36:54 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,10 @@ void    make_a(enum operand move, t_list **stack_a, t_list **stack_b);
 void	free_cont(void *content);
 void	*free_tab(char **tab);
 void    *lstclear_null(t_list **lst, void(*del)(void *));
+
+// push_swap_debug.c
+void    print_args(char **tab);
+void	print_stack(t_list **stack, char *str);
+void	print_stacks(t_list **a, t_list **b);
 
 #endif

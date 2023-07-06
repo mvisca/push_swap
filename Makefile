@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/07/06 01:09:40 by mvisca           ###   ########.fr        #
+#    Updated: 2023/07/06 13:09:45 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ LIB				:=	ft
 
 SRCS_DIR		:=	src
 SRCS			:=	push_swap.c							\
+					push_swap_debug.c					\
 					push_swap_moves.c					\
 					push_swap_parse.c					\
 					push_swap_utils.c					\
