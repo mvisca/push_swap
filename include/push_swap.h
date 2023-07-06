@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/06 13:36:54 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/06 14:34:22 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ void    *lstclear_null(t_list **lst, void(*del)(void *));
 void    print_args(char **tab);
 void	print_stack(t_list **stack, char *str);
 void	print_stacks(t_list **a, t_list **b);
+void    test_moves(t_list **stack_a, t_list **stack_b);
 
 #endif

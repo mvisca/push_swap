@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:01:20 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/06 13:43:22 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/06 14:54:41 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ void	print_stack(t_list **stack, char *str)
 static void  *print_line(int cont)
 {
 	int len;
-	
-	len = ft_printf("%d", cont);
+
+	len = 0;
+	if (cont)
+		len = ft_printf("%d", cont);
 	len = 14 - len;
 	while (len > 0 && ft_printf(" "))
 		len--;
@@ -68,9 +70,46 @@ void	print_stacks(t_list **a, t_list **b)
 	{
 		if (aa && !print_line(aa->content))
 			aa = aa->next;
+		else
+			ft_printf("              | ");
 		if (ab && !print_line(ab->content))
 			ab = ab->next;
+		else
+			ft_printf("              |");
 		ft_printf("\n");
 	}
-	ft_printf("===== a ===== | ===== b ===== \n");
+	ft_printf("===== a ===== | ===== b ===== \n\n");
+}
+
+void	test_moves(t_list **stack_a, t_list **stack_b)
+{
+	print_stacks(stack_a, stack_b);
+	make_a(pa, stack_a, stack_b);
+	make_a(sb, stack_a, stack_b);
+	make_a(rb, stack_a, stack_b);
+	make_a(rrb, stack_a, stack_b);
+	make_a(pb, stack_a, stack_b);
+	make_a(pb, stack_a, stack_b);
+	make_a(pb, stack_a, stack_b);
+	make_a(pb, stack_a, stack_b);
+	make_a(pb, stack_a, stack_b);
+	make_a(pb, stack_a, stack_b);
+	make_a(pb, stack_a, stack_b);
+	make_a(pb, stack_a, stack_b);
+	make_a(pb, stack_a, stack_b);
+	make_a(pb, stack_a, stack_b);
+	print_stacks(stack_a, stack_b);
+	make_a(pa, stack_a, stack_b);
+	make_a(pa, stack_a, stack_b);
+	make_a(pa, stack_a, stack_b);
+	print_stacks(stack_a, stack_b);
+	make_a(rr, stack_a, stack_b);
+	print_stacks(stack_a, stack_b);
+	make_a(ra, stack_a, stack_b);
+	make_a(rrb, stack_a, stack_b);
+	print_stacks(stack_a, stack_b);
+	make_a(pb, stack_a, stack_b);
+	make_a(pb, stack_a, stack_b);
+	make_a(pb, stack_a, stack_b);
+	print_stacks(stack_a, stack_b);
 }
