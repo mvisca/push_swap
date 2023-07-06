@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/07/06 13:09:45 by mvisca           ###   ########.fr        #
+#    Updated: 2023/07/06 20:36:41 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ SRCS			:=	$(addprefix $(SRCS_DIR)/, $(SRCS))
 #	UTILS			#
 #-------------------#
 
-CC				:=	cc -g
+CC				:=	cc
 
 CFLAGS			:=	-Wall -Wextra -Werror
 CPPFLAGS		:=	-I./$(INC_DIR) -I./$(LIB_DIR)/$(INC_DIR)	\
@@ -68,7 +68,7 @@ all: $(NAME)
 
 $(NAME): $(LIB_TGT)
 	@echo "$(YELLOW)Compiling... $(BLUE)$@$(NC)"
-	@$(CC) $(CFLAGS) $(SRCS) $(CPPFLAGS) -o $@
+	@$(CC) $(CFLAGS) -g $(SRCS) $(CPPFLAGS) -o $@
 
 $(LIB_TGT):
 	@echo "Calling LIB_DIR make"

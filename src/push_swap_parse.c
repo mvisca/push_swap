@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/06 13:37:12 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/06 21:30:41 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,31 @@ char	**get_args(int ac, char **av)
 	{
 		tab[i] = ft_strdup(av[i + 1]);
 		if (!tab[i++])
-			return (free_tab(tab));
+		{
+			tab = free_tab(tab);
+			return (NULL);
+		}
 	}
 	tab[i] = NULL;
 	return (tab);
+}
+
+static t_list	*build_node(char *str)
+{
+	t_list	*new;
+	int		*num;
+
+	num = (int *) malloc (sizeof(int) * 1);
+	if (!num)
+		return (NULL);
+	*num = (int) ft_atol(str);
+	new = ft_lstnew(num);
+	if (!new)
+	{
+		num = free_ptr(num);
+		return (NULL);
+	}
+	return (new);
 }
 
 t_list	**build_stack(char **tab)
@@ -40,9 +61,8 @@ t_list	**build_stack(char **tab)
 	t_list	**stack_a;
 	t_list	*new;
 	int		i;
-	int		num;
 
-	if ((!tab || !tab_valid(tab)) && ft_printf("Error"))
+	if (!tab_valid(tab) && ft_printf("Error"))
 		return (NULL);
 	stack_a = (t_list **) malloc (sizeof(t_list *) * 1);
 	if (!stack_a && ft_printf("Error"))
@@ -50,14 +70,11 @@ t_list	**build_stack(char **tab)
 	i = 0;
 	while (tab[i])
 	{
-		num = (int) ft_atol(tab[i]);
-		new = ft_lstnew(&num);
-		if (!new && lstclear_null(stack_a, &free_cont))
+		new = build_node(tab[i++]);
+		if (!new && free_lst(stack_a, &free_ptr))
 			return (NULL);
 		ft_lstadd_back(stack_a, new);
-		i++;
 	}
-	print_stack(stack_a, "stack_a");
 	return (stack_a); 
 }
 
