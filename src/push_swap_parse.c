@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/06 11:41:05 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/06 12:14:41 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	**get_args(int ac, char **av)
 	{
 		tab[i] = ft_strdup(av[i + 1]);
 		if (!tab[i++])
-			return (free_null(tab));
+			return (free_tab(tab));
 	}
 	tab[i] = NULL;
 	return (tab);
@@ -40,41 +40,25 @@ t_list	**build_stack(char **tab)
 	t_list	**stack_a;
 	t_list	*new;
 	t_list	*aux;
-	int		*int_ptr;
 	int		i;
+	int		num;
 
-	if (!tab || !tab_valid(tab))
-		return (say_error_ret_null());
+	if ((!tab || !tab_valid(tab)) && ft_printf("Error"))
+		return (NULL);
 	stack_a = (t_list **) malloc (sizeof(t_list *) * 1);
-	if (!stack_a)
-		return (say_error_ret_null());
+	if (!stack_a && ft_printf("Error"))
+		return (NULL);
 	i = 0;
 	while (tab[i])
 	{
-		int_ptr = (int *) malloc (sizeof(int) * 1);
-		if (!int_ptr)
-		{
-			ft_lstclear(stack_a, &free_void);
+		num = (int) ft_atol(tab[i]);
+		new = ft_lstnew(&num);
+		if (!new && lstclear_null(stack_a, &free_cont))
 			return (NULL);
-		}
-		*int_ptr = (int) ft_atol(tab[i]);
-		new = ft_lstnew(int_ptr);
-		if (!new)
-		{
-			ft_lstclear(stack_a, &free_void);
-			return (NULL);
-		}
-		aux = *stack_a;
-		ft_lstadd_back(&aux, new);
+		ft_lstadd_back(stack_a, new);
 		i++;
 	}
-	ft_printf("stack built\n");
-	i = 0;
-	while (aux)
-	{
-		ft_printf("node %d, content %d", i++, aux->content);
-		aux = aux->next;
-	};
-	return (stack_a);
-}
+//	TEST STACK
+	ft_printf("stack built\n"); i = 0; aux = *stack_a; 
+while (aux) { ft_printf("node %d, content %d\n", i++, aux->content); aux = aux->next; }; return (stack_a); }
 
