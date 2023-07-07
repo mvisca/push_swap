@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:01:20 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/07 10:35:05 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/07 10:56:27 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_stack(t_list **stack, char *str)
 	aux = *stack; 
 	while (aux) 
 	{ 
-		ft_printf("node %d, content %d\n", i++, *(aux->content));
+		ft_printf("node %d, content %d\n", i++, aux->content);
 		aux = aux->next; 
 	}
 	ft_printf("=== Printed '%s' ===\n", str); 
@@ -68,11 +68,11 @@ void	print_stacks(t_list **a, t_list **b)
 	ft_printf("\n===== a ===== | ===== b ===== \n");
 	while (aa || ab)
 	{
-		if (aa && !print_line(*(aa->content)))
+		if (aa && !print_line(aa->content))
 			aa = aa->next;
 		else
 			ft_printf("              | ");
-		if (ab && !print_line(*(ab->content)))
+		if (ab && !print_line(ab->content))
 			ab = ab->next;
 		else
 			ft_printf("              |");

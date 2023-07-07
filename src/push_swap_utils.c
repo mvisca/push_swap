@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:50 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/06 21:08:23 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/07 10:58:49 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void    *free_tab(char **tab)
 	return (NULL);
 }
 
-void	*free_lst(t_list **lst, void *(*del)(void *))
+void	*free_lst(t_list **lst)
 {
-	ft_lstclear(lst, del);
+	ft_lstclear(lst);
 	return (NULL);
 }

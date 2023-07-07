@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/06 21:30:41 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/07 10:58:30 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,12 @@ char	**get_args(int ac, char **av)
 static t_list	*build_node(char *str)
 {
 	t_list	*new;
-	int		*num;
+	int		num;
 
-	num = (int *) malloc (sizeof(int) * 1);
-	if (!num)
-		return (NULL);
-	*num = (int) ft_atol(str);
+	num = (int) ft_atol(str);
 	new = ft_lstnew(num);
 	if (!new)
-	{
-		num = free_ptr(num);
 		return (NULL);
-	}
 	return (new);
 }
 
@@ -71,7 +65,7 @@ t_list	**build_stack(char **tab)
 	while (tab[i])
 	{
 		new = build_node(tab[i++]);
-		if (!new && free_lst(stack_a, &free_ptr))
+		if (!new && free_lst(stack_a))
 			return (NULL);
 		ft_lstadd_back(stack_a, new);
 	}

@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 17:14:27 by mvisca            #+#    #+#              #
-#    Updated: 2023/07/06 17:04:38 by mvisca           ###   ########.fr        #
+#    Updated: 2023/07/07 10:52:44 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,9 +69,9 @@ SRCS		:=			\
 	ft_lstdelone.c		\
 	ft_lstiter.c		\
 	ft_lstlast.c		\
-	ft_lstmap.c			\
 	ft_lstnew.c			\
 	ft_lstsize.c
+#	ft_lstmap.c	
 
 SRCS		:= $(SRCS:%=$(SRCS_DIR)%)
 

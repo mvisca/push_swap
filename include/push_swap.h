@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/07 10:31:39 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/07 10:57:41 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void    sort_stack(t_list **a, t_list **b);
 // push_swap_utils.c
 void	*free_ptr(void *content);
 void	*free_tab(char **tab);
-void    *free_lst(t_list **lst, void *(*del)(void *));
+void    *free_lst(t_list **lst);
 
 // push_swap_validate_args.c
 int     tab_valid(char **tab);
