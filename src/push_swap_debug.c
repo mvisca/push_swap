@@ -6,13 +6,13 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:01:20 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/06 19:16:26 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/07 10:35:05 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void    print_args(char **tab)
+void    print_tab(char **tab)
 {
 	int i;
 	
@@ -29,12 +29,12 @@ void	print_stack(t_list **stack, char *str)
 	t_list	*aux;
 	int 	i;
 
-	ft_printf("\n=== Print '%s' ===\n", str); 
+	ft_printf("\n=== Print   '%s' ===\n", str); 
 	i = 0;
 	aux = *stack; 
 	while (aux) 
 	{ 
-		ft_printf("node %d, content %d\n", i++, aux->content);
+		ft_printf("node %d, content %d\n", i++, *(aux->content));
 		aux = aux->next; 
 	}
 	ft_printf("=== Printed '%s' ===\n", str); 

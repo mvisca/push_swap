@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:00 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/06 11:18:24 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/07 09:56:38 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	tab_valid(char **tab)
 
 	if (!tab)
 	{
-		ft_printf("No tab. (remove this line - validate args\n");
+		ft_printf("No tab.\n");
 		return (FALSE);
 	}
 	i = 0;
@@ -70,17 +70,15 @@ int	tab_valid(char **tab)
 	{
 		if (!only_digits(tab[i]) || !is_int(tab[i]))
 		{
-			ft_printf("only_digits = %d, is_int = %d (remove this line - validate args\n", only_digits(tab[i]), is_int(tab[i]));
+			ft_printf("only_digits = %d, is_int = %d\n", only_digits(tab[i]), is_int(tab[i]));
 			return (FALSE);
 		}
 		i++;
 	}
-	ft_printf("OK test only && int\n");
 	if (!no_repeat(tab))
 	{
-		ft_printf("no_repeat = %d (remove this line - validate args\n", no_repeat(tab));
+		ft_printf("no_repeat = %d\n", no_repeat(tab));
 		return (FALSE);
 	}
-	ft_printf("OK test no repeat\n");
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/06 19:15:05 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/07 10:31:39 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define TRUE 1
 # define FALSE 0
 
-enum    operand
+enum    command
 { 
     sa,
     sb,
@@ -34,23 +34,28 @@ enum    operand
     rrr
 };
 
+// push_swap_debug.c
+void    print_tab(char **tab);
+void	print_stack(t_list **stack, char *str);
+void	print_stacks(t_list **a, t_list **b);
+void    test_moves(t_list **stack_a, t_list **stack_b);
+
+// push_swap_commands.c
+void    make_a(enum command move, t_list **stack_a, t_list **stack_b);
+
+// push_swap_parse.c
 char	**get_args(int ac, char **av);
-
-int     tab_valid(char **tab);
-
 t_list	**build_stack(char **tab);
 
-void    make_a(enum operand move, t_list **stack_a, t_list **stack_b);
+// push_swap_sort.c
+void    sort_stack(t_list **a, t_list **b);
 
 // push_swap_utils.c
 void	*free_ptr(void *content);
 void	*free_tab(char **tab);
 void    *free_lst(t_list **lst, void *(*del)(void *));
 
-// push_swap_debug.c
-void    print_args(char **tab);
-void	print_stack(t_list **stack, char *str);
-void	print_stacks(t_list **a, t_list **b);
-void    test_moves(t_list **stack_a, t_list **stack_b);
+// push_swap_validate_args.c
+int     tab_valid(char **tab);
 
 #endif

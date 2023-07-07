@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_moves.c                                  :+:      :+:    :+:   */
+/*   push_swap_commands.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:30 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/06 16:18:09 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/07 10:29:34 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static int	do_rot(t_list **lst)
 	return (1);
 }
 
-void    make_a(enum operand move, t_list **stack_a, t_list **stack_b)
+void    make_a(enum command move, t_list **stack_a, t_list **stack_b)
 {
 	if (move == pa && ft_printf("pa\n"))
 		do_push(stack_b, stack_a);

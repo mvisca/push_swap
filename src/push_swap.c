@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:07 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/06 23:16:46 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/07 10:10:33 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	main(int ac, char **av)
 	if (!stack_b && free_lst(stack_a, &free_ptr))
 		return (1);
 	*stack_b = NULL;
-	test_moves(stack_a, stack_b);
+	sort_stack(stack_a, stack_b);
+//	test_moves(stack_a, stack_b);
 	stack_a = free_lst(stack_a, &free_ptr);
 	stack_b = free_lst(stack_b, &free_ptr);
 	return (0);
