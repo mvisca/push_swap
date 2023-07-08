@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:50 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/07 10:58:49 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/08 16:49:57 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,47 @@ void	*free_ptr(void *ptr)
 	ptr = NULL;
 	return (NULL);
 }
-
-void    *free_tab(char **tab)
+char    *free_tab(char ***tab)
 {
 	int i;
 
-	if (tab)
+	i = 0;
+	while (*tab && (*tab)[i])
 	{
-		i = 0;
-		while (tab[i])
-		{
-			free(tab[i]);
-			tab[i] = NULL;
-			i++;
-		}
-		free(tab);
-		tab = NULL;
+		free((*tab)[i]);
+		i++;
 	}
+	if ((*tab)[i])
+		free((*tab)[i]);
+	free(*tab);
+	*tab = NULL;
 	return (NULL);
 }
 
-void	*free_lst(t_list **lst)
+t_stack	*alloc_stack(t_stack **stack)
 {
-	ft_lstclear(lst);
+	*stack = (t_stack *) malloc (sizeof(t_stack) * 1);
+	if (!(*stack))
+		return (NULL);
+	(*stack)->head = NULL;
+	(*stack)->max = INT_MIN;
+	(*stack)->min = INT_MAX;
+	(*stack)->size = 0;
+	return *(stack);
+}
+
+t_stack	*free_stack(t_stack *stack)
+{
+	t_list	*current;
+	t_list	*next;
+
+	current = stack->head;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	free(stack);
 	return (NULL);
 }

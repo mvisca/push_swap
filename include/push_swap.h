@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/07 10:57:41 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/08 16:51:04 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,41 +21,58 @@
 
 enum    command
 { 
-    sa,
-    sb,
-    ss,
-    pa,
-    pb,
-    ra,
-    rb,
-    rr,
-    rra,
-    rrb,
-    rrr
+	sa,
+	sb,
+	ss,
+	pa,
+	pb,
+	ra,
+	rb,
+	rr,
+	rra,
+	rrb,
+	rrr
 };
 
+/*/
+struct				s_list
+{
+	int				*content;
+	struct s_list	*next;
+};
+*/
+
+typedef struct	s_stack
+{
+	t_list	*head;
+	int		size;
+	int		max;
+	int		min;
+}			t_stack;
+
 // push_swap_debug.c
-void    print_tab(char **tab);
-void	print_stack(t_list **stack, char *str);
+void	print_tab(char **tab);
+void	print_stack(t_stack *stack, char *name);
 void	print_stacks(t_list **a, t_list **b);
-void    test_moves(t_list **stack_a, t_list **stack_b);
+void	test_moves(t_list **stack_a, t_list **stack_b);
 
 // push_swap_commands.c
-void    make_a(enum command move, t_list **stack_a, t_list **stack_b);
+void	make_a(enum command move, t_list **stack_a, t_list	**stack_b);
 
 // push_swap_parse.c
-char	**get_args(int ac, char **av);
-t_list	**build_stack(char **tab);
+char	**args_to_tab(int ac, char **av, char **tab);
+t_stack	*tab_to_stack(char **tab, t_stack *stack);
 
 // push_swap_sort.c
-void    sort_stack(t_list **a, t_list **b);
+void	sort_stack(t_stack *a, t_stack *b);
 
 // push_swap_utils.c
 void	*free_ptr(void *content);
-void	*free_tab(char **tab);
-void    *free_lst(t_list **lst);
+char	*free_tab(char ***tab);
+t_stack	*alloc_stack(t_stack **stack);
+t_stack	*free_stack(t_stack *stack);
 
 // push_swap_validate_args.c
-int     tab_valid(char **tab);
+int		tab_valid(char **tab);
 
 #endif

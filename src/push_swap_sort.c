@@ -6,14 +6,14 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:18:02 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/07 10:29:55 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/08 14:55:40 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void    sort_stack(t_list **a, t_list **b)
+void    sort_stack(t_stack *a, t_stack *b)
 {
-    print_stack(a, "a");
-    print_stack(b, "b");
+    print_stack(a, "wip a");
+    print_stack(b, "wip b");
 }

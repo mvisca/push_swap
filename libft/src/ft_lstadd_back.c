@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:32:52 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/06 19:33:38 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/08 17:09:58 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ void	ft_lstadd_back(t_list **list, t_list *new)
 {
 	t_list	*tmp;
 
-	if (!(*list))
+	if (list && !(*list))
 	{
 		*list = new;
 		return ;
 	}
-	tmp = *list;
-	while (tmp->next)
-		tmp = tmp->next;
+	tmp = ft_lstlast(*list);
 	tmp->next = new;
 }

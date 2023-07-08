@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:01:20 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/07 10:56:27 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/08 17:10:37 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,25 @@ void    print_tab(char **tab)
 	i = 0;
 	while (tab[i])
 	{
-		ft_printf("Arg[%d] %s\n", i, tab[i]);
+		ft_printf("tab[%d] %s\n", i, tab[i]);
 		i++;
 	}
 }
 
-void	print_stack(t_list **stack, char *str)
+void	print_stack(t_stack *stack, char *name)
 {
 	t_list	*aux;
 	int 	i;
 
-	ft_printf("\n=== Print   '%s' ===\n", str); 
-	i = 0;
-	aux = *stack; 
-	while (aux) 
+	ft_printf("\n=== Print   '%s' ===\n", name); 
+	aux = stack->head;
+	while (aux)
 	{ 
-		ft_printf("node %d, content %d\n", i++, aux->content);
+		ft_printf("node %d, content %d\n", i++, *(aux->content));
 		aux = aux->next; 
 	}
-	ft_printf("=== Printed '%s' ===\n", str); 
+	ft_printf("max %d\nmin %d\nsize %d\n", stack->max, stack->min, stack->size);
+	ft_printf("=== Printed '%s' ===\n\n", name); 
 }
 
 static void  *print_line(int cont)
@@ -56,24 +56,15 @@ static void  *print_line(int cont)
 
 void	print_stacks(t_list **a, t_list **b)
 {
-	t_list	*aa;
-	t_list	*ab;
-
-	aa = NULL;
-	ab = NULL;
-	if (a && *a)
-		aa = *a;
-	if (b && *b)
-		ab = *b;
 	ft_printf("\n===== a ===== | ===== b ===== \n");
-	while (aa || ab)
+	while (*a || *b)
 	{
-		if (aa && !print_line(aa->content))
-			aa = aa->next;
+		if (*a && !print_line((*(*a)->content)))
+			*a = (*a)->next;
 		else
 			ft_printf("              | ");
-		if (ab && !print_line(ab->content))
-			ab = ab->next;
+		if (*b && !print_line((*(*b)->content)))
+			*b = (*b)->next;
 		else
 			ft_printf("              |");
 		ft_printf("\n");
