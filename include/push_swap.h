@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/08 16:51:04 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/08 19:06:26 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,19 @@ typedef struct	s_stack
 	int		min;
 }			t_stack;
 
+// push_swap_commands.c
+void	make_a(enum command move, t_list **a, t_list **b);
+
 // push_swap_debug.c
 void	print_tab(char **tab);
 void	print_stack(t_stack *stack, char *name);
-void	print_stacks(t_list **a, t_list **b);
-void	test_moves(t_list **stack_a, t_list **stack_b);
-
-// push_swap_commands.c
-void	make_a(enum command move, t_list **stack_a, t_list	**stack_b);
+void	print_stacks(t_list *a, t_list *b);
+void	test_moves(t_stack *stack_a, t_stack *stack_b);
 
 // push_swap_parse.c
 char	**args_to_tab(int ac, char **av, char **tab);
 t_stack	*tab_to_stack(char **tab, t_stack *stack);
+void	update_stack(t_stack **stack);
 
 // push_swap_sort.c
 void	sort_stack(t_stack *a, t_stack *b);

@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/08 17:09:15 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/08 17:21:23 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,11 @@ char	**args_to_tab(int ac, char **av, char **tab)
 	return (tab);
 }
 
-static void	update_stack(t_stack **stack)
+void	update_stack(t_stack **stack)
 {
 	t_list	*node;
 	
 	node = (*stack)->head;
-	print_stack((*stack), "STACK TEST");
 	while (node)
 	{
 		if (*(node->content) > (*stack)->max)
