@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:50 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/08 16:49:57 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/09 13:03:01 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,14 @@ void	*free_ptr(void *ptr)
 	ptr = NULL;
 	return (NULL);
 }
-char    *free_tab(char ***tab)
-{
-	int i;
 
-	i = 0;
-	while (*tab && (*tab)[i])
-	{
-		free((*tab)[i]);
-		i++;
-	}
-	if ((*tab)[i])
-		free((*tab)[i]);
-	free(*tab);
-	*tab = NULL;
+t_stack	*free_stack(t_stack **stack)
+{
+	t_list	*list;
+
+	list = (*stack)->head;
+	ft_lstclear(&((*stack)->head), &free_ptr);
+	stack = NULL;
 	return (NULL);
 }
 
@@ -47,18 +41,19 @@ t_stack	*alloc_stack(t_stack **stack)
 	return *(stack);
 }
 
-t_stack	*free_stack(t_stack *stack)
+char    *free_tab(char ***tab)
 {
-	t_list	*current;
-	t_list	*next;
+	int i;
 
-	current = stack->head;
-	while (current)
+	i = 0;
+	while (*tab && (*tab)[i])
 	{
-		next = current->next;
-		free(current);
-		current = next;
+		free((*tab)[i]);
+		i++;
 	}
-	free(stack);
+	if ((*tab)[i])
+		free((*tab)[i]);
+	free(*tab);
+	*tab = NULL;
 	return (NULL);
 }
