@@ -6,101 +6,99 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:30 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/08 18:50:28 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/09 16:10:10 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static int	do_push(t_list **src, t_list **dest)
+static int	do_push(t_stack *src, t_stack *dest)
 {
 	t_list	*aux;
 
-	aux = *src;
+	aux = src->head;
 	if (aux)
 	{
-		*src = (*src)->next;
-		ft_lstadd_front(dest, aux);
+		src->head = src->head->next;
+		ft_lstadd_front(&(dest->head), aux);
 	}
+	update_stack(&src);
+	update_stack(&dest);
 	return (1);
 }
 
-static int	do_swap(t_list **lst)
+static int	do_swap(t_stack *stack)
 {
 	t_list	*first;
 	t_list	*second;
+	t_list	*third;
 
-	if (!lst || !(*lst) || !(*lst)->next)
+	if (!stack->head || !stack->head->next)
 		return (1);
-	first = *lst;
+	first = stack->head;
 	second = first->next;
-	if (!second->next)
-		first->next = NULL;
-	else
-		first->next = second->next;
-	second->next = first; 	
-	*lst = second;
+	third = second->next;
+	stack->head = second;
+	stack->head->next = first;
+	stack->head->next->next = third;
 	return (1);
 }
 
-static int	do_revrot(t_list **lst)
+static int	do_revrot(t_stack *stack)
 {
-	t_list	*new_last;
+	t_list	*before_last;
 	t_list	*last;
 
-	if (lst && *lst && ft_lstsize(*lst) > 1)
-		last = *lst;
-	else
+	if (stack->size < 2)
 		return (1);
-	while (last && last->next)
+	before_last = stack->head;
+	last = before_last->next;
+	while (last->next)
 	{
-		new_last = last;
+		before_last = last;
 		last = last->next;		
 	}
-	last->next = *lst;
-	*lst = last;
-	new_last->next = NULL;
+	last->next = stack->head;
+	stack->head = last;
+	before_last->next = NULL;
 	return (1);
 }
 
-static int	do_rot(t_list **lst)
+static int	do_rot(t_stack *stack)
 {
-	t_list	*first;
 	t_list	*last;
 
-	if (lst && *lst && ft_lstsize(*lst) > 1)
-		first = *lst;
-	else
+	if (stack->size < 1)
 		return (1);
-	last = ft_lstlast(*lst);
-	*lst = (*lst)->next;
-	last->next = first;
-	first->next = NULL;
+	last = ft_lstlast(stack->head);
+	last->next = stack->head;
+	stack->head = stack->head->next;
+	last->next->next = NULL;
 	return (1);
 }
 
-void    make_a(enum command move, t_list **stack_a, t_list **stack_b)
+void    make_a(enum command move, t_stack *a, t_stack *b)
 {
 	if (move == pa && ft_printf("pa\n"))
-		do_push(stack_b, stack_a);
+		do_push(b, a);
 	else if (move == pb && ft_printf("pb\n"))
-		do_push(stack_a, stack_b);
+		do_push(a, b);
 	else if (move == sa && ft_printf("sa\n"))
-		do_swap(stack_a);
+		do_swap(a);
 	else if (move == sb && ft_printf("sb\n"))
-		do_swap(stack_b);
-	else if (move == ss && ft_printf("ss\n") && do_swap(stack_a))
-		do_swap(stack_b);
+		do_swap(b);
+	else if (move == ss && ft_printf("ss\n") && do_swap(a))
+		do_swap(b);
 	else if (move == ra && ft_printf("ra\n"))
-		do_rot(stack_a);
+		do_rot(a);
 	else if (move == rb && ft_printf("rb\n"))
-		do_rot(stack_b);
-	else if (move == rr && ft_printf("rr\n") && do_rot(stack_a))
-		do_rot(stack_b);
+		do_rot(b);
+	else if (move == rr && ft_printf("rr\n") && do_rot(a))
+		do_rot(b);
 	else if (move == rra && ft_printf("rra\n"))
-		do_revrot(stack_a);
+		do_revrot(a);
 	else if (move == rrb && ft_printf("rrb\n"))
-		do_revrot(stack_b);
-	else if (move == rrr && ft_printf("rrr\n") && do_revrot(stack_a))
-		do_revrot(stack_b);
+		do_revrot(b);
+	else if (move == rrr && ft_printf("rrr\n") && do_revrot(a))
+		do_revrot(b);
 }

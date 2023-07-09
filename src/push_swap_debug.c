@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:01:20 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/08 19:10:17 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/09 16:13:13 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	print_stack(t_stack *stack, char *name)
 	int 	i;
 
 	ft_printf("\n======== Print '%s' ==========\n", name); 
-	ft_printf("\n-------- Nodes\n", name); 
+	ft_printf("-------- Nodes\n", name); 
 	aux = stack->head;
 	i = 0;
 	while (aux)
@@ -46,7 +46,7 @@ void	print_stack(t_stack *stack, char *name)
 	ft_printf("* Max %d\n", stack->max);
 	ft_printf("* Min %d\n", stack->min);
 	ft_printf("* Size %d\n", stack->size);
-	ft_printf("======== Printed '%s' ========\n\n", name); 
+	ft_printf("======== END '%s'\n", name); 
 }
 
 static void  *print_line(int cont)
@@ -83,33 +83,26 @@ void	print_stacks(t_list *a, t_list *b)
 		if (b && !print_line(*(b->content)))
 			b = b->next;
 		else
-			ft_printf("              |");
+			ft_printf("                |");
 		ft_printf("\n");
 	}
 	ft_printf(" ===== a ====== | ====== b ===== \n\n");
 }
 
-void	test_moves(t_stack *stack_a, t_stack *stack_b)
+void	test_moves(t_stack **a, t_stack **b)
 {
-	t_list	*la;
-	t_list	*lb;
-
-	la = stack_a->head;
-	lb = stack_b->head;
-	print_stacks(la, lb);
-	make_a(pb, &la, &lb);
-	make_a(pb, &la, &lb);
-	make_a(pb, &la, &lb);
-	make_a(pb, &la, &lb);
-	make_a(pb, &la, &lb);
-	print_stacks(la, lb);
-	make_a(pa, &la, &lb);
-	print_stacks(la, lb);
-	make_a(ss, &la, &lb);
-	print_stacks(la, lb);
-	make_a(rr, &la, &lb);
-	make_a(rr, &la, &lb);
-	print_stacks(la, lb);
-	make_a(rrr, &la, &lb);
-	print_stacks(la, lb);
+	print_stacks((*a)->head, (*b)->head);
+	make_a(pb, *a, *b);
+	make_a(pb, *a, *b);
+	make_a(pb, *a, *b);
+	print_stacks((*a)->head, (*b)->head);
+	make_a(ra, *a, *b);
+	make_a(rb, *a, *b);
+	print_stacks((*a)->head, (*b)->head);
+	make_a(pa, *a, *b);
+	print_stacks((*a)->head, (*b)->head);
+	make_a(rrr, *a, *b);
+	print_stacks((*a)->head, (*b)->head);
+	make_a(ss, *a, *b);
+	print_stacks((*a)->head, (*b)->head);
 }

@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/08 17:21:23 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/09 15:21:37 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,6 @@ char	**args_to_tab(int ac, char **av, char **tab)
 	return (tab);
 }
 
-void	update_stack(t_stack **stack)
-{
-	t_list	*node;
-	
-	node = (*stack)->head;
-	while (node)
-	{
-		if (*(node->content) > (*stack)->max)
-			(*stack)->max = *(node->content);
-		if (*(node->content) < (*stack)->min)
-			(*stack)->min = *(node->content); 
-		node = node->next;
-	}
-	(*stack)->size = ft_lstsize((*stack)->head);
-}
-
 static t_list	*build_node(char *str)
 {
 	t_list	*new;
@@ -64,7 +48,10 @@ static t_list	*build_node(char *str)
 		return (NULL);
 	new->content = malloc(sizeof(int));
 	if (!new->content)
+	{
+		free(new);
 		return (NULL);
+	}
 	*(new->content) = (int)ft_atol(str);
 	new->next = NULL;
 	return (new);
@@ -81,7 +68,7 @@ t_stack	*tab_to_stack(char **tab, t_stack *stack)
 		new = build_node(tab[i]);
 		if (!new)
 		{
-			free_stack(stack);
+			free_stack(&stack);
 			stack = NULL;
 			return (NULL);
 		}

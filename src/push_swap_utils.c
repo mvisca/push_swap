@@ -6,54 +6,76 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:50 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/09 13:03:01 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/09 16:16:12 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	*free_ptr(void *ptr)
-{
-	free(ptr);
-	ptr = NULL;
-	return (NULL);
-}
-
 t_stack	*free_stack(t_stack **stack)
 {
-	t_list	*list;
+	t_list	*node;
+	t_list	*next;
 
-	list = (*stack)->head;
-	ft_lstclear(&((*stack)->head), &free_ptr);
+	node = (*stack)->head;
+	while (node)
+	{
+		next = node->next;
+		free(node->content);
+		free(node);
+		node = next;
+	}
+	free(*stack);
 	stack = NULL;
 	return (NULL);
 }
 
-t_stack	*alloc_stack(t_stack **stack)
+t_stack	*alloc_stack(void)
 {
-	*stack = (t_stack *) malloc (sizeof(t_stack) * 1);
-	if (!(*stack))
+	t_stack	*stack;
+	
+	stack = malloc (sizeof(t_stack));
+	if (!stack)
 		return (NULL);
-	(*stack)->head = NULL;
-	(*stack)->max = INT_MIN;
-	(*stack)->min = INT_MAX;
-	(*stack)->size = 0;
-	return *(stack);
+	stack->head = NULL;
+	stack->max = INT_MIN;
+	stack->min = INT_MAX;
+	stack->size = 0;
+	return (stack);
 }
 
 char    *free_tab(char ***tab)
 {
 	int i;
 
+	if (!(*tab) || !(*(*tab)))
+		return (NULL);
 	i = 0;
-	while (*tab && (*tab)[i])
+	while ((*tab)[i])
 	{
 		free((*tab)[i]);
+		(*tab)[i] = NULL;
 		i++;
-	}
-	if ((*tab)[i])
-		free((*tab)[i]);
-	free(*tab);
-	*tab = NULL;
+	} 
+	free((*tab));
+	tab = NULL;
 	return (NULL);
+}
+
+void	update_stack(t_stack **stack)
+{
+	t_list	*node;
+	
+	(*stack)->max = INT_MIN;
+	(*stack)->min = INT_MAX;
+	node = (*stack)->head;
+	while (node)
+	{
+		if (*(node->content) > (*stack)->max)
+			(*stack)->max = *(node->content);
+		if (*(node->content) < (*stack)->min)
+			(*stack)->min = *(node->content); 
+		node = node->next;
+	}
+	(*stack)->size = ft_lstsize((*stack)->head);
 }
