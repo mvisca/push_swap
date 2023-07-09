@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/09 15:21:37 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/09 16:57:29 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ char	**args_to_tab(int ac, char **av, char **tab)
 	{
 		tab[i] = ft_strdup(av[i + 1]);
 		if (!tab[i++])
+		{
+			free_tab(&tab);
 			return (NULL);
+		}
 	}
 	tab[i] = 0;
 	return (tab);
@@ -67,11 +70,7 @@ t_stack	*tab_to_stack(char **tab, t_stack *stack)
 	{
 		new = build_node(tab[i]);
 		if (!new)
-		{
-			free_stack(&stack);
-			stack = NULL;
 			return (NULL);
-		}
 		ft_lstadd_back(&(stack->head), new);
 		i++;
 	}

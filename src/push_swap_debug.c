@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:01:20 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/09 16:13:13 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/09 17:02:08 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void    print_tab(char **tab)
 {
 	int i;
 	
+	if(!tab && !(*tab))
+		return ;
 	ft_printf("\n======== Print TAB ==========\n"); 
 	if (!tab)
 		ft_printf("-------- TAB (null)\n"); 
@@ -104,5 +106,6 @@ void	test_moves(t_stack **a, t_stack **b)
 	make_a(rrr, *a, *b);
 	print_stacks((*a)->head, (*b)->head);
 	make_a(ss, *a, *b);
+	make_a(pb, *a, *b);
 	print_stacks((*a)->head, (*b)->head);
 }

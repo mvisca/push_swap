@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:00 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/08 02:09:53 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/09 16:29:43 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,6 @@ int	tab_valid(char **tab)
 {
 	int	i;
 
-	if (!tab)
-	{
-		ft_printf("No tab.\n");
-		return (FALSE);
-	}
 	i = 0;
 	while (tab[i])
 	{
