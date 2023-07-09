@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/07/09 17:00:33 by mvisca           ###   ########.fr        #
+#    Updated: 2023/07/09 17:06:10 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ SRCS			:=	$(addprefix $(SRCS_DIR)/, $(SRCS))
 #	UTILS			#
 #-------------------#
 
-CC				:=	cc -g # -fsanitize=address
+CC				:=	cc -g -fsanitize=address
 
 CFLAGS			:=	-Wall -Wextra -Werror
 CPPFLAGS		:=	-I./$(INC_DIR) -I./$(LIB_DIR)/$(INC_DIR)	\
