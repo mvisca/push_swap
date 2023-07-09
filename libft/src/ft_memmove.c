@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:55:11 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/06/30 18:22:44 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/10 01:10:38 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-

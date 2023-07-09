@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 11:21:55 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/06/30 18:21:01 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/10 01:04:31 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,3 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	}
 	return (new);
 }
-

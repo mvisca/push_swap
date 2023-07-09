@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:51:29 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/06/30 18:22:50 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/10 01:11:07 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		(dcpy)[i++] = '\0';
 	return (dcpy);
 }
-

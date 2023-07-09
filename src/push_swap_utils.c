@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:50 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/09 16:16:12 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/10 01:26:08 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_stack	*free_stack(t_stack **stack)
 t_stack	*alloc_stack(void)
 {
 	t_stack	*stack;
-	
+
 	stack = malloc (sizeof(t_stack));
 	if (!stack)
 		return (NULL);
@@ -44,9 +44,9 @@ t_stack	*alloc_stack(void)
 	return (stack);
 }
 
-char    *free_tab(char ***tab)
+char	*free_tab(char ***tab)
 {
-	int i;
+	int	i;
 
 	if (!(*tab) || !(*(*tab)))
 		return (NULL);
@@ -56,7 +56,7 @@ char    *free_tab(char ***tab)
 		free((*tab)[i]);
 		(*tab)[i] = NULL;
 		i++;
-	} 
+	}
 	free((*tab));
 	tab = NULL;
 	return (NULL);
@@ -65,7 +65,7 @@ char    *free_tab(char ***tab)
 void	update_stack(t_stack **stack)
 {
 	t_list	*node;
-	
+
 	(*stack)->max = INT_MIN;
 	(*stack)->min = INT_MAX;
 	node = (*stack)->head;
@@ -74,7 +74,7 @@ void	update_stack(t_stack **stack)
 		if (*(node->content) > (*stack)->max)
 			(*stack)->max = *(node->content);
 		if (*(node->content) < (*stack)->min)
-			(*stack)->min = *(node->content); 
+			(*stack)->min = *(node->content);
 		node = node->next;
 	}
 	(*stack)->size = ft_lstsize((*stack)->head);

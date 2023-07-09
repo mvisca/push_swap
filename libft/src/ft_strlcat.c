@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:42:07 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/06/30 18:21:06 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/10 01:09:19 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,3 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	}
 	return (len_src);
 }
-

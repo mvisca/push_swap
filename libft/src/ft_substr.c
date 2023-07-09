@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 10:46:36 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/06/30 18:22:23 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/10 01:08:58 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,3 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	*(sub + i) = '\0';
 	return (sub);
 }
-

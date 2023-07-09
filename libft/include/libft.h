@@ -6,12 +6,12 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 16:37:36 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/08 13:25:36 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/10 01:31:53 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
 # include <limits.h>
 # include <stdarg.h>
@@ -27,7 +27,6 @@ struct				s_list
 };
 
 typedef struct s_list	t_list;
-
 
 /* Old Linked-list structure
 struct				s_list
@@ -97,7 +96,6 @@ int			ft_lstsize(t_list *lst);
 
 t_list		*ft_lstnew(int *content);
 t_list		*ft_lstlast(t_list *lst);
-// t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void *(*del)(void *));
 
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 void		ft_lstadd_front(t_list **lst, t_list *new);

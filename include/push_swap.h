@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/09 16:08:24 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/10 01:31:13 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # define TRUE 1
 # define FALSE 0
 
-enum    command
-{ 
+enum	e_command
+{
 	sa,
 	sb,
 	ss,
@@ -34,24 +34,18 @@ enum    command
 	rrr
 };
 
-/*/
-struct				s_list
-{
-	int				*content;
-	struct s_list	*next;
-};
-*/
-
-typedef struct	s_stack
+struct		s_stack
 {
 	t_list	*head;
 	int		size;
 	int		max;
 	int		min;
-}			t_stack;
+};
+
+typedef struct s_stack	t_stack;
 
 // push_swap_commands.c
-void	make_a(enum command move, t_stack *a, t_stack *b);
+void	make_a(enum e_command move, t_stack *a, t_stack *b);
 
 // push_swap_debug.c
 void	print_tab(char **tab);

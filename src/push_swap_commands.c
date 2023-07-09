@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:30 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/09 16:10:10 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/10 01:31:33 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	do_revrot(t_stack *stack)
 	while (last->next)
 	{
 		before_last = last;
-		last = last->next;		
+		last = last->next;
 	}
 	last->next = stack->head;
 	stack->head = last;
@@ -77,7 +77,7 @@ static int	do_rot(t_stack *stack)
 	return (1);
 }
 
-void    make_a(enum command move, t_stack *a, t_stack *b)
+void	make_a(enum e_command move, t_stack *a, t_stack *b)
 {
 	if (move == pa && ft_printf("pa\n"))
 		do_push(b, a);

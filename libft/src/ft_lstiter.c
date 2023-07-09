@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:35:14 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/06 11:37:51 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/10 01:07:18 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	while (lst)
 	{
-//		f(lst->content);
 		f(&lst->content);
 		lst = lst->next;
 	}
