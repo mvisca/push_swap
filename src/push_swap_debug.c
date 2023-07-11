@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:01:20 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/10 01:17:46 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/11 12:26:46 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,46 @@ void	test_moves(t_stack **a, t_stack **b)
 	make_a(pa, *a, *b);
 	make_a(pa, *a, *b);
 	print_stacks((*a)->head, (*b)->head);
+}
+
+void	manual_sort(t_stack **a, t_stack **b)
+{
+	char	buffer[3];
+	int		readed;
+
+	while (1)
+	{
+		print_stacks((*a)->head, (*b)->head);
+		ft_printf("Ingrese una opción: [pa, pb, sa, sb, ss, ra, rb, rra, rrb, rrr, end]:\n");
+		readed = read(STDIN_FILENO, buffer, 3);
+		if (readed == -1)
+			return ;
+		ft_printf("Su opcion: %s\n", buffer);
+		if (ft_strncmp(buffer, "pa", 2) == 0)
+			make_a(pa, *a, *b);
+		else if (ft_strncmp(buffer, "pb", 2) == 0)
+			make_a(pb, *a, *b);
+		else if (ft_strncmp(buffer, "sa", 2) == 0)
+			make_a(sa, *a, *b);
+		else if (ft_strncmp(buffer, "sb", 2) == 0)
+			make_a(sb, *a, *b);
+		else if (ft_strncmp(buffer, "ss", 2) == 0)
+			make_a(ss, *a, *b);
+		else if (ft_strncmp(buffer, "ra", 2) == 0)
+			make_a(ra, *a, *b);
+		else if (ft_strncmp(buffer, "rb", 2) == 0)
+			make_a(rb, *a, *b);
+		else if (ft_strncmp(buffer, "rr", 2) == 0)
+			make_a(rr, *a, *b);
+		else if (ft_strncmp(buffer, "rra", 3) == 0)
+			make_a(rra, *a, *b);
+		else if (ft_strncmp(buffer, "rrb", 3) == 0)
+			make_a(rrb, *a, *b);
+		else if (ft_strncmp(buffer, "rrr", 3) == 0)
+			make_a(rrr, *a, *b);
+		else if (ft_strncmp(buffer, "end", 3) == 0)
+			return ;
+		else
+			ft_printf("Opcion no válida\n");
+	}
 }

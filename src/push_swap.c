@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:07 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/10 01:18:19 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/11 12:43:29 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	main(int ac, char **av)
 	if (b)
 	{
 		sort_stack(a, b);
+		// manual_sort(&a, &b);
 	}
 	free_tab(&tab);
 	free_stack(&a);

@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/10 01:31:13 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/11 13:01:07 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 enum	e_command
 {
+	end,
 	sa,
 	sb,
 	ss,
@@ -52,6 +53,7 @@ void	print_tab(char **tab);
 void	print_stack(t_stack *stack, char *name);
 void	print_stacks(t_list *a, t_list *b);
 void	test_moves(t_stack **stack_a, t_stack **stack_b);
+void	manual_sort(t_stack **a, t_stack **b);
 
 // push_swap_parse.c
 char	**args_to_tab(int ac, char **av, char **tab);
