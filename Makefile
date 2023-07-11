@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/07/10 00:47:24 by mvisca           ###   ########.fr        #
+#    Updated: 2023/07/11 17:33:33 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ SRCS			:=	push_swap.c							\
 					push_swap_commands.c					\
 					push_swap_parse.c					\
 					push_swap_sort.c					\
-					push_swap_utils.c					\
+					push_swap_mem_utils.c					\
 					push_swap_validate_args.c
 SRCS			:=	$(addprefix $(SRCS_DIR)/, $(SRCS))
 

@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/11 13:01:07 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/11 14:20:50 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ enum	e_command
 	rrb,
 	rrr
 };
+
+typedef enum e_command	e_com;
 
 struct		s_stack
 {

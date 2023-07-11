@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:07 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/11 12:43:29 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/11 16:34:34 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,10 @@ int	main(int ac, char **av)
 	if (!a)
 		return (1);
 	b = alloc_stack();
-	if (b)
-	{
-		sort_stack(a, b);
-		// manual_sort(&a, &b);
-	}
+	if (!b)
+		return (1);
+	sort_stack(a, b);
+//	manual_sort(&a, &b);
 	free_tab(&tab);
 	free_stack(&a);
 	free_stack(&b);
