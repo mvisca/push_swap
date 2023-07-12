@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/07/11 17:33:33 by mvisca           ###   ########.fr        #
+#    Updated: 2023/07/12 17:31:18 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,12 +37,14 @@ LIB_TGT			:=	libft.a
 LIB				:=	ft
 
 SRCS_DIR		:=	src
+
+					# push_swap_debug.c					
 SRCS			:=	push_swap.c							\
-					push_swap_debug.c					\
-					push_swap_commands.c					\
+					push_swap_commands.c				\
 					push_swap_parse.c					\
 					push_swap_sort.c					\
-					push_swap_mem_utils.c					\
+					push_swap_sort_utils.c				\
+					push_swap_mem_utils.c				\
 					push_swap_validate_args.c
 SRCS			:=	$(addprefix $(SRCS_DIR)/, $(SRCS))
 
@@ -69,7 +71,7 @@ all: $(NAME)
 
 $(NAME): $(LIB_TGT)
 	@echo "$(YELLOW)Compiling... $(BLUE)$@$(NC)"
-	@$(CC) $(CFLAGS) -g $(SRCS) $(CPPFLAGS) -o $@
+	@$(CC) $(CFLAGS) $(SRCS) $(CPPFLAGS) -o $@
 
 $(LIB_TGT):
 	@echo "Calling LIB_DIR make"

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_debug.c                                  :+:      :+:    :+:   */
+/*   push_swap_debug.cx                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:01:20 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/11 12:26:46 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/12 17:29:21 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	manual_sort(t_stack **a, t_stack **b)
 	char	buffer[3];
 	int		readed;
 
+	buffer[2] = '\0';
 	while (1)
 	{
 		print_stacks((*a)->head, (*b)->head);
@@ -134,14 +135,14 @@ void	manual_sort(t_stack **a, t_stack **b)
 			make_a(ra, *a, *b);
 		else if (ft_strncmp(buffer, "rb", 2) == 0)
 			make_a(rb, *a, *b);
-		else if (ft_strncmp(buffer, "rr", 2) == 0)
-			make_a(rr, *a, *b);
 		else if (ft_strncmp(buffer, "rra", 3) == 0)
 			make_a(rra, *a, *b);
 		else if (ft_strncmp(buffer, "rrb", 3) == 0)
 			make_a(rrb, *a, *b);
 		else if (ft_strncmp(buffer, "rrr", 3) == 0)
 			make_a(rrr, *a, *b);
+		else if (ft_strncmp(buffer, "rr", 2) == 0)
+			make_a(rr, *a, *b);
 		else if (ft_strncmp(buffer, "end", 3) == 0)
 			return ;
 		else

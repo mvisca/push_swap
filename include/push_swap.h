@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/11 14:20:50 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/12 17:17:33 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define TRUE 1
 # define FALSE 0
 
-enum	e_command
+typedef enum e_command
 {
 	end,
 	sa,
@@ -33,9 +33,7 @@ enum	e_command
 	rra,
 	rrb,
 	rrr
-};
-
-typedef enum e_command	e_com;
+}	t_com;
 
 struct		s_stack
 {
