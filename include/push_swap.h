@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/12 17:17:33 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/14 13:14:58 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	make_a(enum e_command move, t_stack *a, t_stack *b);
 void	print_tab(char **tab);
 void	print_stack(t_stack *stack, char *name);
 void	print_stacks(t_list *a, t_list *b);
+void	print_moves(t_com *moves);
 void	test_moves(t_stack **stack_a, t_stack **stack_b);
 void	manual_sort(t_stack **a, t_stack **b);
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_debug.cx                                 :+:      :+:    :+:   */
+/*   push_swap_debug.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 13:01:20 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/12 17:29:21 by mvisca           ###   ########.fr       */
+/*   Created: 2023/07/13 16:18:34 by mvisca            #+#    #+#             */
+/*   Updated: 2023/07/14 14:08:14 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,50 @@ void	test_moves(t_stack **a, t_stack **b)
 	print_stacks((*a)->head, (*b)->head);
 }
 
+void	print_moves(t_com *moves)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("Moves:\n");
+	while (1)
+	{
+		if (moves[i] == end && ft_printf("end "))
+			break ;
+		else if (moves[i] == sa)
+			ft_printf("sa ");
+		else if (moves[i] == sb)
+			ft_printf("sa ");
+		else if (moves[i] == ss)
+			ft_printf("ss ");
+		else if (moves[i] == pa)
+			ft_printf("pa ");
+		else if (moves[i] == pb)
+			ft_printf("pb ");
+		else if (moves[i] == ra)
+			ft_printf("ra ");
+		else if (moves[i] == rb)
+			ft_printf("rb ");
+		else if (moves[i] == rr)
+			ft_printf("rr ");
+		else if (moves[i] == rra)
+			ft_printf("rra ");
+		else if (moves[i] == rrb)
+			ft_printf("rrb ");
+		else if (moves[i] == rrr)
+			ft_printf("rrr ");
+		i++;
+	}
+	ft_printf("\n\n");
+}
+
 void	manual_sort(t_stack **a, t_stack **b)
 {
 	char	buffer[3];
 	int		readed;
+	int		total;
 
+	total = 0;
 	buffer[2] = '\0';
 	while (1)
 	{
@@ -144,8 +183,10 @@ void	manual_sort(t_stack **a, t_stack **b)
 		else if (ft_strncmp(buffer, "rr", 2) == 0)
 			make_a(rr, *a, *b);
 		else if (ft_strncmp(buffer, "end", 3) == 0)
-			return ;
+			break ;
 		else
 			ft_printf("Opcion no válida\n");
+		total += 1;
 	}
+	ft_printf("total: %d\n", total);
 }
