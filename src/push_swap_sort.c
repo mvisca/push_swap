@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:18:02 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/14 15:40:09 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/14 15:53:02 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,17 +118,17 @@ static t_com	*prep_a(t_stack *a, t_list *node, t_com *test_moves)
 		size++;
 	next_move = (t_com *) malloc (sizeof(t_com) * (rotations + size + 1));
 	if (!next_move)
+	{
+		free(test_moves);
 		return (NULL);
+	}
 	next_move[rotations + size] = end;
-	ft_printf("PUESTO END EN NEXTMOVEA\n");
 	while (rotations > 0)
 		next_move[--rotations + size] = rot_type;
-	ft_printf("size en prep a %d\n", size);
 	while (size > 0)
 	{
 		next_move[size] = test_moves[size];
 		size--;
-		ft_printf("in size > 0\n");
 	}
 	free(test_moves);
 	return (next_move);
@@ -143,20 +143,18 @@ static t_com	*cheapest_move(t_stack *a, t_stack *b)
 	cheapest_move = prep_b(b, *(a->head->content));
 	cheapest_move = prep_a(a, a->head, cheapest_move);
 	current = a->head->next;
-	ft_printf("Enter current = %d\n", *(current->content));
 	while (current)
 	{
-		ft_printf("Enter prep current %d\n", *(current->content));
 		test_move = prep_b(b, *(current->content));
-		ft_printf("  exit b\n");
 		test_move = prep_a(a, current, test_move);
-		ft_printf("  exit a\n");
 		if (sizeof(test_move) < sizeof(cheapest_move))
 		{
 			free(cheapest_move);
 			cheapest_move = test_move;
 			test_move = NULL;
 		}
+		else
+			free(test_move);
 		current = current->next;
 	}
 	return (cheapest_move);
@@ -184,7 +182,7 @@ void	sort_stack(t_stack *a, t_stack *b)
 			make_a(next_move[i++], a, b);
 		make_a(pb, a, b);
 	}
-	ft_printf("Make moves to b\n");
+	ft_printf("Make moves: to b\n");
 	print_stacks(a->head, b->head);
 	sort_three(a, b);
 	ft_printf("Sort 3\n");
@@ -199,4 +197,5 @@ void	sort_stack(t_stack *a, t_stack *b)
 		make_a(rra, a, b);
 	ft_printf("Ordenado\n");
 	print_stacks(a->head, b->head);
+	free(next_move);
 }
