@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   push_swap_mem_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:50 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/10 01:26:08 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/19 12:01:47 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ t_stack	*free_stack(t_stack **stack)
 	t_list	*node;
 	t_list	*next;
 
-	node = (*stack)->head;
+	if (*stack)
+		node = (*stack)->head;
 	while (node)
 	{
 		next = node->next;

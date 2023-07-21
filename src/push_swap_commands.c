@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:30 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/12 17:18:06 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/19 12:12:28 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int	do_rot(t_stack *stack)
 	return (1);
 }
 
-void	make_a(t_com move, t_stack *a, t_stack *b)
+void	*make_a(t_com move, t_stack *a, t_stack *b)
 {
 	if (move == pa && ft_printf("pa\n"))
 		do_push(b, a);
@@ -101,4 +101,5 @@ void	make_a(t_com move, t_stack *a, t_stack *b)
 		do_revrot(b);
 	else if (move == rrr && ft_printf("rrr\n") && do_revrot(a))
 		do_revrot(b);
+	return (NULL);
 }

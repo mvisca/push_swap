@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/14 13:14:58 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/21 16:37:51 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ struct		s_stack
 typedef struct s_stack	t_stack;
 
 // push_swap_commands.c
-void	make_a(enum e_command move, t_stack *a, t_stack *b);
+void	*make_a(enum e_command move, t_stack *a, t_stack *b);
 
 // push_swap_debug.c
 void	print_tab(char **tab);
@@ -62,6 +62,12 @@ t_stack	*tab_to_stack(char **tab, t_stack *stack);
 
 // push_swap_sort.c
 void	sort_stack(t_stack *a, t_stack *b);
+
+// push_swap_sort_utils_b.c
+t_com	*prep_b(t_stack *b, int num);
+
+// push_swap_sort_utils_three.c
+void	sort_three(t_stack *a, t_stack *b);
 
 // push_swap_utils.c
 char	*free_tab(char ***tab);
