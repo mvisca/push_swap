@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 16:18:34 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/14 14:08:14 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/22 13:55:20 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	print_moves(t_com *moves)
 	int	i;
 
 	i = 0;
-	ft_printf("Moves:\n");
+	ft_printf("Print moves:\n");
 	while (1)
 	{
 		if (moves[i] == end && ft_printf("end "))
@@ -141,7 +141,7 @@ void	print_moves(t_com *moves)
 			ft_printf("rrr ");
 		i++;
 	}
-	ft_printf("\n\n");
+	ft_printf("\nSTOP Print Moves\n");
 }
 
 void	manual_sort(t_stack **a, t_stack **b)
