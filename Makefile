@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/07/22 11:23:06 by mvisca           ###   ########.fr        #
+#    Updated: 2023/07/22 14:41:33 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS			:=	push_swap.c							\
 					push_swap_sort.c					\
 					push_swap_sort_utils_a.c			\
 					push_swap_sort_utils_b.c			\
+					push_swap_sort_utils_b_to_a.c		\
 					push_swap_sort_utils_three.c		\
 					push_swap_mem_utils.c				\
 					push_swap_validate_args.c

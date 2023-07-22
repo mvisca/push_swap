@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/22 11:22:40 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/22 14:42:34 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_stack	*tab_to_stack(char **tab, t_stack *stack);
 void	sort_stack(t_stack *a, t_stack *b);
 int		move_cost(t_com *moves);
 
-// push_swap_sort_utils_b.c
+// push_swap_sort_utils_a.c
 t_com	*prep_a(t_stack *a, t_list *current, t_com *test_moves);
 
 // push_swap_sort_utils_b.c
@@ -72,6 +72,9 @@ t_com	*prep_b(t_stack *b, int num);
 
 // push_swap_sort_utils_three.c
 void	sort_three(t_stack *a, t_stack *b);
+
+// push_swap_sort_b_to_a.c
+void    move_b_to_a(t_stack *a, t_stack *b);
 
 // push_swap_utils.c
 char	*free_tab(char ***tab);
