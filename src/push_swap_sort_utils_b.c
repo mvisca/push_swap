@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:19:16 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/22 14:22:14 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/22 17:19:52 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ static int	insert_max_min(t_stack *b)
 	
 	rotations = 0;
 	current = b->head;
-	while (*(current->content) != b->max)
+	while (current && *(current->content) != b->max)
 	{
-		current = current->next;
 		rotations++;
+		current = current->next;
 	}
 	if (rotations > b->size / 2)
 	{

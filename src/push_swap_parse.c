@@ -6,13 +6,13 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/10 01:32:38 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/22 17:15:35 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static char	**build_tab(int ac, char **av, char **tab)
+static char	**build_tab_2(int ac, char **av, char **tab)
 {
 	int	i;
 	
@@ -44,7 +44,7 @@ char	**args_to_tab(int ac, char **av, char **tab)
 			return (NULL);
 		return (tab);
 	}
-	tab = build_tab(ac, av, tab);
+	tab = build_tab_2(ac, av, tab);
 	if (!tab)
 		return (NULL);
 	return (tab);

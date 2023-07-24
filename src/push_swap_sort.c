@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:18:02 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/22 16:34:15 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/22 17:04:18 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ void	sort_stack(t_stack *a, t_stack *b)
 	two = 2;
 	while (a->size > 3 && two--)
 		make_a(pb, a, b);
-	while (a->size > 0) 
+	while (a->size > 0)
 	{
-		next_move = get_next_move(a, b); 
+		next_move = get_next_move(a, b);
 		// next_move = optimize_move(next_move);
-		i = 0;		
+		i = 0;
 		while (next_move[i] != end)
 			make_a(next_move[i++], a, b);
 		free(next_move);

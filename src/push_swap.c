@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:07 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/21 15:54:24 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/22 17:11:28 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ static char	**build_tab(int ac, char **av)
 	tab = args_to_tab(ac, av, tab);
 	if (!tab)
 	{
-		ft_printf("Error");
+		ft_printf("Error\n");
 		return (NULL);
 	}
 	if (!tab_valid(tab))
 	{
-		ft_printf("Error");
 		free_tab(&tab);
+		ft_printf("Error\n");
 		return (NULL);
 	}
 	return (tab);
