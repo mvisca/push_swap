@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/22 17:08:59 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/24 17:41:43 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,13 @@ typedef enum e_command
 	rrr
 }	t_com;
 
-struct		s_stack
+typedef struct	s_stack
 {
 	t_list	*head;
 	int		size;
 	int		max;
 	int		min;
-};
-
-typedef struct s_stack	t_stack;
+}	t_stack;
 
 // push_swap_commands.c
 void	*make_a(enum e_command move, t_stack *a, t_stack *b);
@@ -73,8 +71,11 @@ t_com	*prep_b(t_stack *b, int num);
 // push_swap_sort_utils_three.c
 void	sort_three(t_stack *a, t_stack *b);
 
-// push_swap_sort_b_to_a.c
-void    move_b_to_a(t_stack *a, t_stack *b);
+// push_swap_sort_utils_two.c
+void    sort_two(t_stack *a);
+
+// push_swap_sort_long.c
+void    sort_long(t_stack *a, t_stack *b);
 
 // push_swap_utils.c
 char	*free_tab(char ***tab);
@@ -83,6 +84,8 @@ t_stack	*alloc_stack(void);
 void	update_stack(t_stack **stack);
 
 // push_swap_validate_args.c
+int		is_int(char *str);
+int		only_digits(char *str);
 int		tab_valid(char **tab);
 
 #endif

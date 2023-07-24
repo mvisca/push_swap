@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_sort_utils_b_to_a.c                      :+:      :+:    :+:   */
+/*   push_swap_sort_utils_two.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/22 14:40:35 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/22 16:24:41 by mvisca           ###   ########.fr       */
+/*   Created: 2023/07/24 16:28:49 by mvisca            #+#    #+#             */
+/*   Updated: 2023/07/24 16:28:59 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void    move_b_to_a(t_stack *a, t_stack *b)
+void    sort_two(t_stack *a)
 {
-	t_list	*la;
-	t_list	*lb;
-
-	while (b->size > 0)
-	{
-		la = a->head;
-		lb = b->head;
-		(void)lb;
-		(void)la;
-	}
+    if (*(a->head->content) > *(a->head->next->content))
+        make_a(sa, a, a);
 }

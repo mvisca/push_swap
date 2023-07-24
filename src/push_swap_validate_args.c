@@ -6,13 +6,13 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:00 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/12 17:20:02 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/24 15:50:35 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static int	only_digits(char *str)
+int	only_digits(char *str)
 {
 	int	i;
 
@@ -22,17 +22,23 @@ static int	only_digits(char *str)
 	while (str[i] && ft_isdigit(str[i]))
 		i++;
 	if (str[i])
+	{
+		ft_printf("Error\n");
 		return (FALSE);
+	}
 	return (TRUE);
 }
 
-static int	is_int(char *str)
+int	is_int(char *str)
 {
 	long int	li;
 
 	li = ft_atol(str);
 	if (li < INT_MIN || li > INT_MAX)
+	{
+		ft_printf("Error\n");
 		return (FALSE);
+	}
 	return (TRUE);
 }
 
@@ -48,7 +54,10 @@ static int	no_repeat(char **tab)
 		while (tab[j])
 		{
 			if (ft_atol(tab[i]) == ft_atol(tab[j]))
+			{
+				ft_printf("Error\n");
 				return (FALSE);
+			}
 			j++;
 		}
 		i++;
@@ -63,11 +72,16 @@ int	tab_valid(char **tab)
 	i = 0;
 	while (tab[i])
 	{
-		if (!only_digits(tab[i]) || !is_int(tab[i]))
+		if (!only_digits(tab[i]))
+			return (FALSE);
+		if (!is_int(tab[i]))
 			return (FALSE);
 		i++;
 	}
 	if (!no_repeat(tab))
+	{
+		ft_printf("Error\n");
 		return (FALSE);
+	}
 	return (TRUE);
 }

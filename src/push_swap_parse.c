@@ -6,13 +6,13 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/22 17:15:35 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/24 17:00:40 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static char	**build_tab_2(int ac, char **av, char **tab)
+static char	**copy_tab(int ac, char **av, char **tab)
 {
 	int	i;
 	
@@ -30,23 +30,6 @@ static char	**build_tab_2(int ac, char **av, char **tab)
 		}
 	}
 	tab[i] = 0;
-	return (tab);
-}
-
-char	**args_to_tab(int ac, char **av, char **tab)
-{
-	if (ac == 1)
-		return (NULL);
-	else if (ac == 2)
-	{
-		tab = ft_split(av[1], 32);
-		if (!tab)
-			return (NULL);
-		return (tab);
-	}
-	tab = build_tab_2(ac, av, tab);
-	if (!tab)
-		return (NULL);
 	return (tab);
 }
 
@@ -84,4 +67,26 @@ t_stack	*tab_to_stack(char **tab, t_stack *stack)
 	}
 	update_stack(&stack);
 	return (stack);
+}
+
+char	**args_to_tab(int ac, char **av, char **tab)
+{
+	if (ac == 1)
+		return (NULL);
+	else if (ac == 2)
+	{
+		tab = ft_split(av[1], 32);
+		if (!tab || !tab[1])
+		{
+			if (only_digits(tab[0]))
+				is_int(tab[0]);
+			free_tab(&tab);
+			return (NULL);
+		}
+		return (tab);
+	}
+	tab = copy_tab(ac, av, tab);
+	if (!tab)
+		return (NULL);
+	return (tab);
 }
