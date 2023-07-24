@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:28:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/24 16:40:24 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/24 19:13:34 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,29 @@ static t_com	*get_next_move(t_stack *a, t_stack *b)
 	return (cheapest_move);
 }
 
-void sort_long(t_stack *a, t_stack *b)
+void sort_long(t_ps *ps)
 {
 	int		two;
 	int		i;
 	t_com	*next_move;
 
 	two = 2;
-	while (a->size > 3 && two--)
-		make_a(pb, a, b);
-	while (a->size > 3)
+	while (ps->a->size > 3 && two--)
+		ps_command(pb, ps);
+	while (ps->a->size > 3)
 	{
-		next_move = get_next_move(a, b);
+		next_move = get_next_move(ps->a, ps->b);
 		// next_move = optimize_move(next_move);
 		i = 0;
 		while (next_move[i] != end)
-			make_a(next_move[i++], a, b);
+			ps_command(next_move[i++], ps);
 		free(next_move);
-		make_a(pb, a, b);
+		ps_command(pb, ps);
 	}
-	sort_three(a, b);
+	sort_three(ps);
 	//	move_b_to_a(a, b);
-	while (b->size > 0)
-		make_a(pa, a, b);
+	while (ps->b->size > 0)
+		ps_command(pa, ps);
 	// while (a->min != *(a->head->content))
 	// 	make_a(ra, a, b);
 }

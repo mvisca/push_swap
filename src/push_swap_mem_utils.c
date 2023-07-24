@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:50 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/19 12:01:47 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/24 19:14:48 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,16 @@ void	update_stack(t_stack **stack)
 		node = node->next;
 	}
 	(*stack)->size = ft_lstsize((*stack)->head);
+}
+
+void	*free_ps(t_ps *ps)
+{
+	if (ps->a)
+		free_stack(&ps->a);
+	if (ps->b)
+		free_stack(&ps->b);
+	if (ps->tab)
+		free_tab(&ps->tab);
+	free(ps);
+	return (NULL);
 }

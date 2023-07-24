@@ -6,16 +6,18 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 16:18:34 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/22 13:55:20 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/24 18:54:49 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	print_tab(char **tab)
+void	print_tab(t_ps *ps)
 {
-	int	i;
+	int		i;
+	char	**tab;
 
+	tab = ps->tab;
 	if (!tab && !(*tab))
 		return ;
 	ft_printf ("\n======== Print TAB ==========\n");
@@ -70,8 +72,13 @@ static void	*print_line(int cont)
 	return (NULL);
 }
 
-void	print_stacks(t_list *a, t_list *b)
+void	print_stacks(t_ps *ps)
 {
+	t_list	*a;
+	t_list	*b;
+
+	a = ps->a->head;
+	b = ps->b->head;
 	ft_printf("\n ===== a ====== | ====== b ===== \n");
 	while (a || b)
 	{
@@ -91,20 +98,20 @@ void	print_stacks(t_list *a, t_list *b)
 	ft_printf(" ===== a ====== | ====== b ===== \n\n");
 }
 
-void	test_moves(t_stack **a, t_stack **b)
+void	test_moves(t_ps *ps)
 {
-	print_stacks((*a)->head, (*b)->head);
-	make_a(sa, *a, *b);
-	make_a(pb, *a, *b);
-	make_a(pb, *a, *b);
-	make_a(pb, *a, *b);
-	make_a(rr, *a, *b);
-	make_a(rrr, *a, *b);
-	make_a(sa, *a, *b);
-	make_a(pa, *a, *b);
-	make_a(pa, *a, *b);
-	make_a(pa, *a, *b);
-	print_stacks((*a)->head, (*b)->head);
+	print_stacks(ps);
+	ps_command(sa, ps);
+	ps_command(pb, ps);
+	ps_command(pb, ps);
+	ps_command(pb, ps);
+	ps_command(rr, ps);
+	ps_command(rrr, ps);
+	ps_command(sa, ps);
+	ps_command(pa, ps);
+	ps_command(pa, ps);
+	ps_command(pa, ps);
+	print_stacks(ps);
 }
 
 void	print_moves(t_com *moves)
@@ -144,7 +151,7 @@ void	print_moves(t_com *moves)
 	ft_printf("\nSTOP Print Moves\n");
 }
 
-void	manual_sort(t_stack **a, t_stack **b)
+void	manual_sort(t_ps *ps)
 {
 	char	buffer[3];
 	int		readed;
@@ -154,34 +161,34 @@ void	manual_sort(t_stack **a, t_stack **b)
 	buffer[2] = '\0';
 	while (1)
 	{
-		print_stacks((*a)->head, (*b)->head);
+		print_stacks(ps);
 		ft_printf("Ingrese una opción: [pa, pb, sa, sb, ss, ra, rb, rra, rrb, rrr, end]:\n");
 		readed = read(STDIN_FILENO, buffer, 3);
 		if (readed == -1)
 			return ;
 		ft_printf("Su opcion: %s\n", buffer);
 		if (ft_strncmp(buffer, "pa", 2) == 0)
-			make_a(pa, *a, *b);
+			ps_command(pa, ps);
 		else if (ft_strncmp(buffer, "pb", 2) == 0)
-			make_a(pb, *a, *b);
+			ps_command(pb, ps);
 		else if (ft_strncmp(buffer, "sa", 2) == 0)
-			make_a(sa, *a, *b);
+			ps_command(sa, ps);
 		else if (ft_strncmp(buffer, "sb", 2) == 0)
-			make_a(sb, *a, *b);
+			ps_command(sb, ps);
 		else if (ft_strncmp(buffer, "ss", 2) == 0)
-			make_a(ss, *a, *b);
+			ps_command(ss, ps);
 		else if (ft_strncmp(buffer, "ra", 2) == 0)
-			make_a(ra, *a, *b);
+			ps_command(ra, ps);
 		else if (ft_strncmp(buffer, "rb", 2) == 0)
-			make_a(rb, *a, *b);
+			ps_command(rb, ps);
 		else if (ft_strncmp(buffer, "rra", 3) == 0)
-			make_a(rra, *a, *b);
+			ps_command(rra, ps);
 		else if (ft_strncmp(buffer, "rrb", 3) == 0)
-			make_a(rrb, *a, *b);
+			ps_command(rrb, ps);
 		else if (ft_strncmp(buffer, "rrr", 3) == 0)
-			make_a(rrr, *a, *b);
+			ps_command(rrr, ps);
 		else if (ft_strncmp(buffer, "rr", 2) == 0)
-			make_a(rr, *a, *b);
+			ps_command(rr, ps);
 		else if (ft_strncmp(buffer, "end", 3) == 0)
 			break ;
 		else

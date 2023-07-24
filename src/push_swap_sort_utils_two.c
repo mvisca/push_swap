@@ -6,14 +6,14 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:28:49 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/24 16:28:59 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/24 19:07:45 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void    sort_two(t_stack *a)
+void    sort_two(t_ps *ps)
 {
-    if (*(a->head->content) > *(a->head->next->content))
-        make_a(sa, a, a);
+    if (*(ps->a->head->content) > *(ps->a->head->next->content))
+        ps_command(sa, ps);
 }

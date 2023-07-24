@@ -6,73 +6,57 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:07 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/24 17:38:32 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/24 19:16:28 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static char	**parse_args(int ac, char **av);
-static t_stack	*bulid_stack(char **tab);
-
+static char	**parse_args(int ac, char **av, t_ps *ps);
+static t_stack	*bulid_stack(t_ps *ps);
 
 int	main(int ac, char **av)
 {
-	char	**tab;
-	t_stack	*a;
-	t_stack	*b;
-
-	if (ac == 1)
+	t_ps	*ps;
+	
+	ps = (t_ps *) malloc (sizeof(t_ps));
+	if (ac == 1 || !ps)
 		return (0);
-	tab = parse_args(ac, av);
-	if (!tab)
+	ps->tab = parse_args(ac, av, ps);
+	if (!ps->tab && !free_ps(ps))
 		return (1);
-	a = bulid_stack(tab);
-	if (!a)
+	bulid_stack(ps);
+	if (!ps->a && !free_ps(ps))
 		return (1);
-	b = alloc_stack();
-	if (!b)
-		return (1);
-	sort_stack(a, b);
-	free_tab(&tab);
-	free_stack(&a);
-	if (b)
-		free_stack(&b);
+	ps->b = alloc_stack();
+	if (!ps->b && free_ps(ps))
+		return (1);	
+	sort_stack(ps);
+	free_ps(ps);
 	return (0);
 }
 
-static char	**parse_args(int ac, char **av)
+static char	**parse_args(int ac, char **av, t_ps *ps)
 {
-	char	**tab;
-
-	tab = args_to_tab(ac, av, NULL);
-	if (!tab)
+	ps->tab = args_to_tab(ac, av, NULL);
+	if (!ps->tab)
 		return (NULL);
-	if (!tab_valid(tab))
+	if (!tab_valid(ps->tab))
 	{
-		free_tab(&tab);
+		free_ps(ps);
 		return (NULL);
 	}
-	return (tab);
+	return (ps->tab);
 }
 
-static t_stack	*bulid_stack(char **tab)
+static t_stack	*bulid_stack(t_ps *ps)
 {
-	t_stack	*a;
-
-	a = alloc_stack();
-	if (!a)
+	ps->a = alloc_stack();
+	if (!ps->a)
 		return (NULL);
-	tab_to_stack(tab, a);
-	if (!a)
-	{
-		free_tab(&tab);
-		free_stack(&a);
-	}
-	return (a);
+	tab_to_stack(ps->tab, ps->a);
+	return (ps->a);
 }
-
-
 
 //	#### DEBUG TESTS #####
 	// manual_sort(&a, &b);
