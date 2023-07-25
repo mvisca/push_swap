@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_parse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/25 20:01:51 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/25 21:23:35 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	ps_parse_args(int ac, char **av, t_ps *ps)
 		return (FALSE);
 	if (ps_args_to_stack(ac, av, ps) == FALSE)
 	{
-		ft_printf("Error\n");
+		write(1, "Error\n", 6);
 		return (FALSE);
 	}
 	if (ps_no_repeat(ps) == FALSE)
 	{
-		ft_printf("Error\n");
+		write(1, "Error\n", 6);
 		return (FALSE);
 	}
 	return (TRUE);
@@ -63,9 +63,6 @@ static int	ps_args_to_stack(int ac, char **av, t_ps *ps)
 
 static int	ps_validate_digits(char *str)
 {
-	int	i;
-
-	i = 0;
 	if (*str == '-' || *str == '+')
 		str++;
 	while (*str)
