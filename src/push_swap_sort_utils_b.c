@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_utils_b.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:19:16 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/22 17:19:52 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/25 16:08:09 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static void	update_max_min(t_stack *b, int num)
 
 static int	insert_max_min(t_stack *b)
 {
-	t_list	*current;	
+	t_ps_list	*current;	
 	int		rotations;
 	
 	rotations = 0;
 	current = b->head;
-	while (current && *(current->content) != b->max)
+	while (current && current->content != b->max)
 	{
 		rotations++;
 		current = current->next;
@@ -44,13 +44,13 @@ static int	insert_max_min(t_stack *b)
 
 static int	insert_mid(t_stack *b, int num)
 {
-	t_list	*current;
+	t_ps_list	*current;
 	int		rotations;
 
 	current = b->head;
 	rotations = 0;
 
-	while (*(current->content) != b->max)
+	while (current->content != b->max)
 	{
 		rotations++;
 		current = current->next;
@@ -62,7 +62,7 @@ static int	insert_mid(t_stack *b, int num)
 		rotations *= -1;	
 	}
 
-	while (num < *(current->content))
+	while (num < current->content)
 	{
 		rotations++;
 		if (current->next)

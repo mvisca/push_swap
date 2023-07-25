@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
+#    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/07/24 16:32:52 by mvisca           ###   ########.fr        #
+#    Updated: 2023/07/25 18:51:16 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,15 +41,17 @@ SRCS_DIR		:=	src
 SRCS			:=	push_swap.c							\
 					push_swap_commands.c				\
 					push_swap_debug.c					\
+					push_swap_list_tools.c				\
+					push_swap_mem_utils.c				\
 					push_swap_parse.c					\
 					push_swap_sort.c					\
 					push_swap_sort_utils_a.c			\
 					push_swap_sort_utils_b.c			\
-					push_swap_sort_utils_two.c			\
-					push_swap_sort_utils_three.c		\
 					push_swap_sort_utils_long.c			\
-					push_swap_mem_utils.c				\
-					push_swap_validate_args.c
+					push_swap_sort_utils_three.c		\
+					push_swap_sort_utils_two.c
+#					push_swap_validate_args.c
+
 SRCS			:=	$(addprefix $(SRCS_DIR)/, $(SRCS))
 
 #DEPS			:=	$(SRCS:.c=.d)
@@ -58,7 +60,7 @@ SRCS			:=	$(addprefix $(SRCS_DIR)/, $(SRCS))
 #	UTILS			#
 #-------------------#
 
-CC				:=	cc -g -fsanitize=address
+CC				:=	cc #-g -fsanitize=address
 
 CFLAGS			:=	-Wall -Wextra -Werror
 CPPFLAGS		:=	-I./$(INC_DIR) -I./$(LIB_DIR)/$(INC_DIR)	\

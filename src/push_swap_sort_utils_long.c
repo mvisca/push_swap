@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_utils_long.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:28:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/24 19:13:34 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/25 16:09:28 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static t_com	*get_next_move(t_stack *a, t_stack *b)
 {
 	t_com	*test_move;
 	t_com	*cheapest_move;
-	t_list	*current;
+	t_ps_list	*current;
 
-	cheapest_move = prep_b(b, *(a->head->content));
+	cheapest_move = prep_b(b, a->head->content);
 	cheapest_move = prep_a(a, a->head, cheapest_move);
 	current = a->head->next;
 	while (current)
 	{
-		test_move = prep_b(b, *(current->content));
+		test_move = prep_b(b, current->content);
 		test_move = prep_a(a, current, test_move);
 		if (move_cost(test_move) < move_cost(cheapest_move))
 		{

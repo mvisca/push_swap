@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_debug.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 16:18:34 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/24 18:54:49 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/25 15:47:50 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+/*
 void	print_tab(t_ps *ps)
 {
 	int		i;
@@ -30,10 +31,11 @@ void	print_tab(t_ps *ps)
 		i++;
 	}
 }
+*/
 
 void	print_stack(t_stack *stack, char *name)
 {
-	t_list	*aux;
+	t_ps_list	*aux;
 	int		i;
 
 	ft_printf("\n======== Print '%s' ==========\n", name);
@@ -42,10 +44,10 @@ void	print_stack(t_stack *stack, char *name)
 	i = 0;
 	while (aux)
 	{
-		ft_printf("Node [%d]\t-> Content: %d\n", (1 + i++), *(aux->content));
+		ft_printf("Node [%d]\t-> Content: %d\n", (1 + i++), aux->content);
 		aux = aux->next;
 	}
-	stack->size = ft_lstsize(stack->head);
+	stack->size = ps_lstsize(stack->head);
 	ft_printf("\n-------- Stats\n", name);
 	ft_printf("* Max %d\n", stack->max);
 	ft_printf("* Min %d\n", stack->min);
@@ -74,8 +76,8 @@ static void	*print_line(int cont)
 
 void	print_stacks(t_ps *ps)
 {
-	t_list	*a;
-	t_list	*b;
+	t_ps_list	*a;
+	t_ps_list	*b;
 
 	a = ps->a->head;
 	b = ps->b->head;
@@ -84,12 +86,12 @@ void	print_stacks(t_ps *ps)
 	{
 		if (a)
 		{
-			print_line(*(a->content));
+			print_line(a->content);
 			a = a->next;
 		}
 		else
 			ft_printf("                | ");
-		if (b && !print_line(*(b->content)))
+		if (b && !print_line(b->content))
 			b = b->next;
 		else
 			ft_printf("                |");

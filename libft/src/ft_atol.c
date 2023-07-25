@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 13:17:06 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/10 01:06:10 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/25 18:13:57 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-long int	ft_atol(const char *nptr)
+long long int	ft_atol(const char *nptr)
 {
-	unsigned long int	res;
-	int					i;
-	int					sign;
+	unsigned long long int	res;
+	int						i;
+	int						sign;
 
 	res = 0;
 	i = 0;
@@ -30,6 +30,6 @@ long int	ft_atol(const char *nptr)
 		i++;
 	}
 	while (nptr[i] >= '0' && nptr[i] <= '9')
-		res = (res * 10) + (nptr[i++] - '0');
+		res = (res * 10) + nptr[i++] - '0';
 	return (res * sign);
 }

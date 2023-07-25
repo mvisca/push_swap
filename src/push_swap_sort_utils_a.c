@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_utils_a.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:19:14 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/22 14:16:02 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/25 16:06:49 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-t_com	*prep_a(t_stack *a, t_list *node, t_com *test_moves)
+t_com	*prep_a(t_stack *a, t_ps_list *node, t_com *test_moves)
 {
-	int		rotations;
-	int     size;
-	t_com	rot_type;
-	t_com	*next_move;
-	t_list	*current;
-	int     i;
+	int			rotations;
+	int     	size;
+	int  	   i;
+	t_com		rot_type;
+	t_com		*next_move;
+	t_ps_list	*current;
 
 	rotations = 0;
 	rot_type = ra;
 
 	current = a->head;
-	while (*(current->content) != *(node->content))
+	while (current->content != node->content)
 	{
 		current = current->next;
 		if (!current)

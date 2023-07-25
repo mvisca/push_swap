@@ -3,90 +3,70 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_parse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/24 17:00:40 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/25 18:48:20 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static char	**copy_tab(int ac, char **av, char **tab)
-{
-	int	i;
-	
-	tab = (char **)malloc(sizeof(char *) * (ac));
-	if (!tab)
-		return (NULL);
-	i = 0;
-	while (i + 1 < ac)
-	{
-		tab[i] = ft_strdup(av[i + 1]);
-		if (!tab[i++])
-		{
-			free_tab(&tab);
-			return (NULL);
-		}
-	}
-	tab[i] = 0;
-	return (tab);
-}
+static int	ps_args_to_stack(int ac, char **av, t_ps *ps);
+static int	ps_validate_digits(char *str);
 
-static t_list	*build_node(char *str)
-{
-	t_list	*new;
-
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (NULL);
-	new->content = malloc(sizeof(int));
-	if (!new->content)
-	{
-		free(new);
-		return (NULL);
-	}
-	*(new->content) = (int)ft_atol(str);
-	new->next = NULL;
-	return (new);
-}
-
-t_stack	*tab_to_stack(char **tab, t_stack *stack)
-{
-	int		i;
-	t_list	*new;
-
-	i = 0;
-	while (tab[i])
-	{
-		new = build_node(tab[i]);
-		if (!new)
-			return (NULL);
-		ft_lstadd_back(&(stack->head), new);
-		i++;
-	}
-	update_stack(&stack);
-	return (stack);
-}
-
-char	**args_to_tab(int ac, char **av, char **tab)
+int	ps_parse_args(int ac, char **av, t_ps *ps)
 {
 	if (ac == 1)
-		return (NULL);
-	else if (ac == 2)
+		return (FALSE);
+	if (!ps_args_to_stack(ac, av, ps))
 	{
-		tab = ft_split(av[1], 32);
-		if (!tab || !tab[1])
-		{
-			if (only_digits(tab[0]))
-				is_int(tab[0]);
-			free_tab(&tab);
-			return (NULL);
-		}
-		return (tab);
+		ft_printf("Error\n");
+		return (FALSE);
 	}
-	tab = copy_tab(ac, av, tab);
-	if (!tab)
-		return (NULL);
-	return (tab);
+	return (TRUE);
+}
+
+static int	ps_args_to_stack(int ac, char **av, t_ps *ps)
+{
+	int				i;
+	long long int	num;
+	char			*str;
+	t_ps_list		*new;
+
+	i = 1;
+	while (i < ac)
+	{
+		str = av[i];
+		if (!*str)
+			return (0);
+
+		if (!ps_validate_digits(str))
+			return (0);
+		num = ft_atol(av[i]);
+		if (num < INT_MIN || num > INT_MAX)
+			return (0);
+		new = ps_lstnew((int) num);
+		if (!new)
+			return (0);
+		ps_lstadd_back(&ps->a->head, new);
+		i++;
+	}
+	return (1);
+}
+
+static int	ps_validate_digits(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			return (0);
+		str++;
+	}
+	return (1);
 }

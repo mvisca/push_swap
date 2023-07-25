@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:36:30 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/08 13:29:24 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/25 14:03:36 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*ft_lstnew(int *content)
 {
 	t_list	*new;
 
-	new = (void *) malloc (sizeof(t_list));
+	new = (t_list *) malloc (sizeof(t_list));
 	if (new)
 	{
 		new->content = content;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_utils_three.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 16:37:24 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/24 19:09:24 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/25 16:08:55 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	sort_three(t_ps *ps)
 	int		third;
 
 	a = ps->a;
-	first = *(a->head->content);
-	third = *(a->head->next->next->content);
+	first = a->head->content;
+	third = a->head->next->next->content;
 	if (first == a->min && third == a->max)
 		return ;
 	else if (first == a->min && !ps_command(sa, ps))

@@ -3,59 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:07 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/24 19:16:28 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/25 19:16:23 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static char	**parse_args(int ac, char **av, t_ps *ps);
-static t_stack	*bulid_stack(t_ps *ps);
+static t_ps	*ps_init(void);
 
 int	main(int ac, char **av)
 {
 	t_ps	*ps;
+
+	ps = ps_init();
+	if (!ps)
+		return (1);
+	if (!ps_parse_args(ac, av, ps))
+	{
+		ps_free(ps);
+		return (1);
+	}
 	
-	ps = (t_ps *) malloc (sizeof(t_ps));
-	if (ac == 1 || !ps)
-		return (0);
-	ps->tab = parse_args(ac, av, ps);
-	if (!ps->tab && !free_ps(ps))
-		return (1);
-	bulid_stack(ps);
-	if (!ps->a && !free_ps(ps))
-		return (1);
-	ps->b = alloc_stack();
-	if (!ps->b && free_ps(ps))
-		return (1);	
-	sort_stack(ps);
-	free_ps(ps);
+	print_stacks(ps);
+	ps_free(ps);
 	return (0);
 }
 
-static char	**parse_args(int ac, char **av, t_ps *ps)
+static t_ps	*ps_init(void)
 {
-	ps->tab = args_to_tab(ac, av, NULL);
-	if (!ps->tab)
-		return (NULL);
-	if (!tab_valid(ps->tab))
-	{
-		free_ps(ps);
-		return (NULL);
-	}
-	return (ps->tab);
-}
+	t_ps	*ps;
 
-static t_stack	*bulid_stack(t_ps *ps)
-{
-	ps->a = alloc_stack();
-	if (!ps->a)
+	ps = (t_ps *) malloc (sizeof(t_ps));
+	if (!ps)
 		return (NULL);
-	tab_to_stack(ps->tab, ps->a);
-	return (ps->a);
+	ps->a = (t_stack *) malloc (sizeof(t_stack));
+	ps->b = (t_stack *) malloc (sizeof(t_stack));
+	if (!ps->a || !ps->b)
+		return (NULL);
+	ps->a->head = NULL;
+	ps->b->head = NULL;
+	ps->a->size = 0;
+	ps->b->size = 0;
+	ps->a->min = INT_MAX;
+	ps->b->min = INT_MAX;
+	ps->a->max = INT_MIN;
+	ps->b->max = INT_MIN;
+	return (ps);
 }
 
 //	#### DEBUG TESTS #####

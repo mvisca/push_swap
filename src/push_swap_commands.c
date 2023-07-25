@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_commands.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:30 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/24 17:53:35 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/25 18:55:00 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 static int	do_push(t_stack *src, t_stack *dest)
 {
-	t_list	*aux;
+	t_ps_list	*aux;
 
 	aux = src->head;
 	if (aux)
 	{
 		src->head = src->head->next;
-		ft_lstadd_front(&(dest->head), aux);
+		ps_lstadd_front(&(dest->head), aux);
 	}
-	update_stack(&src);
-	update_stack(&dest);
+	update_stack(src);
+	update_stack(dest);
 	return (1);
 }
 
 static int	do_swap(t_stack *stack)
 {
-	t_list	*first;
-	t_list	*second;
-	t_list	*third;
+	t_ps_list	*first;
+	t_ps_list	*second;
+	t_ps_list	*third;
 
 	if (!stack->head || !stack->head->next)
 		return (1);
@@ -46,8 +46,8 @@ static int	do_swap(t_stack *stack)
 
 static int	do_revrot(t_stack *stack)
 {
-	t_list	*before_last;
-	t_list	*last;
+	t_ps_list	*before_last;
+	t_ps_list	*last;
 
 	if (stack->size < 2)
 		return (1);
@@ -66,11 +66,11 @@ static int	do_revrot(t_stack *stack)
 
 static int	do_rot(t_stack *stack)
 {
-	t_list	*last;
+	t_ps_list	*last;
 
 	if (stack->size < 1)
 		return (1);
-	last = ft_lstlast(stack->head);
+	last = ps_lstlast(stack->head);
 	last->next = stack->head;
 	stack->head = stack->head->next;
 	last->next->next = NULL;
