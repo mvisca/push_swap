@@ -6,13 +6,13 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 13:17:06 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/25 18:13:57 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/25 19:53:01 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-long long int	ft_atol(const char *nptr)
+long long int	ft_atol(const char *n)
 {
 	unsigned long long int	res;
 	int						i;
@@ -21,15 +21,15 @@ long long int	ft_atol(const char *nptr)
 	res = 0;
 	i = 0;
 	sign = 1;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || (nptr[i] == 32))
+	while ((n[i] >= 9 && n[i] <= 13) || (n[i] == 32) || (n[i] == '0'))
 		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	if (n[i] == '-' || n[i] == '+')
 	{
-		if (nptr[i] == '-')
+		if (n[i] == '-')
 			sign = -1;
 		i++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-		res = (res * 10) + nptr[i++] - '0';
+	while (n[i] >= '0' && n[i] <= '9')
+		res = (res * 10) + n[i++] - '0';
 	return (res * sign);
 }

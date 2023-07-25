@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:07 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/25 19:16:23 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/25 19:31:04 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int ac, char **av)
 		ps_free(ps);
 		return (1);
 	}
-	
 	print_stacks(ps);
 	ps_free(ps);
 	return (0);
