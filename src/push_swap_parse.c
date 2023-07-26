@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/25 20:01:51 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/26 12:17:05 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,20 @@
 static int	ps_no_repeat(t_ps *ps);
 static int	ps_args_to_stack(int ac, char **av, t_ps *ps);
 static int	ps_validate_digits(char *str);
+static int	ps_validate_one_arg(char *str);
 
 int	ps_parse_args(int ac, char **av, t_ps *ps)
 {
 	if (ac == 1)
 		return (FALSE);
+	if (ac == 2)
+	{
+		if (av[1][0] == '\0')
+			return (TRUE);
+		else if (!ps_validate_one_arg(av[1]))
+			ft_printf("Error\n");
+		return (TRUE);
+	}
 	if (ps_args_to_stack(ac, av, ps) == FALSE)
 	{
 		ft_printf("Error\n");
@@ -30,6 +39,7 @@ int	ps_parse_args(int ac, char **av, t_ps *ps)
 		ft_printf("Error\n");
 		return (FALSE);
 	}
+	ps_update_stack(ps->a);
 	return (TRUE);
 }
 
@@ -94,5 +104,14 @@ static int	ps_no_repeat(t_ps *ps)
 		}
 		current = current->next;
 	}
+	return (TRUE);
+}
+
+static int	ps_validate_one_arg(char *str)
+{
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (!ps_validate_digits(str))
+		return (FALSE);
 	return (TRUE);
 }

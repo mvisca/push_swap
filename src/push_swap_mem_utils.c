@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:50 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/25 19:17:03 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/26 10:15:24 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	*ps_free(t_ps *ps)
 	return (NULL);
 }
 
-void	update_stack(t_stack *stack)
+void	ps_update_stack(t_stack *stack)
 {
 	t_ps_list	*node;
 

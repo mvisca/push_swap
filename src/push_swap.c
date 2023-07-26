@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:07 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/25 19:31:04 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/26 12:19:49 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@ int	main(int ac, char **av)
 		ps_free(ps);
 		return (1);
 	}
-	print_stacks(ps);
-	ps_free(ps);
+	if (ac > 2)
+	{
+		ps_sort_stack(ps);
+		print_stack(ps->a, "Stack A");
+		ps_free(ps);
+	}
 	return (0);
 }
 
@@ -41,7 +45,10 @@ static t_ps	*ps_init(void)
 	ps->a = (t_stack *) malloc (sizeof(t_stack));
 	ps->b = (t_stack *) malloc (sizeof(t_stack));
 	if (!ps->a || !ps->b)
+	{
+		ps_free(ps);
 		return (NULL);
+	}
 	ps->a->head = NULL;
 	ps->b->head = NULL;
 	ps->a->size = 0;
@@ -52,16 +59,3 @@ static t_ps	*ps_init(void)
 	ps->b->max = INT_MIN;
 	return (ps);
 }
-
-//	#### DEBUG TESTS #####
-	// manual_sort(&a, &b);
-	// print_tab(tab);
-	// print_stack(a, "STACK A");
-	// print_stacks(a->head, b->head);
-	// test_moves(&a, &b);
-	// update_stack(&a);
-	// print_stack(a, "STACK A");
-	// print_stack(b, "STACK B");
-	// print_stack(b, "STACK BBBB");
-	// update_stack(&b);
-//	#### DEBUG TESTS #####
