@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_utils_three.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 16:37:24 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/25 16:08:55 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/26 19:26:43 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	sort_three(t_ps *ps)
+void	ps_sort_three(t_ps *ps)
 {
 	t_stack	*a;
 	int		first;

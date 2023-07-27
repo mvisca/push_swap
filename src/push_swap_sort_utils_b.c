@@ -3,75 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_utils_b.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:19:16 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/25 16:08:09 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/26 19:47:17 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-/*
-static void	update_max_min(t_stack *b, int num)
-{
-	if (num > b->max)
-		b->max = num;
-	if (num < b->min)
-		b->min = num;
-}
-*/
-
-static int	insert_max_min(t_stack *b)
-{
-	t_ps_list	*current;	
-	int		rotations;
-	
-	rotations = 0;
-	current = b->head;
-	while (current && current->content != b->max)
-	{
-		rotations++;
-		current = current->next;
-	}
-	if (rotations > b->size / 2)
-	{
-		rotations = b->size - rotations;
-		rotations *= -1;
-	}
-	return (rotations);
-}
-
-static int	insert_mid(t_stack *b, int num)
-{
-	t_ps_list	*current;
-	int		rotations;
-
-	current = b->head;
-	rotations = 0;
-
-	while (current->content != b->max)
-	{
-		rotations++;
-		current = current->next;
-	}
-
-	if (rotations > b->size / 2)
-	{
-		rotations = b->size - rotations;
-		rotations *= -1;	
-	}
-
-	while (num < current->content)
-	{
-		rotations++;
-		if (current->next)
-			current = current->next;
-		else
-			current = b->head;
-	}
-	return (rotations);
-}
+static int	insert_max_min(t_stack *b);
+static int	insert_mid(t_stack *b, int num);
 
 t_com	*prep_b(t_stack *b, int num)
 {
@@ -96,4 +38,53 @@ t_com	*prep_b(t_stack *b, int num)
 		next_move[i++] = rot_type;
 	next_move[i] = end;
 	return (next_move);
+}
+
+static int	insert_max_min(t_stack *b)
+{
+	t_ps_list	*current;	
+	int		rotations;
+	
+	rotations = 0;
+	current = b->head;
+	while (current && current->content != b->max)
+	{
+		rotations++;
+		current = current->next;
+	}
+	if (rotations > b->size / 2)
+	{
+		rotations = b->size - rotations;
+		rotations *= -1;
+	}
+	return (rotations);
+}
+
+static int	insert_mid(t_stack *b, int num)
+{
+	t_ps_list	*current;
+	int			rotations;
+
+	current = b->head;
+	rotations = 0;
+
+	while (current->content != b->max)
+	{
+		rotations++;
+		current = current->next;
+	}
+	if (rotations > b->size / 2)
+	{
+		rotations = b->size - rotations;
+		rotations *= -1;	
+	}
+	while (num < current->content)
+	{
+		rotations++;
+		if (current->next)
+			current = current->next;
+		else
+			current = b->head;
+	}
+	return (rotations);
 }

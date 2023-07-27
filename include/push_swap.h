@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/26 12:12:42 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/26 20:13:28 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,13 @@ t_com		*prep_a(t_stack *a, t_ps_list *current, t_com *test_moves);
 t_com		*prep_b(t_stack *b, int num);
 
 // push_swap_sort_long.c
-void		sort_long(t_ps *ps);
+void		ps_sort_long(t_ps *ps);
 
 // push_swap_sort_utils_three.c
-void		sort_three(t_ps *ps);
+void		ps_sort_three(t_ps *ps);
 
 // push_swap_sort_utils_two.c
-void		sort_two(t_ps *ps);
+void		ps_sort_two(t_ps *ps);
 
 /*
 // push_swap_validate_args.c
@@ -104,7 +104,7 @@ int			tab_valid(char **tab);
 
 // push_swap_sort.c
 void		ps_sort_stack(t_ps *ps);
-int			move_cost(t_com *moves);
-//int			ps_sorted(t_ps *ps);
+int			ps_move_cost(t_com *moves);
+void		ps_min_to_top();
 
 #endif

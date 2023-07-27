@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_parse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 12:26:05 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/26 12:26:06 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/26 18:47:56 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,23 @@ static int	ps_validate_one_arg(char *str);
 
 int	ps_parse_args(int ac, char **av, t_ps *ps)
 {
-	if (ac == 1)
-		return (FALSE);
-	if (ac == 2)
+	if (ac < 3)
 	{
-		if (av[1][0] == '\0')
-			return (TRUE);
-		else if (!ps_validate_one_arg(av[1]))
-			ft_printf("Error\n");
+		if (av[1] && (av[1][0] == '\0' || !ps_validate_one_arg(av[1])))
+		{
+			write (2, "Error\n", 6);
+			return (FALSE);
+		}	
 		return (TRUE);
 	}
 	if (ps_args_to_stack(ac, av, ps) == FALSE)
 	{
-		write(1, "Error\n", 6);
+		write (2, "Error\n", 6);
 		return (FALSE);
 	}
 	if (ps_no_repeat(ps) == FALSE)
 	{
-		write(1, "Error\n", 6);
+		write (2, "Error\n", 6);
 		return (FALSE);
 	}
 	ps_update_stack(ps->a);
@@ -75,6 +74,8 @@ static int	ps_validate_digits(char *str)
 {
 	if (*str == '-' || *str == '+')
 		str++;
+	if (!*str)
+		return (FALSE);
 	while (*str)
 	{
 		if (!ft_isdigit(*str))
@@ -106,9 +107,14 @@ static int	ps_no_repeat(t_ps *ps)
 
 static int	ps_validate_one_arg(char *str)
 {
+	long long int	num;
+
 	while ((*str >= 9 && *str <= 13) || *str == 32)
 		str++;
 	if (!ps_validate_digits(str))
+		return (FALSE);
+	num = ft_atol(str);
+	if (num < INT_MIN || num > INT_MAX)
 		return (FALSE);
 	return (TRUE);
 }

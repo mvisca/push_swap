@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_utils_a.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:19:14 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/25 16:06:49 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/26 19:44:11 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-t_com	*prep_a(t_stack *a, t_ps_list *node, t_com *test_moves)
+t_com	*prep_a(t_stack *a, t_ps_list *node, t_com *best_move)
 {
 	int			rotations;
 	int     	size;
-	int  	   i;
+	int			i;
 	t_com		rot_type;
-	t_com		*next_move;
+	t_com		*new_move;
 	t_ps_list	*current;
 
 	rotations = 0;
@@ -39,22 +39,22 @@ t_com	*prep_a(t_stack *a, t_ps_list *node, t_com *test_moves)
 		rotations = a->size - rotations;
 	}
 
-	size = move_cost(test_moves);
-	next_move = (t_com *) malloc (sizeof(t_com) * (rotations + size + 1));
-	if (!next_move)
+	size = ps_move_cost(best_move);
+	new_move = (t_com *) malloc (sizeof(t_com) * (rotations + size + 1));
+	if (!new_move)
 	{
-		free(test_moves);
+		free(best_move);
 		return (NULL);
 	}
 	i = 0;
-	while (test_moves[i] != end)
+	while (best_move[i] != end)
 	{
-		next_move[i] = test_moves[i];
+		new_move[i] = best_move[i];
 		i++;
 	}
 	while (i < rotations + size)
-		next_move[i++] = rot_type;
-	next_move[i] = end;
-	free(test_moves);
-	return (next_move);
+		new_move[i++] = rot_type;
+	new_move[i] = end;
+	free(best_move);
+	return (new_move);
 }
