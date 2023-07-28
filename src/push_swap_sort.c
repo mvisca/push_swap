@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:18:02 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/26 20:13:58 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/27 20:45:09 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ps_sort_stack(t_ps *ps)
 			ps_sort_long(ps);
 		ps_min_to_top(ps);
 	}
+//	print_stacks(ps);
 }
 
 static int	ps_sorted(t_ps *ps)

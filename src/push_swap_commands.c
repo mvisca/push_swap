@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:30 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/27 18:08:32 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/27 20:29:20 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	*ps_command(t_com move, t_ps *ps)
 		do_revrot(ps->b);
 	else if (move == rrr && ft_printf("rrr\n") && do_revrot(ps->a))
 		do_revrot(ps->b);
-	print_stacks(ps);
 	return (NULL);
 }
 

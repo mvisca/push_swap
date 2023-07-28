@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/26 20:13:28 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/27 20:43:49 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int			tab_valid(char **tab);
 
 // push_swap_sort.c
 void		ps_sort_stack(t_ps *ps);
+void		ps_min_to_top(t_ps *ps);
 int			ps_move_cost(t_com *moves);
-void		ps_min_to_top();
 
 #endif
