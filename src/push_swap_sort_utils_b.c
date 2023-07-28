@@ -6,34 +6,43 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:19:16 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/26 19:47:17 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/28 13:41:02 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
 static int	insert_max_min(t_stack *b);
-static int	insert_mid(t_stack *b, int num);
 
-t_com	*prep_b(t_stack *b, int num)
+t_com	*prep_b(t_ps *ps, int num, int i)
 {
-	int		rotations;
-	t_com	rot_type;
-	t_com	*next_move;
-	int		i;
+	int			rotations;
+	t_com		rot_type;
+	t_com		*next_move;
+	t_ps_list	*first;
+	t_ps_list	*last;
 
+	rotations = 0;
 	rot_type = rb;
-	if (num > b->max || num < b->min)
-		rotations = insert_max_min(b);
+	first = ps->b->head;
+	last = ps_lstlast(ps->b->head);
+	if (num > ps->b->max || num < ps->b->min)
+		rotations = insert_max_min(ps->b);
 	else
-		rotations = insert_mid(b, num);
-	if (rotations < 0)
+	{
+		while (first && !(num > first->content && num < last->content))
+		{
+			rotations++;
+			last = first;
+			first = first->next;
+		}
+	}
+	if (rotations > (ps->b->size + 1) / 2)
 	{
 		rot_type = rrb;
-		rotations *= -1;
+		rotations = ps->b->size - rotations;
 	}
 	next_move = (t_com *) malloc (sizeof(t_com) * (rotations + 1));
-	i = 0;
 	while (i < rotations)
 		next_move[i++] = rot_type;
 	next_move[i] = end;
@@ -42,49 +51,15 @@ t_com	*prep_b(t_stack *b, int num)
 
 static int	insert_max_min(t_stack *b)
 {
-	t_ps_list	*current;	
-	int		rotations;
-	
-	rotations = 0;
-	current = b->head;
-	while (current && current->content != b->max)
-	{
-		rotations++;
-		current = current->next;
-	}
-	if (rotations > b->size / 2)
-	{
-		rotations = b->size - rotations;
-		rotations *= -1;
-	}
-	return (rotations);
-}
-
-static int	insert_mid(t_stack *b, int num)
-{
-	t_ps_list	*current;
 	int			rotations;
+	t_ps_list	*head;
 
-	current = b->head;
 	rotations = 0;
-
-	while (current->content != b->max)
+	head = b->head;
+	while (head && head->content != b->max)
 	{
 		rotations++;
-		current = current->next;
-	}
-	if (rotations > b->size / 2)
-	{
-		rotations = b->size - rotations;
-		rotations *= -1;	
-	}
-	while (num < current->content)
-	{
-		rotations++;
-		if (current->next)
-			current = current->next;
-		else
-			current = b->head;
+		head = head->next;
 	}
 	return (rotations);
 }

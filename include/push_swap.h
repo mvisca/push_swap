@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/27 20:43:49 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/28 13:19:16 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ void		ps_update_stack(t_stack *stack);
 int			ps_parse_args(int ac, char **av, t_ps *ps);
 
 // push_swap_sort_utils_a.c
-t_com		*prep_a(t_stack *a, t_ps_list *current, t_com *test_moves);
+t_com		*prep_a(t_ps *ps, int node, t_com *test_moves);
 
 // push_swap_sort_utils_b.c
-t_com		*prep_b(t_stack *b, int num);
+t_com		*prep_b(t_ps *ps, int num, int i);
 
 // push_swap_sort_long.c
 void		ps_sort_long(t_ps *ps);
@@ -94,13 +94,6 @@ void		ps_sort_three(t_ps *ps);
 
 // push_swap_sort_utils_two.c
 void		ps_sort_two(t_ps *ps);
-
-/*
-// push_swap_validate_args.c
-int			is_int(char *str);
-int			only_digits(char *str);
-int			tab_valid(char **tab);
-*/
 
 // push_swap_sort.c
 void		ps_sort_stack(t_ps *ps);

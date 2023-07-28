@@ -6,13 +6,13 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:19:14 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/26 19:44:11 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/28 12:49:12 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-t_com	*prep_a(t_stack *a, t_ps_list *node, t_com *best_move)
+t_com	*prep_a(t_ps *ps, int content, t_com *best_move)
 {
 	int			rotations;
 	int     	size;
@@ -24,19 +24,19 @@ t_com	*prep_a(t_stack *a, t_ps_list *node, t_com *best_move)
 	rotations = 0;
 	rot_type = ra;
 
-	current = a->head;
-	while (current->content != node->content)
+	current = ps->a->head;
+	while (current->content != content)
 	{
 		current = current->next;
 		if (!current)
-			current = a->head;
+			current = ps->a->head;
 		rotations++;
 	}	
 
-	if (rotations > (a->size / 2))
+	if (rotations > (ps->a->size / 2))
 	{
 		rot_type = rra;
-		rotations = a->size - rotations;
+		rotations = ps->a->size - rotations;
 	}
 
 	size = ps_move_cost(best_move);

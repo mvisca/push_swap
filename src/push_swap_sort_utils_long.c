@@ -6,14 +6,14 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:28:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/28 11:29:12 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/28 13:34:45 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
 int				ps_move_cost(t_com *moves);
-static t_com	*ps_get_best_move(t_stack *a, t_stack *b);
+static t_com	*ps_get_best_move(t_ps *ps);
 static void		ps_move_b_to_a(t_ps *ps);
 
 void ps_sort_long(t_ps *ps)
@@ -21,13 +21,14 @@ void ps_sort_long(t_ps *ps)
 	int		i;
 	t_com	*best_move;
 
-	while (ps->a->size > 3 && ps->b->size < 3)
+	while (ps->a->size > 3 && ps->b->size < 2)
 		ps_command(pb, ps);
-	if (ps->b->head->content < ps->b->max)
-		ps_command(rb, ps);
+	// print_stacks(ps);
+	// if (ps->b->head->content < ps->b->max)
+	// 	ps_command(rb, ps);
 	while (ps->a->size > 3)
 	{
-		best_move = ps_get_best_move(ps->a, ps->b);
+		best_move = ps_get_best_move(ps);
 		// best_move = optimize_move(best_move);
 		i = 0;
 		while (best_move[i] != end)
@@ -39,6 +40,8 @@ void ps_sort_long(t_ps *ps)
 	ps_sort_three(ps);
 	// print_stacks(ps);
 	ps_move_b_to_a(ps);
+	ps_min_to_top(ps);
+	// print_stacks(ps);
 }
 
 int	ps_move_cost(t_com *moves)
@@ -51,19 +54,19 @@ int	ps_move_cost(t_com *moves)
 	return (i);
 }
 
-static t_com	*ps_get_best_move(t_stack *a, t_stack *b)
+static t_com	*ps_get_best_move(t_ps *ps)
 {
 	t_com		*test_move;
 	t_com		*best_move;
 	t_ps_list	*current;
-
-	best_move = prep_b(b, a->head->content);
-	best_move = prep_a(a, a->head, best_move);
-	current = a->head->next;
+		
+	best_move = prep_b(ps, ps->a->head->content, 0);
+	best_move = prep_a(ps, ps->a->head->content, best_move);
+	current = ps->a->head->next;
 	while (current)
 	{
-		test_move = prep_b(b, current->content);
-		test_move = prep_a(a, current, test_move);
+		test_move = prep_b(ps, current->content, 0);
+		test_move = prep_a(ps, current->content, test_move);
 		if (ps_move_cost(test_move) < ps_move_cost(best_move))
 		{
 			free(best_move);

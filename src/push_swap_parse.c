@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 12:26:05 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/26 18:47:56 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/28 12:46:58 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,11 @@ static int	ps_validate_one_arg(char *str)
 {
 	long long int	num;
 
+	if (ft_strchr(str, 32))
+	{
+		ft_printf("Validar argumento ac == 2 con espacios\n");
+		return (FALSE);
+	}
 	while ((*str >= 9 && *str <= 13) || *str == 32)
 		str++;
 	if (!ps_validate_digits(str))
