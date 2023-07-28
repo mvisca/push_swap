@@ -6,14 +6,14 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:18:02 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/27 20:45:09 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/28 11:43:30 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
 static int	ps_sorted(t_ps *ps);
-void	ps_min_to_top(t_ps *ps);
+void		ps_min_to_top(t_ps *ps);
 
 void	ps_sort_stack(t_ps *ps)
 {
@@ -37,7 +37,7 @@ static int	ps_sorted(t_ps *ps)
 
 	current = ps->a->head;
 	following = current->next;
-	while (current)
+	while (current && following)
 	{
 		if (current->content > following->content)
 			return (FALSE);

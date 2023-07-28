@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:28:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/27 20:45:32 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/28 11:29:12 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int	ps_move_cost(t_com *moves)
 
 static t_com	*ps_get_best_move(t_stack *a, t_stack *b)
 {
-	t_com	*test_move;
-	t_com	*best_move;
+	t_com		*test_move;
+	t_com		*best_move;
 	t_ps_list	*current;
 
 	best_move = prep_b(b, a->head->content);
@@ -95,7 +95,7 @@ static t_com	ps_rot_direction(t_ps *ps, int curr)
 		first = last->next;
 		rotations++;
 	}
-	if (rotations > ps->a->size / 2)
+	if (rotations > ps->a->size + 1 / 2)
 	{
 		rotations = ps->a->size - rotations;
 		rot_type = ra;

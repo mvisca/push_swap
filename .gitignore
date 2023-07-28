@@ -4,3 +4,12 @@ en.subject.pdf
 *.o
 push_swap
 .vscode
+./push_swap_tester
+push_swap_test.sh
+push_swap_test_linux.sh
+*.log
+./machine01
+checker
+checker_Mac
+checker_linux
+pro_checker
