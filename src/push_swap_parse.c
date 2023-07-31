@@ -3,123 +3,101 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_parse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/26 12:26:05 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/28 12:46:58 by mvisca           ###   ########.fr       */
+/*   Created: 2023/07/31 17:21:09 by mvisca-g          #+#    #+#             */
+/*   Updated: 2023/07/31 22:44:43 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static int	ps_no_repeat(t_ps *ps);
-static int	ps_args_to_stack(int ac, char **av, t_ps *ps);
-static int	ps_validate_digits(char *str);
-static int	ps_validate_one_arg(char *str);
-
-int	ps_parse_args(int ac, char **av, t_ps *ps)
+static void	ps_free_stack2(t_stack **stack)
 {
-	if (ac < 3)
+	t_ps_list	*current;
+	t_ps_list	*next;
+
+	if (*stack)
 	{
-		if (av[1] && (av[1][0] == '\0' || !ps_validate_one_arg(av[1])))
+		current = (*stack)->head;
+		while (current)
 		{
-			write (2, "Error\n", 6);
+			next = current->next;
+			free(current);
+			current = next;
+		}
+	}
+}
+
+static void	ps_free_tab(char **tab)
+{
+	int	i;
+
+	if (tab)
+	{
+		i = 0;
+		while (tab[i])
+		{
+			free(tab[i]);
+			tab[i] = NULL;
+			i++;
+		}
+	}
+}
+
+static int	ps_end_error(t_ps *ps, char **tab, int msg)
+{
+	if (msg)
+		write (2, "Error\n", 6);
+	ps_free_tab(tab);
+	free(tab);
+	ps_free_stack2(&ps->a);
+	free(ps->a);
+	ps_free_stack2(&ps->b);
+	free(ps->b);
+	ps = NULL;
+	return (FALSE);
+}
+
+static int	ps_isnum(char *str)
+{
+	if (*str == '\0')
+		return (FALSE);
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str)
+	{
+		if (*str < '0' || *str > '9')
 			return (FALSE);
-		}	
-		return (TRUE);
+		str++;
 	}
-	if (ps_args_to_stack(ac, av, ps) == FALSE)
-	{
-		write (2, "Error\n", 6);
-		return (FALSE);
-	}
-	if (ps_no_repeat(ps) == FALSE)
-	{
-		write (2, "Error\n", 6);
-		return (FALSE);
-	}
-	ps_update_stack(ps->a);
 	return (TRUE);
 }
 
-static int	ps_args_to_stack(int ac, char **av, t_ps *ps)
+int	ps_parse(char *str, t_ps *ps)
 {
 	int				i;
 	long long int	num;
-	char			*str;
-	t_ps_list		*new;
+	t_ps_list		*node;
+	char			**tab;
 
-	i = 1;
-	while (i < ac)
+	if (*str == 0)
+		exit (ps_end_error(ps, NULL, TRUE));
+	i = 0;
+	tab = ft_split(str, 32);
+	while (tab[i] != NULL)
 	{
-		str = av[i];
-		if (!*str)
-			return (0);
-
-		if (ps_validate_digits(str) == FALSE)
-			return (FALSE);
-		num = ft_atol(av[i]);
+		if (tab[i][0] == 0 || !ps_isnum(tab[i]))
+			exit (ps_end_error(ps, tab, TRUE));
+		num = ft_atol(tab[i]);
 		if (num < INT_MIN || num > INT_MAX)
-			return (FALSE);
-		new = ps_lstnew((int) num);
-		if (!new)
-			return (FALSE);
-		ps_lstadd_back(&ps->a->head, new);
+			exit (ps_end_error(ps, tab, TRUE));
+		node = ps_lstnew(num);
+		if (!node)
+			exit (ps_end_error(ps, tab, FALSE));
+		ps_lstadd_back(&ps->a->head, node);
 		i++;
 	}
-	return (TRUE);
-}
-
-static int	ps_validate_digits(char *str)
-{
-	if (*str == '-' || *str == '+')
-		str++;
-	if (!*str)
-		return (FALSE);
-	while (*str)
-	{
-		if (!ft_isdigit(*str))
-			return (FALSE);
-		str++;
-	}
-	return (TRUE);
-}
-
-static int	ps_no_repeat(t_ps *ps)
-{
-	t_ps_list	*current;
-	t_ps_list	*following;
-
-	current = ps->a->head;
-	while (current)
-	{
-		following = current->next;
-		while (following)
-		{
-			if (current->content == following->content)
-				return (FALSE);
-			following = following->next;
-		}
-		current = current->next;
-	}
-	return (TRUE);
-}
-
-static int	ps_validate_one_arg(char *str)
-{
-	long long int	num;
-
-	if (ft_strchr(str, 32))
-	{
-		ft_printf("Validar argumento ac == 2 con espacios\n");
-		return (FALSE);
-	}
-	while ((*str >= 9 && *str <= 13) || *str == 32)
-		str++;
-	if (!ps_validate_digits(str))
-		return (FALSE);
-	num = ft_atol(str);
-	if (num < INT_MIN || num > INT_MAX)
-		return (FALSE);
-	return (TRUE);
+	ps_free_tab(tab);
+	return (FALSE);
 }

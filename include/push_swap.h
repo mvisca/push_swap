@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/28 13:19:16 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/31 22:36:11 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void		*ps_free(t_ps *ps);
 void		ps_update_stack(t_stack *stack);
 
 // push_swap_parse.c
-int			ps_parse_args(int ac, char **av, t_ps *ps);
+int			ps_parse(char *str, t_ps *ps);
 
 // push_swap_sort_utils_a.c
 t_com		*prep_a(t_ps *ps, int node, t_com *test_moves);

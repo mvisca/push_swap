@@ -3,44 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:07 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/28 12:37:35 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/31 22:42:55 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static t_ps	*ps_init(void);
+static t_ps	*ps_init(t_ps *ps);
 
 int	main(int ac, char **av)
 {
+	int		i;
 	t_ps	*ps;
 
-	ps = ps_init();
+	ps = (t_ps *) malloc (sizeof(t_ps));
 	if (!ps)
 		return (1);
-	if (!ps_parse_args(ac, av, ps))
-	{
-		ps_free(ps);
-		return (1);
-	}
+	ps = ps_init(ps);
+	i = 1;
+	while (i < ac)
+		ps_parse(av[i++], ps);
+	ps_update_stack(ps->a);
+	print_stacks(ps);
+/*
 	if (ac > 2)
 	{
 		ps_sort_stack(ps);
 		ps_free(ps);
 	}
+*/
 	return (0);
 }
 
-static t_ps	*ps_init(void)
+static t_ps	*ps_init(t_ps *ps)
 {
-	t_ps	*ps;
-
-	ps = (t_ps *) malloc (sizeof(t_ps));
-	if (!ps)
-		return (NULL);
 	ps->a = (t_stack *) malloc (sizeof(t_stack));
 	ps->b = (t_stack *) malloc (sizeof(t_stack));
 	if (!ps->a || !ps->b)
