@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:07 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/31 23:14:08 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/31 23:16:55 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int ac, char **av)
 		ps_parse(av[i++], ps);
 	ps_norep(ps);
 	ps_update_stack(ps->a);
-
+// buscar sorted
 
 /*
 	print_stack(ps->a, "A");

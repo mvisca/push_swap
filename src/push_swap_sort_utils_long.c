@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_utils_long.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:28:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/28 13:34:45 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/31 23:18:42 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,25 @@ int				ps_move_cost(t_com *moves);
 static t_com	*ps_get_best_move(t_ps *ps);
 static void		ps_move_b_to_a(t_ps *ps);
 
-void ps_sort_long(t_ps *ps)
+void	ps_sort_long(t_ps *ps)
 {
 	int		i;
 	t_com	*best_move;
 
 	while (ps->a->size > 3 && ps->b->size < 2)
 		ps_command(pb, ps);
-	// print_stacks(ps);
-	// if (ps->b->head->content < ps->b->max)
-	// 	ps_command(rb, ps);
 	while (ps->a->size > 3)
 	{
 		best_move = ps_get_best_move(ps);
-		// best_move = optimize_move(best_move);
 		i = 0;
 		while (best_move[i] != end)
 			ps_command(best_move[i++], ps);
 		free(best_move);
 		ps_command(pb, ps);
 	}
-	// print_stacks(ps);
 	ps_sort_three(ps);
-	// print_stacks(ps);
 	ps_move_b_to_a(ps);
 	ps_min_to_top(ps);
-	// print_stacks(ps);
 }
 
 int	ps_move_cost(t_com *moves)
