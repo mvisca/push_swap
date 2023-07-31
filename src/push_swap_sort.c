@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:18:02 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/28 11:48:19 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/07/31 23:21:53 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static int	ps_sorted(t_ps *ps);
-void		ps_min_to_top(t_ps *ps);
+int		ps_sorted(t_ps *ps);
+void	ps_min_to_top(t_ps *ps);
 
 void	ps_sort_stack(t_ps *ps)
 {
@@ -30,7 +30,7 @@ void	ps_sort_stack(t_ps *ps)
 //	print_stacks(ps);
 }
 
-static int	ps_sorted(t_ps *ps)
+int	ps_sorted(t_ps *ps)
 {
 	t_ps_list	*current;
 	t_ps_list	*following;

@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/31 23:01:32 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/31 23:21:15 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ void		ps_sort_two(t_ps *ps);
 void		ps_sort_stack(t_ps *ps);
 void		ps_min_to_top(t_ps *ps);
 int			ps_move_cost(t_com *moves);
+int			ps_sorted(t_ps *ps);
 
 #endif
