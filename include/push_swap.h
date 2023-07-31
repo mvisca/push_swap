@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/31 22:36:11 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/31 23:01:32 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ t_ps_list	*ps_lstlast(t_ps_list *lst);
 // push_swap_mem_utils.c
 void		*ps_free(t_ps *ps);
 void		ps_update_stack(t_stack *stack);
+int			ps_end_error(t_ps *ps, char **tab, int msg);
 
 // push_swap_parse.c
 int			ps_parse(char *str, t_ps *ps);

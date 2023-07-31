@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 17:21:09 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/31 22:44:43 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/31 23:15:28 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	ps_free_tab(char **tab)
 	}
 }
 
-static int	ps_end_error(t_ps *ps, char **tab, int msg)
+int	ps_end_error(t_ps *ps, char **tab, int msg)
 {
 	if (msg)
 		write (2, "Error\n", 6);
@@ -65,6 +65,8 @@ static int	ps_isnum(char *str)
 		return (FALSE);
 	if (*str == '-' || *str == '+')
 		str++;
+	if (!*str)
+		return (FALSE);
 	while (*str)
 	{
 		if (*str < '0' || *str > '9')

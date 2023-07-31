@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
+#    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/07/27 18:52:15 by mvisca           ###   ########.fr        #
+#    Updated: 2023/07/31 23:05:16 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ SRCS			:=	$(addprefix $(SRCS_DIR)/, $(SRCS))
 #	UTILS			#
 #-------------------#
 
-CC				:=	cc #-g -fsanitize=address
+CC				:=	cc -g -fsanitize=address
 
 CFLAGS			:=	-Wall -Wextra -Werror
 CPPFLAGS		:=	-I./$(INC_DIR) -I./$(LIB_DIR)/$(INC_DIR)	\

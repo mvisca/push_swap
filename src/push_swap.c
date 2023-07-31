@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:07 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/31 22:59:14 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/07/31 23:14:08 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,20 @@ static t_ps	*ps_init(t_ps *ps)
 
 static int	ps_norep(t_ps *ps)
 {
-	t_ps_list	*node;
+	t_ps_list	*current;
 	t_ps_list	*following;
 
-	node = ps->a->head;
-	while (node)
+	current = ps->a->head;
+	while (current)
 	{
-		following = node->next;
+		following = current->next;
 		while (following)
 		{
-			if (node->content == following->content)
-				exit (ps_end_error(ps, NULL, FALSE));
+			if (current->content == following->content)
+				exit (ps_end_error(ps, NULL, TRUE));
 			following = following->next;
 		}
-		node = node->next;
+		current = current->next;
 	}
 	return (TRUE);
 }
@@ -64,8 +64,10 @@ int	main(int ac, char **av)
 	i = 1;
 	while (i < ac)
 		ps_parse(av[i++], ps);
-	
+	ps_norep(ps);
 	ps_update_stack(ps->a);
+
+
 /*
 	print_stack(ps->a, "A");
 	print_stacks(ps);
