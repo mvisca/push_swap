@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/08/01 18:23:54 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/01 19:19:26 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,11 @@ int			ps_parse(char *str, t_ps *ps);
 t_com		*prep_a(t_ps *ps, int node, t_com *test_moves);
 
 // push_swap_sort_utils_b.c
-t_com		*prep_b(t_ps *ps, int num, int i);
+t_com		*prep_b(t_ps *ps, int num);
 
 // push_swap_sort_long.c
 void		ps_sort_long(t_ps *ps);
+int			ps_cost_to_move(t_com *moves);
 
 // push_swap_sort_utils_five.c
 void		ps_sort_five(t_ps *ps);
@@ -103,7 +104,7 @@ void		ps_sort_two(t_ps *ps);
 // push_swap_sort.c
 void		ps_sort_stack(t_ps *ps);
 void		ps_min_to_top(t_ps *ps);
-int			ps_move_cost(t_com *moves);
 int			ps_sorted(t_ps *ps);
+void		ps_dorotations(t_ps *ps, int rotations, t_com rot, t_com rrot);
 
 #endif

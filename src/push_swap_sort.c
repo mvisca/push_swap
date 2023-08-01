@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:18:02 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/01 18:00:47 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/01 19:06:04 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,20 @@ void	ps_sort_stack(t_ps *ps)
 		else
 			ps_sort_long(ps);
 		ps_min_to_top(ps);
+	}
+}
+
+void	ps_dorotations(t_ps *ps, int rotations, t_com rot, t_com rrot)
+{
+	if (rotations > 0)
+	{
+		while (rotations--)
+			ps_command(rot, ps);
+	}
+	else
+	{
+		while (rotations++)
+			ps_command(rrot, ps);
 	}
 }
 
