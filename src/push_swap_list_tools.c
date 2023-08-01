@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 23:08:00 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/31 23:08:02 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/01 12:58:16 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void	ps_lstadd_back(t_ps_list **head, t_ps_list *node)
 {
 	t_ps_list	*tmp;
 
-	if (head && !(*head))
+	if (!head)
+		return ;
+	if (!*head)
 	{
 		*head = node;
 		return ;

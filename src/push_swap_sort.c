@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:18:02 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/31 23:21:53 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:00:47 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ void	ps_sort_stack(t_ps *ps)
 			ps_sort_two(ps);
 		else if (ps->a->size == 3)
 			ps_sort_three(ps);
+		else if (ps->a->size < 6)
+			ps_sort_five(ps);
 		else
 			ps_sort_long(ps);
 		ps_min_to_top(ps);
 	}
-//	print_stacks(ps);
 }
 
 int	ps_sorted(t_ps *ps)
@@ -36,7 +37,8 @@ int	ps_sorted(t_ps *ps)
 	t_ps_list	*following;
 
 	current = ps->a->head;
-	following = current->next;
+	if (current)
+		following = current->next;
 	while (current && following)
 	{
 		if (current->content > following->content)

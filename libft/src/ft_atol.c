@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 13:17:06 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/25 19:53:01 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/01 14:26:01 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 long long int	ft_atol(const char *n)
 {
-	unsigned long long int	res;
-	int						i;
-	int						sign;
+	long long int	res;
+	int				i;
+	int				sign;
 
 	res = 0;
 	i = 0;

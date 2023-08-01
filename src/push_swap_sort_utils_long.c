@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:28:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/31 23:18:42 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/01 17:58:28 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static t_com	*ps_get_best_move(t_ps *ps)
 	t_com		*test_move;
 	t_com		*best_move;
 	t_ps_list	*current;
-		
+
 	best_move = prep_b(ps, ps->a->head->content, 0);
 	best_move = prep_a(ps, ps->a->head->content, best_move);
 	current = ps->a->head->next;
@@ -84,7 +84,6 @@ static t_com	ps_rot_direction(t_ps *ps, int curr)
 	rot_type = rra;
 	last = ps->a->head;
 	first = last->next;
-	
 	while (!(curr > last->content && curr < first->content))
 	{
 		last = last->next;
@@ -101,27 +100,27 @@ static t_com	ps_rot_direction(t_ps *ps, int curr)
 
 static void	ps_move_b_to_a(t_ps *ps)
 {
-	int	max;
-	int	min;
+//	int	max;
+//	int	min;
 	int	curr;
 
-	max = ps->a->max;
-	min = ps->a->min;
+//	max = ps->a->max;
+//	min = ps->a->min;
 	while (ps->b->size)
 	{
 		curr = ps->b->head->content;
-		if (curr > max)
-			ps_command(pa, ps);
-		else if (curr < max && curr > min)
+		ps_min_to_top(ps);
+		if (curr > ps->a->max && ps_command(pa, ps))
+			ps_command(ra, ps);
+		else if (curr < ps->a->max && curr > ps->a->min)
 		{
-			while (!(curr > ps_lstlast(ps->a->head)->content
-			&& curr < ps->a->head->content))
+			while (!(curr > ps_lstlast(ps->a->head)->content \
+				&& curr < ps->a->head->content))
 				ps_command(ps_rot_direction(ps, curr), ps);
 			ps_command(pa, ps);
 		}
 		else
 		{
-			ps_min_to_top(ps);
 			ps_command(pa, ps);
 		}
 	}

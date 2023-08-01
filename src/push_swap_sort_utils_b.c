@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_utils_b.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:19:16 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/28 13:41:02 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/01 17:52:50 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static int	insert_max_min(t_stack *b);
+static int	ps_max_to_top(t_stack *b);
 
 t_com	*prep_b(t_ps *ps, int num, int i)
 {
@@ -27,7 +27,7 @@ t_com	*prep_b(t_ps *ps, int num, int i)
 	first = ps->b->head;
 	last = ps_lstlast(ps->b->head);
 	if (num > ps->b->max || num < ps->b->min)
-		rotations = insert_max_min(ps->b);
+		rotations = ps_max_to_top(ps->b);
 	else
 	{
 		while (first && !(num > first->content && num < last->content))
@@ -49,7 +49,7 @@ t_com	*prep_b(t_ps *ps, int num, int i)
 	return (next_move);
 }
 
-static int	insert_max_min(t_stack *b)
+static int	ps_max_to_top(t_stack *b)
 {
 	int			rotations;
 	t_ps_list	*head;

@@ -6,7 +6,7 @@
 #    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/07/31 23:05:16 by mvisca-g         ###   ########.fr        #
+#    Updated: 2023/08/01 18:11:16 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,8 +49,8 @@ SRCS			:=	push_swap.c							\
 					push_swap_sort_utils_b.c			\
 					push_swap_sort_utils_long.c			\
 					push_swap_sort_utils_three.c		\
+					push_swap_sort_utils_five.c			\
 					push_swap_sort_utils_two.c
-#					push_swap_validate_args.c
 
 SRCS			:=	$(addprefix $(SRCS_DIR)/, $(SRCS))
 
@@ -60,7 +60,7 @@ SRCS			:=	$(addprefix $(SRCS_DIR)/, $(SRCS))
 #	UTILS			#
 #-------------------#
 
-CC				:=	cc -g -fsanitize=address
+CC				:=	cc #-g -fsanitize=address
 
 CFLAGS			:=	-Wall -Wextra -Werror
 CPPFLAGS		:=	-I./$(INC_DIR) -I./$(LIB_DIR)/$(INC_DIR)	\
