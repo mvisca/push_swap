@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 17:21:09 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/08/01 14:37:11 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/02 14:26:55 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static int	ps_isnum(char *str)
 {
 	if (*str == '\0')
 		return (FALSE);
-	if (*str == '-' || *str == '+')
+	if ((*str == '+' || *str == '-'))
 		str++;
 	if (!*str)
 		return (FALSE);
 	while (*str)
 	{
-		if (*str < '0' || *str > '9')
+		if ((*str < '0' || *str > '9'))
 			return (FALSE);
 		str++;
 	}

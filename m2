@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    m2                                                 :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/08/02 13:32:21 by mvisca-g         ###   ########.fr        #
+#    Updated: 2023/08/02 13:32:11 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ LIB_TGT			:=	libft.a
 LIB				:=	ft
 
 SRCS_DIR		:=	src
+OBJS_DIR		:=	obj
 
 SRCS			:=	push_swap.c							\
 					push_swap_commands.c				\
@@ -53,6 +54,7 @@ SRCS			:=	push_swap.c							\
 					push_swap_sort_utils_two.c
 
 SRCS			:=	$(addprefix $(SRCS_DIR)/, $(SRCS))
+OBJS			:=	$(SRCS:%.c=$(OBJS_DIR))
 
 #DEPS			:=	$(SRCS:.c=.d)
 
@@ -77,7 +79,10 @@ all: $(NAME)
 
 $(NAME): $(LIB_TGT)
 	@echo "$(YELLOW)Compiling... $(BLUE)$@$(NC)"
-	@$(CC) $(CFLAGS) $(SRCS) $(CPPFLAGS) -o $@
+	$(CC) $(CFLAGS) $(SRCS) $(CPPFLAGS) -o $@
+
+%.o: %.c $(LIB_TGT)
+
 
 $(LIB_TGT):
 	@echo "Calling LIB_DIR make"
