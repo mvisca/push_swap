@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 16:37:36 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/07/25 15:59:37 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/02 19:41:41 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char			*ft_strchr(const char *s, int c);
 char			*ft_strdup(const char *s);
 char			*ft_strjoin(const char *s1, const char *s2);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-char			*ft_strnstr(const char *haystack, const char *needle, size_t len);
+char			*ft_strnstr(const char *h, const char *n, size_t len);
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_substr(const char *s, unsigned int start, size_t len);
