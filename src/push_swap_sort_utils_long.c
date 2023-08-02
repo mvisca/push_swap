@@ -6,11 +6,19 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:28:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/01 19:18:57 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/02 16:06:37 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+
+/*
+get_best_move
+	best_move {	prep_b, prep_a }
+	test_move { prep_b, prep_a }
+
+*/
 
 int				ps_cost_to_move(t_com *moves);
 static t_com	*ps_get_best_move(t_ps *ps);
@@ -25,7 +33,7 @@ void	ps_sort_long(t_ps *ps)
 		ps_command(pb, ps);
 	while (ps->a->size > 3)
 	{
-		best_move = ps_get_best_move(ps);
+		best_move = ps_get_best_move(ps); //c
 		i = 0;
 		while (best_move[i] != end)
 			ps_command(best_move[i++], ps);
@@ -33,7 +41,7 @@ void	ps_sort_long(t_ps *ps)
 		ps_command(pb, ps);
 	}
 	ps_sort_three(ps);
-	ps_move_b_to_a(ps);
+	ps_move_b_to_a(ps); //c
 	ps_min_to_top(ps);
 }
 
@@ -52,11 +60,13 @@ static t_com	*ps_get_best_move(t_ps *ps)
 	t_com		*test_move;
 	t_com		*best_move;
 	t_ps_list	*current;
+	int			node_num;
 
+	node_num = 1;
 	best_move = prep_b(ps, ps->a->head->content);
 	best_move = prep_a(ps, ps->a->head->content, best_move);
 	current = ps->a->head->next;
-	while (current)
+	while (current && node_num < (ps->a->size / 2))
 	{
 		test_move = prep_b(ps, current->content);
 		test_move = prep_a(ps, current->content, test_move);
@@ -64,7 +74,7 @@ static t_com	*ps_get_best_move(t_ps *ps)
 		{
 			free(best_move);
 			best_move = test_move;
-			test_move = NULL;
+			node_num++;
 		}
 		else
 			free(test_move);

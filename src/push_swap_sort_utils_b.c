@@ -6,29 +6,29 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:19:16 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/01 19:16:37 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/02 18:58:15 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static int	ps_max_to_top(t_stack *b);
+static int	ps_max_to_top(t_ps *ps);
 static int	ps_gap_to_top(t_ps *ps, int num);
 
 t_com	*prep_b(t_ps *ps, int num)
 {
-	int			rotations;
-	int			i;
-	t_com		rot_type;
 	t_com		*next_move;
+	t_com		rot_type;
+	int			i;
+	int			rotations;
 
 	i = 0;
 	rot_type = rb;
 	if (num > ps->b->max || num < ps->b->min)
-		rotations = ps_max_to_top(ps->b);
+		rotations = ps_max_to_top(ps);
 	else
 		rotations = ps_gap_to_top(ps, num);
-	if (rotations > (ps->b->size) / 2)
+	if (rotations > (ps->b->size / 2))
 	{
 		rot_type = rrb;
 		rotations = ps->b->size - rotations;
@@ -42,9 +42,9 @@ t_com	*prep_b(t_ps *ps, int num)
 
 static int	ps_gap_to_top(t_ps *ps, int num)
 {
+	int			rotations;
 	t_ps_list	*first;
 	t_ps_list	*last;
-	int			rotations;
 
 	rotations = 0;
 	first = ps->b->head;
@@ -54,18 +54,20 @@ static int	ps_gap_to_top(t_ps *ps, int num)
 		rotations++;
 		last = first;
 		first = first->next;
+		if (!first)
+			write (2, "Out of stack\n", 13);
 	}
 	return (rotations);
 }
 
-static int	ps_max_to_top(t_stack *b)
+static int	ps_max_to_top(t_ps *ps)
 {
 	int			rotations;
 	t_ps_list	*head;
 
 	rotations = 0;
-	head = b->head;
-	while (head && head->content != b->max)
+	head = ps->b->head;
+	while (head && head->content != ps->b->max)
 	{
 		rotations++;
 		head = head->next;

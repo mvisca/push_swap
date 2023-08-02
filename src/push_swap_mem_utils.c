@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:50 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/02 13:36:39 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:41:57 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ int	ps_end_error(t_ps *ps, char ***tab, int msg)
 			ps_free_stack(ps->a);
 		if (ps->b)
 			ps_free_stack(ps->b);
-//		free(ps);
-//		ps = NULL;
 	}
 	exit (EXIT_FAILURE);
 }

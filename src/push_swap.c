@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:07 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/02 13:36:23 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/02 19:38:10 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,6 @@ int	main(int ac, char **av)
 	int		i;
 	t_ps	ps;
 
-//	ps = (t_ps *) malloc (sizeof(t_ps));
-//	if (!ps)
-//		return (1);
-//	ps = 
 	ps_init(&ps);
 	i = 1;
 	while (i < ac)
@@ -68,7 +64,6 @@ int	main(int ac, char **av)
 	ps_update_stack(ps.a);
 	if (!ps_sorted(&ps))
 		ps_sort_stack(&ps);
-//	print_stack(ps.a, "A");
 	ps_end_error(&ps, NULL, FALSE);
 	return (0);
 }

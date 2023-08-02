@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/08/01 19:19:26 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/02 19:38:15 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,5 @@ void		ps_sort_two(t_ps *ps);
 void		ps_sort_stack(t_ps *ps);
 void		ps_min_to_top(t_ps *ps);
 int			ps_sorted(t_ps *ps);
-void		ps_dorotations(t_ps *ps, int rotations, t_com rot, t_com rrot);
 
 #endif
