@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 11:06:15 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/03 11:57:44 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/03 13:38:57 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,8 @@
 
 static void	ps_do_rotations(int rotations, t_com rot_type, t_ps *ps)
 {
-	int	i;
-
-	i = 0;
-	while (i < rotations)
-	{
+	while (rotations--)
 		ps_command(rot_type, ps);
-		i++;
-	}
 }
 
 static void ps_b2a_min_curr_max(int curr, t_ps *ps)
@@ -52,10 +46,11 @@ static void ps_b2a_min_curr_max(int curr, t_ps *ps)
 
 static void ps_b2a_curr_min_max_curr(int curr, t_ps *ps)
 {
-		ps_min_to_top(ps);
-		ps_command(pa, ps);
-		if (curr >= ps->a->max)
-			ps_command(ra, ps);
+	(void)curr;
+	ps_min_to_top(ps);
+	ps_command(pa, ps);
+//	if (curr >= ps->a->max)
+//		ps_command(ra, ps);
 }
 
 void	ps_move_b_to_a(t_ps *ps)

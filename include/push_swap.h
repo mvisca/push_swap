@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/08/03 11:07:46 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/03 12:43:47 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ typedef enum e_command
 	rr,
 	rra,
 	rrb,
-	rrr
+	rrr,
+	skip
 }	t_com;
 
 typedef struct s_ps_list
