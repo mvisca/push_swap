@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:19:16 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/02 18:58:15 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/03 16:15:08 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ static int	ps_gap_to_top(t_ps *ps, int num)
 		rotations++;
 		last = first;
 		first = first->next;
-		if (!first)
-			write (2, "Out of stack\n", 13);
 	}
 	return (rotations);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
+#    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/08/03 13:23:52 by mvisca           ###   ########.fr        #
+#    Updated: 2023/08/03 17:32:59 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ all: $(NAME)
 
 $(NAME): $(LIB_TGT)
 	@echo "$(YELLOW)Compiling... $(BLUE)$@$(NC)"
-	@$(CC) $(CFLAGS) $(SRCS) $(CPPFLAGS) -o $@
+	$(CC) $(CFLAGS) $(SRCS) $(CPPFLAGS) -o $@
 
 $(LIB_TGT):
 	@echo "Calling LIB_DIR make"
