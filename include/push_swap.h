@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/08/02 19:38:15 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/03 11:07:46 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,9 @@ t_com		*prep_a(t_ps *ps, int node, t_com *test_moves);
 
 // push_swap_sort_utils_b.c
 t_com		*prep_b(t_ps *ps, int num);
+
+// push_swap_sort_utils_b2a.c
+void		ps_move_b_to_a(t_ps *ps);
 
 // push_swap_sort_long.c
 void		ps_sort_long(t_ps *ps);

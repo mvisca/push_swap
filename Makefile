@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
+#    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/08/02 13:32:21 by mvisca-g         ###   ########.fr        #
+#    Updated: 2023/08/03 11:16:32 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCS			:=	push_swap.c							\
 					push_swap_parse.c					\
 					push_swap_sort.c					\
 					push_swap_sort_utils_a.c			\
+					push_swap_sort_utils_b2a.c			\
 					push_swap_sort_utils_b.c			\
 					push_swap_sort_utils_long.c			\
 					push_swap_sort_utils_three.c		\
