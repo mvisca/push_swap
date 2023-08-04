@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/08/04 21:29:44 by mvisca           ###   ########.fr        #
+#    Updated: 2023/08/04 22:03:09 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ DEPS			:=	$(addprefix $(OBJS_DIR)/, $(FILES:.c=.d))
 
 CC				:=	gcc #-g -fsanitize=address
 
-CFLAGS			:=	-Wall -Wextra -Werror -MMD
+CFLAGS			:=	-Wall -Wextra -Werror -MMD -MP
 
 
 DIR_DUP			=	mkdir -p $(@D)
@@ -81,26 +81,15 @@ RM				:=	rm -r -f
 
 all: $(NAME)
 
-$(NAME): callforlib $(OBJS)
+$(NAME): $(OBJS) | callforlib
 	@echo "$(YELLOW)Compiling $(RED)$@ $(YELLOW)ready! $(NC)"
-	$(CC) $(CFLAGS) -L./$(LIB_DIR) -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) $(OBJS) -lft -o $(@)
--include $(DEPS)
+	$(CC) $(CFLAGS) -L./$(LIB_DIR) -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) $(OBJS) -lft -o $(NAME)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c Makefile 
 	@$(DIR_DUP)
 	@echo "$(GREEN)Creating... $(NC) $(notdir $@)"
-	$(CC) ${CFLAGS} -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) -L./$(LIB_DIR) -lft -c $< -o $@
--include $(DEPS)
-
-$(LIB_TGT):
-	@echo "Compling LIBFT"
-	@$(MAKE) -C $(LIB_DIR)
-
-done:
-	 @touch .done
-	 
-test:
-	echo "$(SRCS:%.c)"
+	$(CC) $(CFLAGS) -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) -L./$(LIB_DIR) -lft -c $< -o $@
+-include $(DEPS) 
 
 clean:
 	@echo "$(RED)Deleting objects for... $(NC)$(NAME) *.o *.d $(RED)>> 🗑️$(NC)"
@@ -117,8 +106,4 @@ re: fclean all
 callforlib:
 	@$(MAKE) -C $(LIB_DIR)
 
-ndad:
-	@echo "Making . make"
-	@$(MAKE) -C . $(NAME)
-
-.PHONY: clean fclean all test
+.PHONY: clean fclean re
