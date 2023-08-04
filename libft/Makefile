@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 17:14:27 by mvisca            #+#    #+#              #
-#    Updated: 2023/07/07 10:52:44 by mvisca           ###   ########.fr        #
+#    Updated: 2023/08/04 19:47:17 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,7 +126,7 @@ $(NAME): $(OBJS)
 	@$(AR) $@ $(OBJS)
 	@echo "$(YELLOW)Packing $(RED)$(NAME) $(YELLOW)ready!$(NC)"
 
-$(BUILD_DIR)%.o: $(SRCS_DIR)%.c
+$(BUILD_DIR)%.o: $(SRCS_DIR)%.c Makefile
 	@$(DIR_DUP)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 	@echo "$(GREEN)Building $(NC)$(notdir $<) $(RED)-> $(NC)$(notdir $@)"

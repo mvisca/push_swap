@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/08/04 18:13:56 by mvisca           ###   ########.fr        #
+#    Updated: 2023/08/04 19:47:52 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,28 +31,29 @@ NAME			:=	push_swap
 #-------------------#
 
 PS_INC_DIR		:=	include
+PS_INCLUDE		:=	push_swap.h
 
 LIB_DIR			:=	libft
 LIB_INC_DIR		:=	libft/include
 LIB_TGT			:=	libft/libft.a
 
 SRCS_DIR		:=	src
-OBJS_DIR		:=	obj
+OBJS_DIR		:=	.build
 
-FILES			:=	push_swap.c								\
-					push_swap_commands.c					\
-					push_swap_debug.c						\
-					push_swap_list_tools.c					\
-					push_swap_mem_utils.c					\
-					push_swap_parse.c						\
-					push_swap_sort.c						\
-					push_swap_sort_utils_a.c				\
-					push_swap_sort_utils_b2a.c				\
-					push_swap_sort_utils_b.c				\
-					push_swap_sort_utils_long.c				\
-					push_swap_sort_utils_three.c			\
-					push_swap_sort_utils_five.c				\
-					push_swap_sort_utils_two.c
+FILES			:=	push_swap.c							\
+						push_swap_commands.c			\
+						push_swap_debug.c				\
+						push_swap_list_tools.c			\
+						push_swap_mem_utils.c			\
+						push_swap_parse.c				\
+						push_swap_sort.c				\
+						push_swap_sort_utils_a.c		\
+						push_swap_sort_utils_b2a.c		\
+						push_swap_sort_utils_b.c		\
+						push_swap_sort_utils_long.c		\
+						push_swap_sort_utils_three.c	\
+						push_swap_sort_utils_five.c		\
+						push_swap_sort_utils_two.c
 
 SRCS			:=	$(addprefix $(SRCS_DIR)/, $(FILES))
 
@@ -77,19 +78,22 @@ MAKEFLAGS		+=	--no-print-directory
 
 all: $(NAME)
 
-$(NAME): $(OBJS) Makefile
+$(NAME): callforlib $(OBJS)
 	@echo "$(YELLOW)Compiling... $(BLUE)$@ $(NC)"
-	@$(CC) $(CFLAGS) -L/$(LIB_DIR) -lft -I/$(PS_INC_DIR) -I/$(LIB_INC_DIR) $(OBJS) -o $@
+	@$(CC) $(CFLAGS) -L./$(LIB_DIR) -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) $(OBJS) -lft -o ${NAME}
 
-%.o: $(SRCS:.%.c) $(LIB_TGT)
-	@mkdir -p obj
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c Makefile 
+	@mkdir -p $(@D)
 	@echo "$(YELLOW)Creating... $(BLUE)$@$(NC)"
-	@$(CC) $(CPFLAGS) -I/$(PS_INC_DIR) -I/$(LIB_INC_DIR) $< -o $@
+	@$(CC) ${CFLAGS} -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) -L./$(LIB_DIR) -lft -c $< -o $@
 
 $(LIB_TGT):
 	@echo "Calling LIB_DIR make"
 	@$(MAKE) -C $(LIB_DIR)
 -include $(DEPS)
+
+test:
+	echo "$(SRCS:%.c)"
 
 clean:
 	@echo "Cleaning LIB_DIR make clean"
@@ -104,9 +108,11 @@ fclean: clean
 re: fclean all
 
 callforlib:
-	@echo "Making LIB_DIR make"
+	@echo "Calling LIB_DIR make"
 	@$(MAKE) -C $(LIB_DIR)
+
+ndad:
 	@echo "Making . make"
 	@$(MAKE) -C . $(NAME)
 
-.PHONY: clean fclean all
+.PHONY: clean fclean all test
