@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 11:06:15 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/04 12:55:30 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/05 00:13:45 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	ps_b2a_min_curr_max(int curr, t_ps *ps)
 
 	rotations = 0;
 	rot_type = ra;
-	first = ps->a->head; 
+	first = ps->a->head;
 	last = ps_lstlast(ps->a->head);
 	while (!(curr > last->content && curr < first->content))
 	{

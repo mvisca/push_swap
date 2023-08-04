@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/08/04 13:29:34 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/05 00:14:35 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,5 @@ void		ps_sort_three(t_ps *ps);
 
 // push_swap_sort_utils_two.c
 void		ps_sort_two(t_ps *ps);
-
 
 #endif

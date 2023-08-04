@@ -6,12 +6,13 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 16:18:34 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/04 13:32:04 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/05 00:12:54 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+/*
 void	print_tab(char **tab)
 {
 	int		i;
@@ -30,11 +31,12 @@ void	print_tab(char **tab)
 	}
 	ft_printf ("======== End TAB ============\n");
 }
-
+*/
+/*
 void	print_stack(t_stack *stack, char *name)
 {
 	t_ps_list	*aux;
-	int		i;
+	int			i;
 
 	ft_printf("\n======== Print '%s' ==========\n", name);
 	ft_printf("-------- Nodes\n", name);
@@ -52,7 +54,8 @@ void	print_stack(t_stack *stack, char *name)
 	ft_printf("* Size %d\n", stack->size);
 	ft_printf("======== END '%s'\n", name);
 }
-
+*/
+/*
 static void	*print_line(int cont)
 {
 	int	len;
@@ -71,7 +74,8 @@ static void	*print_line(int cont)
 	ft_printf("| ");
 	return (NULL);
 }
-
+*/
+/*
 void	print_stacks(t_ps *ps)
 {
 	t_ps_list	*a;
@@ -97,7 +101,8 @@ void	print_stacks(t_ps *ps)
 	}
 	ft_printf(" ===== a ====== | ====== b ===== \n\n");
 }
-
+*/
+/*
 void	test_moves(t_ps *ps)
 {
 	print_stacks(ps);
@@ -113,7 +118,8 @@ void	test_moves(t_ps *ps)
 	ps_command(pa, ps);
 	print_stacks(ps);
 }
-
+*/
+/*
 void	print_moves(t_com *moves)
 {
 	int	i;
@@ -150,7 +156,8 @@ void	print_moves(t_com *moves)
 	}
 	ft_printf("\nSTOP Print Moves\n");
 }
-
+*/
+/*
 void	manual_sort(t_ps *ps)
 {
 	char	buffer[3];
@@ -162,7 +169,8 @@ void	manual_sort(t_ps *ps)
 	while (1)
 	{
 		print_stacks(ps);
-		ft_printf("Ingrese una opción: [pa, pb, sa, sb, ss, ra, rb, rra, rrb, rrr, end]:\n");
+		ft_printf("Ingrese una opción: [pa, pb, sa, sb, \
+		ss, ra, rb, rra, rrb, rrr, end]:\n");
 		readed = read(STDIN_FILENO, buffer, 3);
 		if (readed == -1)
 			return ;
@@ -197,3 +205,4 @@ void	manual_sort(t_ps *ps)
 	}
 	ft_printf("total: %d\n", total);
 }
+*/
