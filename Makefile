@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/08/04 19:47:52 by mvisca           ###   ########.fr        #
+#    Updated: 2023/08/04 21:26:58 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,8 +69,11 @@ CC				:=	gcc #-g -fsanitize=address
 
 CFLAGS			:=	-Wall -Wextra -Werror -MMD
 
-RM				:=	rm -r -f
+
+DIR_DUP			=	mkdir -p $(@D)
+
 MAKEFLAGS		+=	--no-print-directory
+RM				:=	rm -r -f
 
 #-------------------#
 #	RECIPES			#
@@ -79,24 +82,27 @@ MAKEFLAGS		+=	--no-print-directory
 all: $(NAME)
 
 $(NAME): callforlib $(OBJS)
-	@echo "$(YELLOW)Compiling... $(BLUE)$@ $(NC)"
-	@$(CC) $(CFLAGS) -L./$(LIB_DIR) -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) $(OBJS) -lft -o ${NAME}
+	@echo "$(YELLOW)Compiling $(RED)$@ $(YELLOW)ready! $(NC)"
+	$(CC) $(CFLAGS) -L./$(LIB_DIR) -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) $(OBJS) -lft -o ${NAME}
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c Makefile 
-	@mkdir -p $(@D)
-	@echo "$(YELLOW)Creating... $(BLUE)$@$(NC)"
-	@$(CC) ${CFLAGS} -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) -L./$(LIB_DIR) -lft -c $< -o $@
-
-$(LIB_TGT):
-	@echo "Calling LIB_DIR make"
-	@$(MAKE) -C $(LIB_DIR)
+	@$(DIR_DUP)
+	@echo "$(GREEN)Creating... $(NC) $(notdir $@)"
+	$(CC) ${CFLAGS} -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) -L./$(LIB_DIR) -lft -c $< -o $@
 -include $(DEPS)
 
+$(LIB_TGT):
+	@echo "Compling LIBFT"
+	@$(MAKE) -C $(LIB_DIR)
+
+done:
+	 @touch .done
+	 
 test:
 	echo "$(SRCS:%.c)"
 
 clean:
-	@echo "Cleaning LIB_DIR make clean"
+	@echo "$(RED)Deleting objects for... $(NC)$(NAME) *.o *.d $(RED)>> 🗑️$(NC)"
 	@$(RM) $(OBJS_DIR)
 	@$(MAKE) -C $(LIB_DIR) clean
 
@@ -108,7 +114,6 @@ fclean: clean
 re: fclean all
 
 callforlib:
-	@echo "Calling LIB_DIR make"
 	@$(MAKE) -C $(LIB_DIR)
 
 ndad:

@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 17:14:27 by mvisca            #+#    #+#              #
-#    Updated: 2023/08/04 19:47:17 by mvisca           ###   ########.fr        #
+#    Updated: 2023/08/04 21:17:09 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,8 +70,8 @@ SRCS		:=			\
 	ft_lstiter.c		\
 	ft_lstlast.c		\
 	ft_lstnew.c			\
-	ft_lstsize.c
-#	ft_lstmap.c	
+	ft_lstsize.c		\
+	ft_lstmap.c
 
 SRCS		:= $(SRCS:%=$(SRCS_DIR)%)
 
@@ -92,7 +92,7 @@ CC 			:= cc
 CFLAGS 		:= -Wall -Wextra -Werror
 
 # PreProcessor flags
-CPPFLAGS	:= $(addprefix -I,$(INCS)) -MMD -MP
+CPPFLAGS	:= $(addprefix -I,$(INCS)) -MMD
 
 # Archiver 
 AR			:= ar -r -c -s
@@ -126,18 +126,18 @@ $(NAME): $(OBJS)
 	@$(AR) $@ $(OBJS)
 	@echo "$(YELLOW)Packing $(RED)$(NAME) $(YELLOW)ready!$(NC)"
 
-$(BUILD_DIR)%.o: $(SRCS_DIR)%.c Makefile
+$(BUILD_DIR)%.o: $(SRCS_DIR)%.c Makefile include/libft.h
 	@$(DIR_DUP)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
-	@echo "$(GREEN)Building $(NC)$(notdir $<) $(RED)-> $(NC)$(notdir $@)"
+	@echo "$(GREEN)Creating... $(NC)$(notdir $<) $(RED)-> $(NC)$(notdir $@)"
 
 clean:
-	@echo "$(RED)Deleting objects for $(NC)lift *.o *.d $(RED)>> 🗑️$(NC)"
+	@echo "$(RED)Deleting objects for... $(NC)lift *.o *.d $(RED)>> 🗑️$(NC)"
 	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
 	@$(RM) $(BUILD_DIR)
 
 fclean: clean
-	@echo "$(RED)Deleting $(NC)$(NAME) $(RED)>> 🗑️$(NC)"
+	@echo "$(RED)Deleting... $(NC)$(NAME) $(RED)>> 🗑️$(NC)"
 	@$(RM) $(NAME)
 
 re: 
