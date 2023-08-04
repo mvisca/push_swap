@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:18:02 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/02 18:58:44 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/04 10:28:23 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-// int		ps_sorted(t_ps *ps);
 void	ps_min_to_top(t_ps *ps);
 
 void	ps_sort_stack(t_ps *ps)

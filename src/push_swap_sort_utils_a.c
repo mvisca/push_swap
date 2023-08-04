@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_utils_a.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:19:14 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/03 17:29:44 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/04 10:27:35 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_com	*ps_join_move(int rotations, t_com rot_type, t_com *best_move)
 	return (new_move);
 }
 
-static void	ps_optimize_move(t_com **move, t_com ma, t_com mb, t_com mr)
+static void	ps_optimize_move(t_com **move, t_com bmove, t_com amove, t_com replace)
 {
 	int	i;
 	int	j;

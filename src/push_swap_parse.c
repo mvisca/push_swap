@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_parse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 17:21:09 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/08/02 14:26:55 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/04 10:46:26 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+static int	ps_norep(t_ps *ps)
+{
+	t_ps_list	*current;
+	t_ps_list	*following;
+
+	current = ps->a->head;
+	while (current)
+	{
+		following = current->next;
+		while (following)
+		{
+			if (current->content == following->content)
+				exit (ps_end_error(ps, NULL, TRUE));
+			following = following->next;
+		}
+		current = current->next;
+	}
+	return (TRUE);
+}
 
 static int	ps_isnum(char *str)
 {
@@ -31,14 +51,12 @@ static int	ps_isnum(char *str)
 
 int	ps_parse(char *str, t_ps *ps)
 {
-	int				i;
 	long long int	num;
 	t_ps_list		*node;
 	char			**tab;
 
 	if (*str == 0)
 		return (ps_end_error(ps, NULL, TRUE));
-	i = 0;
 	tab = ft_split(str, 32);
 	if (!tab || tab[i] == NULL)
 		return (ps_end_error(ps, &tab, TRUE));
@@ -51,7 +69,7 @@ int	ps_parse(char *str, t_ps *ps)
 	if (!node)
 		return (ps_end_error(ps, &tab, FALSE));
 	ps_lstadd_back(&ps->a->head, node);
-	i++;
+	ps_norep(ps);
 	ps_free_tab(&tab);
 	return (FALSE);
 }

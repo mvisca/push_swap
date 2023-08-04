@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:03:07 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/03 10:48:05 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/04 10:47:13 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,6 @@ static t_ps	*ps_init(t_ps *ps)
 	return (ps);
 }
 
-static int	ps_norep(t_ps *ps)
-{
-	t_ps_list	*current;
-	t_ps_list	*following;
-
-	current = ps->a->head;
-	while (current)
-	{
-		following = current->next;
-		while (following)
-		{
-			if (current->content == following->content)
-				exit (ps_end_error(ps, NULL, TRUE));
-			following = following->next;
-		}
-		current = current->next;
-	}
-	return (TRUE);
-}
-
 int	main(int ac, char **av)
 {
 	int		i;
@@ -60,7 +40,6 @@ int	main(int ac, char **av)
 		ps_parse(av[i++], &ps);
 	if (ps.a == NULL)
 		ps_end_error(&ps, NULL, TRUE);
-	ps_norep(&ps);
 	ps_update_stack(ps.a);
 	if (!ps_sorted(&ps))
 		ps_sort_stack(&ps);
