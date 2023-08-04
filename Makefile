@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/08/04 21:26:58 by mvisca           ###   ########.fr        #
+#    Updated: 2023/08/04 21:29:44 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,8 @@ all: $(NAME)
 
 $(NAME): callforlib $(OBJS)
 	@echo "$(YELLOW)Compiling $(RED)$@ $(YELLOW)ready! $(NC)"
-	$(CC) $(CFLAGS) -L./$(LIB_DIR) -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) $(OBJS) -lft -o ${NAME}
+	$(CC) $(CFLAGS) -L./$(LIB_DIR) -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) $(OBJS) -lft -o $(@)
+-include $(DEPS)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c Makefile 
 	@$(DIR_DUP)
