@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort_utils_b.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:19:16 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/03 16:15:08 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/04 13:01:52 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static int	ps_max_to_top(t_ps *ps);
 static int	ps_gap_to_top(t_ps *ps, int num);
 
 t_com	*prep_b(t_ps *ps, int num)
@@ -54,21 +53,6 @@ static int	ps_gap_to_top(t_ps *ps, int num)
 		rotations++;
 		last = first;
 		first = first->next;
-	}
-	return (rotations);
-}
-
-static int	ps_max_to_top(t_ps *ps)
-{
-	int			rotations;
-	t_ps_list	*head;
-
-	rotations = 0;
-	head = ps->b->head;
-	while (head && head->content != ps->b->max)
-	{
-		rotations++;
-		head = head->next;
 	}
 	return (rotations);
 }

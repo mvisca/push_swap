@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_mem_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 17:02:50 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/02 15:41:57 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/04 12:48:05 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+void	ps_update_stack(t_stack *stack);
+void	ps_free_stack(t_stack *stack);
+void	ps_free_tab(char ***tab);
+int		ps_end_error(t_ps *ps, char ***tab, int msg);
 
 void	ps_update_stack(t_stack *stack)
 {

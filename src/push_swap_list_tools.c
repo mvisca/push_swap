@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_list_tools.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 23:08:00 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/08/01 12:58:16 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/04 12:47:15 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+t_ps_list	*ps_lstnew(int content);
+void		ps_lstadd_back(t_ps_list **head, t_ps_list *node);
+void		ps_lstadd_front(t_ps_list **head, t_ps_list *node);
+t_ps_list	*ps_lstlast(t_ps_list *lst);
+int			ps_lstsize(t_ps_list *head);
 
 t_ps_list	*ps_lstnew(int content)
 {

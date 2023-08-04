@@ -6,12 +6,40 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:19:14 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/04 10:27:35 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/04 13:03:46 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+static t_com	*ps_join_move(int rotations, t_com rot_type, t_com *best_move);
+static void		ps_optimove(t_com **move, t_com b_com, t_com a_com, t_com rep);
+
+t_com	*prep_a(t_ps *ps, int content, t_com *best_move)
+{
+	int			rotations;
+	t_com		rot_type;
+	t_com		*new_move;
+	t_ps_list	*current;
+
+	rotations = 0;
+	rot_type = ra;
+	current = ps->a->head;
+	while (current->content != content)
+	{
+		current = current->next;
+		rotations++;
+	}
+	if (rotations > (ps->a->size / 2))
+	{
+		rot_type = rra;
+		rotations = ps->a->size - rotations;
+	}
+	new_move = ps_join_move(rotations, rot_type, best_move);
+	ps_optimove(&new_move, rb, ra, rr);
+	ps_optimove(&new_move, rrb, rra, rrr);
+	return (new_move);
+}
 
 static t_com	*ps_join_move(int rotations, t_com rot_type, t_com *best_move)
 {
@@ -39,50 +67,24 @@ static t_com	*ps_join_move(int rotations, t_com rot_type, t_com *best_move)
 	return (new_move);
 }
 
-static void	ps_optimize_move(t_com **move, t_com bmove, t_com amove, t_com replace)
+static void	ps_optimove(t_com **move, t_com b_com, t_com a_com, t_com rep)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while ((*move)[i] == ma)
+	while ((*move)[i] == b_com)
 	{
 		j = i + 1;
 		while ((*move)[j] != end)
 		{
-			if ((*move)[i] == ma && (*move)[j] == mb)
+			if ((*move)[i] == b_com && (*move)[j] == a_com)
 			{
-				(*move)[i] = mr;
+				(*move)[i] = rep;
 				(*move)[j] = skip;
 			}
 			j++;
 		}
 		i++;
 	}
-}
-
-t_com	*prep_a(t_ps *ps, int content, t_com *best_move)
-{
-	int			rotations;
-	t_com		rot_type;
-	t_com		*new_move;
-	t_ps_list	*current;
-
-	rotations = 0;
-	rot_type = ra;
-	current = ps->a->head;
-	while (current->content != content)
-	{
-		current = current->next;
-		rotations++;
-	}
-	if (rotations > (ps->a->size / 2))
-	{
-		rot_type = rra;
-		rotations = ps->a->size - rotations;
-	}
-	new_move = ps_join_move(rotations, rot_type, best_move);
-	ps_optimize_move(&new_move, rb, ra, rr);
-	ps_optimize_move(&new_move, rrb, rra, rrr);
-	return (new_move);
 }

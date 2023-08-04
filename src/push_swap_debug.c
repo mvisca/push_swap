@@ -3,35 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_debug.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 16:18:34 by mvisca            #+#    #+#             */
-/*   Updated: 2023/07/25 15:47:50 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/04 13:32:04 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-/*
-void	print_tab(t_ps *ps)
+void	print_tab(char **tab)
 {
 	int		i;
-	char	**tab;
 
-	tab = ps->tab;
-	if (!tab && !(*tab))
-		return ;
 	ft_printf ("\n======== Print TAB ==========\n");
 	if (!tab)
+	{
 		ft_printf ("-------- TAB (null)\n");
+		return ;
+	}
 	i = 0;
-	while (tab && tab[i])
+	while (tab[i])
 	{
 		ft_printf("tab[%d] %s\n", i, tab[i]);
 		i++;
 	}
+	ft_printf ("======== End TAB ============\n");
 }
-*/
 
 void	print_stack(t_stack *stack, char *name)
 {

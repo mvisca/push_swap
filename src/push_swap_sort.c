@@ -6,12 +6,16 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:18:02 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/04 10:28:23 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/04 13:02:41 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+void	ps_sort_stack(t_ps *ps);
+int		ps_sorted(t_ps *ps);
+int		ps_cost_to_move(t_com *moves);
+int		ps_max_to_top(t_ps *ps);
 void	ps_min_to_top(t_ps *ps);
 
 void	ps_sort_stack(t_ps *ps)
@@ -48,6 +52,16 @@ int	ps_sorted(t_ps *ps)
 	return (TRUE);
 }
 
+int	ps_cost_to_move(t_com *moves)
+{
+	int	i;
+
+	i = 0;
+	while (moves[i] != end)
+		i++;
+	return (i);
+}
+
 void	ps_min_to_top(t_ps *ps)
 {
 	int			rotations;
@@ -69,4 +83,19 @@ void	ps_min_to_top(t_ps *ps)
 	}
 	while (rotations--)
 		ps_command(rot_type, ps);
+}
+
+int	ps_max_to_top(t_ps *ps)
+{
+	int			rotations;
+	t_ps_list	*head;
+
+	rotations = 0;
+	head = ps->b->head;
+	while (head && head->content != ps->b->max)
+	{
+		rotations++;
+		head = head->next;
+	}
+	return (rotations);
 }

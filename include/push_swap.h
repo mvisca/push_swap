@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 13:33:47 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/08/03 12:43:47 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/04 13:29:34 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_ps
 void		*ps_command(t_com move, t_ps *ps);
 
 // push_swap_debug.c
-void		print_tab(t_ps *ps);
+void		print_tab(char **tab);
 void		print_stack(t_stack *stack, char *name);
 void		print_stacks(t_ps *ps);
 void		print_moves(t_com *moves);
@@ -83,6 +83,13 @@ int			ps_end_error(t_ps *ps, char ***tab, int msg);
 // push_swap_parse.c
 int			ps_parse(char *str, t_ps *ps);
 
+// push_swap_sort.c
+void		ps_sort_stack(t_ps *ps);
+int			ps_sorted(t_ps *ps);
+int			ps_cost_to_move(t_com *moves);
+void		ps_min_to_top(t_ps *ps);
+int			ps_max_to_top(t_ps *ps);
+
 // push_swap_sort_utils_a.c
 t_com		*prep_a(t_ps *ps, int node, t_com *test_moves);
 
@@ -94,7 +101,6 @@ void		ps_move_b_to_a(t_ps *ps);
 
 // push_swap_sort_long.c
 void		ps_sort_long(t_ps *ps);
-int			ps_cost_to_move(t_com *moves);
 
 // push_swap_sort_utils_five.c
 void		ps_sort_five(t_ps *ps);
@@ -105,9 +111,5 @@ void		ps_sort_three(t_ps *ps);
 // push_swap_sort_utils_two.c
 void		ps_sort_two(t_ps *ps);
 
-// push_swap_sort.c
-void		ps_sort_stack(t_ps *ps);
-void		ps_min_to_top(t_ps *ps);
-int			ps_sorted(t_ps *ps);
 
 #endif

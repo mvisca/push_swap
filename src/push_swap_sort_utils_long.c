@@ -6,13 +6,12 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:28:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/04 10:43:45 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/04 12:56:38 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int				ps_cost_to_move(t_com *moves);
 static t_com	*ps_get_best_move(t_ps *ps);
 
 void	ps_sort_long(t_ps *ps)
@@ -34,16 +33,6 @@ void	ps_sort_long(t_ps *ps)
 	ps_sort_three(ps);
 	ps_move_b_to_a(ps);
 	ps_min_to_top(ps);
-}
-
-int	ps_cost_to_move(t_com *moves)
-{
-	int	i;
-
-	i = 0;
-	while (moves[i] != end)
-		i++;
-	return (i);
 }
 
 static t_com	*ps_get_best_move(t_ps *ps)
