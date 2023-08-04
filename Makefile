@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/08/04 17:47:31 by mvisca           ###   ########.fr        #
+#    Updated: 2023/08/04 18:13:56 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,13 +77,14 @@ MAKEFLAGS		+=	--no-print-directory
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIB_TGT)
+$(NAME): $(OBJS) Makefile
 	@echo "$(YELLOW)Compiling... $(BLUE)$@ $(NC)"
-	@$(CC) $(CFLAGS) -L/$(LIB_DIR) -lft -I/$(PS_INC_DIR) -I/$(LIB_INC_DIR) $(OBJS) $(CPPFLAGS) -o $@
+	@$(CC) $(CFLAGS) -L/$(LIB_DIR) -lft -I/$(PS_INC_DIR) -I/$(LIB_INC_DIR) $(OBJS) -o $@
 
-%.o: $(SRCS:%.c) Makefile
+%.o: $(SRCS:.%.c) $(LIB_TGT)
+	@mkdir -p obj
 	@echo "$(YELLOW)Creating... $(BLUE)$@$(NC)"
-	@$(CC) $(CPFLAGS) -I/$(PS_INC_DIR) -I/$(LIB_INC_DIR) $< -o $(OBJS_DIR)/$@
+	@$(CC) $(CPFLAGS) -I/$(PS_INC_DIR) -I/$(LIB_INC_DIR) $< -o $@
 
 $(LIB_TGT):
 	@echo "Calling LIB_DIR make"
@@ -92,6 +93,7 @@ $(LIB_TGT):
 
 clean:
 	@echo "Cleaning LIB_DIR make clean"
+	@$(RM) $(OBJS_DIR)
 	@$(MAKE) -C $(LIB_DIR) clean
 
 fclean: clean
