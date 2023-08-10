@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
+#    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/08/04 22:14:49 by mvisca           ###   ########.fr        #
+#    Updated: 2023/08/10 15:48:23 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,15 +30,16 @@ NAME			:=	push_swap
 #	INGREDIENTS		#
 #-------------------#
 
-PS_INC_DIR		:=	include
+PS_INC_DIR		:=	include/
 PS_INCLUDE		:=	push_swap.h
 
-LIB_DIR			:=	libft
-LIB_INC_DIR		:=	libft/include
-LIB_TGT			:=	libft/libft.a
+LIB_DIR			:=	libft/
+LIB_INC_DIR		:=	$(LIB_DIR)include/
+LIB_TGT			:=	$(LIB_DIR)libft.a
+LIB_HEAD		:=	$(LIB_INC_DIR)libft.h
 
-SRCS_DIR		:=	src
-OBJS_DIR		:=	.build
+SRCS_DIR		:=	src/
+OBJS_DIR		:=	.build/
 
 FILES			:=	push_swap.c							\
 						push_swap_commands.c			\
@@ -55,11 +56,13 @@ FILES			:=	push_swap.c							\
 						push_swap_sort_utils_five.c		\
 						push_swap_sort_utils_two.c
 
-SRCS			:=	$(addprefix $(SRCS_DIR)/, $(FILES))
+SRCS			:=	$(FILES:%=$(SRCS_DIR)%)
 
-OBJS			:=	$(addprefix $(OBJS_DIR)/, $(FILES:.c=.o))
+OBJS			:=	$(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 
-DEPS			:=	$(addprefix $(OBJS_DIR)/, $(FILES:.c=.d))
+DEPS			:=	$(OBJS:.o=.d)
+
+DEPS			+=	$(DEPS_LIB)
 
 #-------------------#
 #	UTILS			#
@@ -69,8 +72,7 @@ CC				:=	gcc #-g -fsanitize=address
 
 CFLAGS			:=	-Wall -Wextra -Werror -MMD -MP
 
-
-DIR_DUP			=	mkdir -p $(@D)
+DIR_DUP			:=	mkdir -p $(OBJS_DIR)
 
 MAKEFLAGS		+=	--no-print-directory
 RM				:=	rm -r -f
@@ -79,17 +81,20 @@ RM				:=	rm -r -f
 #	RECIPES			#
 #-------------------#
 
-all: $(NAME)
+all: callforlib $(NAME)
 
-$(NAME): $(OBJS) | callforlib
+$(NAME): $(OBJS)
 	@echo "$(YELLOW)Compiling $(RED)$@ $(YELLOW)ready! $(NC)"
-	@$(CC) $(CFLAGS) -L./$(LIB_DIR) -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) $(OBJS) -lft -o $(NAME)
+	@$(CC) $(CFLAGS) -L./$(LIB_DIR) -lft -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) $(OBJS) -o $(NAME)
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c Makefile $(LIB_DIR)/Makefile
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.c Makefile $(LIB_TGT)
 	@$(DIR_DUP)
+	@$(CC) $(CFLAGS) -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) -c $< -o $@
 	@echo "$(GREEN)Creating... $(NC) $(notdir $@)"
-	@$(CC) $(CFLAGS) -I./$(LIB_INC_DIR) -I./$(PS_INC_DIR) -L./$(LIB_DIR) -lft -c $< -o $@
--include $(DEPS) 
+-include $(DEPS)
+
+# $(LIB_TGT): $(LIB_DIR)Makefile $(LIB_HEAD)
+# 	@$(MAKE) -C $(LIB_DIR)
 
 clean:
 	@echo "$(RED)Deleting objects for... $(NC)$(NAME) *.o *.d $(RED)>> 🗑️$(NC)"
