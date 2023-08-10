@@ -6,7 +6,7 @@
 #    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 18:40:44 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/08/10 15:48:23 by mvisca-g         ###   ########.fr        #
+#    Updated: 2023/08/10 16:42:55 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,6 +96,9 @@ $(OBJS_DIR)%.o: $(SRCS_DIR)%.c Makefile $(LIB_TGT)
 # $(LIB_TGT): $(LIB_DIR)Makefile $(LIB_HEAD)
 # 	@$(MAKE) -C $(LIB_DIR)
 
+callforlib:
+	@$(MAKE) -C $(LIB_DIR)
+
 clean:
 	@echo "$(RED)Deleting objects for... $(NC)$(NAME) *.o *.d $(RED)>> 🗑️$(NC)"
 	@$(RM) $(OBJS_DIR)
@@ -108,7 +111,4 @@ fclean: clean
 
 re: fclean all
 
-callforlib:
-	@$(MAKE) -C $(LIB_DIR)
-
-.PHONY: clean fclean re
+.PHONY: clean fclean re all callforlib

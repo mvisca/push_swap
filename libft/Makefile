@@ -6,7 +6,7 @@
 #    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 17:14:27 by mvisca            #+#    #+#              #
-#    Updated: 2023/08/08 13:57:59 by mvisca-g         ###   ########.fr        #
+#    Updated: 2023/08/10 17:30:40 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,7 +106,7 @@ CC 			:= cc
 CFLAGS 		:= -Wall -Wextra -Werror
 
 # PreProcessor flags
-CPPFLAGS	:= $(addprefix -I,$(INCS)) -MMD
+CPPFLAGS	:= $(addprefix -I, $(INCS)) -MMD
 
 # Archiver 
 AR			:= ar -r -c -s
@@ -137,7 +137,7 @@ $(BUILD_DIR)%.o: $(SRCS_DIR)%.c Makefile include/libft.h
 	@echo "$(GREEN)Creating... $(NC)$(notdir $<) $(RED)-> $(NC)$(notdir $@)"
 
 clean:
-	@echo "$(RED)Deleting objects for... $(NC)lift *.o *.d $(RED)>> 🗑️$(NC)"
+	@echo "$(RED)Deleting objects for... $(NC)libft *.o *.d $(RED)>> 🗑️$(NC)"
 	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
 	@$(RM) $(BUILD_DIR)
 
